@@ -1,4 +1,4 @@
-baseURL = 'http://benfeifke.com/'
+baseURL = 'benfeifke.com/'
 languageCode = 'en-us'
 title = 'Call me Ben'
 theme = "cactus"
