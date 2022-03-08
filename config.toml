@@ -1,4 +1,4 @@
-baseURL = 'https://hopeful-easley-b63db4.netlify.app/'
+baseURL = 'http://benfeifke.com/'
 languageCode = 'en-us'
 title = 'Call me Ben'
 theme = "cactus"
