@@ -1,4 +1,51 @@
+# general params
 baseURL = 'https://benfeifke.com/'
 languageCode = 'en-us'
 title = 'Call me Ben'
 theme = "cactus"
+gravatar = "benfeifke@gmail.com"
+
+# Main menu which appears below site header.
+# [[menu.main]]
+# name = "Home"
+# url = "/"
+# weight = 1
+
+# [[menu.main]]
+# name = "All posts"
+# url = "/posts"
+# weight = 2
+
+# [[menu.main]]
+# name = "Tags"
+# url = "/tags"
+# weight = 3
+
+# [[menu.main]]
+# name = "About"
+# url = "/about"
+# weight = 4
+
+[params]
+  description = "I'm a data scientist, python developer, data science mentor, and polyglot."
+  # mainSection = "about"
+  # mainSectionTitle = "Who"
+  # showAllPostsOnHomePage = false
+  # postsOnHomePage = 5
+  # mathjax = true
+
+[[params.social]]
+  name = "github"
+  link = "https://github.com/bfeif"
+
+[[params.social]]
+  name = "email"
+  link = "benfeifke@gmail.com" # no need for "mailto:" at the start
+
+[[params.social]]
+  name = "linkedin"
+  link = "https://www.linkedin.com/in/benjamin-feifke/"
+
+[[params.social]]
+  name = "youtube"
+  link = "https://www.linkedin.com/in/benjamin-feifke/"

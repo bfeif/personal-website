@@ -1,0 +1,24 @@
+{
+   "list": [
+      {
+         "name": "CheckMyMate",
+         "url": "http://checkmymate.co/",
+         "desc": "A website for investigating how to beat your friends in chess."
+      },
+      {
+         "name": "Denkmit",
+         "url": "https://github.com/bfeif/denkmit",
+         "desc": "An anki-like terminal app for learning German preposition declensions."
+      },
+      {
+         "name": "AdHocBoost",
+         "url": "https://pypi.org/project/adhocboost/",
+         "desc": "A machine learning model specialized for imbalanced-class learning."
+      },
+      {
+         "name": "Ben Feifke Music",
+         "url": "https://soundcloud.com/benjaminfeifke/a-lonely-breeze",
+         "desc": "Some sweet sounds that you didn't know you needed."
+      }
+   ]
+}
