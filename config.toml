@@ -27,7 +27,8 @@ gravatar = "benfeifke@gmail.com"
 # weight = 4
 
 [params]
-  description = "I'm a data scientist, python developer, data science mentor, and polyglot."
+  colortheme = "white"
+  description = "I'm a data scientist, python developer, data science mentor, consultant, and moonlighting polyglot."
   # mainSection = "about"
   # mainSectionTitle = "Who"
   # showAllPostsOnHomePage = false
@@ -49,3 +50,11 @@ gravatar = "benfeifke@gmail.com"
 [[params.social]]
   name = "youtube"
   link = "https://www.youtube.com/channel/UClsmEGubpjn_oY9N7sjrIbg"
+
+[[params.social]]
+  name = "instagram"
+  link = "https://www.instagram.com/funkybiff/"
+
+[[params.social]]
+  name = "twitter"
+  link = "https://twitter.com/normanrookwell"
