@@ -28,7 +28,7 @@ gravatar = "benfeifke@gmail.com"
 
 [params]
   colortheme = "white"
-  description = "I'm a data scientist, python developer, data science mentor, consultant, and moonlighting polyglot."
+  description = "I'm a data scientist, python developer, data science mentor, consultant, and polyglot."
   # mainSection = "about"
   # mainSectionTitle = "Who"
   # showAllPostsOnHomePage = false
