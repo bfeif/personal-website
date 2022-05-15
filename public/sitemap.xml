@@ -2,10 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://benfeifke.com/</loc>
+    <lastmod>2022-05-15T17:47:45+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/</loc>
+    <loc>https://benfeifke.com/posts/</loc>
+    <lastmod>2022-05-15T17:47:45+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://benfeifke.com/posts/when-folklore-gives-birth-to-math-20220515/</loc>
+    <lastmod>2022-05-15T17:47:45+02:00</lastmod>
+  </url><url>
+    <loc>https://benfeifke.com/categories/</loc>
+  </url><url>
+    <loc>https://benfeifke.com/tags/</loc>
   </url>
 </urlset>

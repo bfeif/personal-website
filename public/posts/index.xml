@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Call me Ben</title>
-    <link>https://benfeifke.com/</link>
-    <description>Recent content on Call me Ben</description>
+    <title>Posts on Call me Ben</title>
+    <link>https://benfeifke.com/posts/</link>
+    <description>Recent content in Posts on Call me Ben</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 May 2022 17:47:45 +0200</lastBuildDate><atom:link href="https://benfeifke.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 May 2022 17:47:45 +0200</lastBuildDate><atom:link href="https://benfeifke.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>When Folklore Gives Birth to Math</title>
       <link>https://benfeifke.com/posts/when-folklore-gives-birth-to-math-20220515/</link>
