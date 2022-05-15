@@ -1,17 +1,17 @@
 ---
 title: "When Folklore Gives Birth to Math"
-date: 2022-05-15T17:47:45+02:00
-draft: true
+date: 2022-05-16T09:47:45+02:00
+draft: false
 ---
 
-## A Chaotic Proverb
+## For Want of a Theory...
 In describing the history of Chaos Theory in his book [Chaos](https://www.amazon.com/Chaos-Making-Science-James-Gleick/dp/0143113453), James Gleick observes that "Sensitive dependence on initial conditions was not an altogether new notion. It had a place in folklore: 'For want of a nail, the shoe was lost; For want of a shoe, the horse was lost; For want of a horse, the rider was lost; For want of a rider, the battle was lost; For want of a battle, the kingdom was lost!”
 
 This proverb, according to wikipedia, [can be dated back to as early as the 13th century](https://en.wikipedia.org/wiki/For_Want_of_a_Nail), even though Chaos Theory was only discovered/invented in the mid 20th century.
 
 It got me wondering... how often are new mathematical abstractions created in this way? Must we collectively discover concepts in our culture and language before we invent abstract formalisms for them?
 
-## Some other examples:
+## Some Other Examples:
 Another day, another wikipedia rabbit hole:
 * Humans were most likely counting stuff (e.g. their children) long before [the Egyptians and the Babylonians invented the first abstractions for the Set of Natural Numbers](https://en.wikipedia.org/wiki/Natural_number#Ancient_roots).
 * Our religions and stories were pondering [eternity and afterlife](https://en.wikipedia.org/wiki/Heaven) many years before the [first recorded idea of mathematical infinity by the Greeks](https://en.wikipedia.org/wiki/Infinity#History).
