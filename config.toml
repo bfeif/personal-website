@@ -4,6 +4,7 @@ languageCode = 'en-us'
 title = 'Call me Ben'
 theme = "cactus"
 gravatar = "benfeifke@gmail.com"
+disqusShortname = "benfeifke"
 
 # Main menu which appears below site header.
 # [[menu.main]]
@@ -34,6 +35,8 @@ gravatar = "benfeifke@gmail.com"
   showAllPostsOnHomePage = true
   # postsOnHomePage = 5
   # mathjax = true
+  [params.comments]
+  enabled = true
 
 [[params.social]]
   name = "github"
