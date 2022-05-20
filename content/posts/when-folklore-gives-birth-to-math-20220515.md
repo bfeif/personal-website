@@ -1,17 +1,18 @@
 ---
 title: "How Did We Count Before We Invented Numbers?"
+subtitle: "babana"
 date: 2022-05-15T09:47:45+02:00
 draft: false
 # comments: true
 ---
 
-## The Invention of the Set of Natural Numbers?
-Sometimes, I like to imagine the invention of the Set of Natural Numbers:
-> _Stage Left: Curt the caveman walks in to Mack's cave; Mack is picking his teeth with a bone._\
+## And Then There Were Numbers
+Sometimes, I like to imagine the invention of the Set of Natural Numbers. It goes a little bit like this:
+> _Stage Left: Curt the Caveman walks in to Mack the Caveman's cave; Mack is picking his teeth with a bone._\
 > MACK: "Hey, Curt!"\
 > CURT: "Mack! Great to see you. Beautiful day for tooth-pickin', huh?"\
 > MACK: "You bet, Curt. To what do I owe the pleasure of your visit?"\
-> CURT: "Well, I was wondering--how many kids do you have? I can't remember."\
+> CURT: "Well, I was wondering---how many kids do you have? I can't remember."\
 > MACK: "Great question! There's Pauly, Angela, Curtis, Tim, Penelope, Steve, Jack, Rack, Stack, and Tack".\
 > CURT: "See, that's the thing. I'm going to forget those names again, it's a lot of kids! I wish there was a way I could remember exactly how many there are, I don't need to know all their names."\
 > MACK: "Oh! I hear ya Curt, remembering can be tough. Have you heard about numbers?"\
@@ -26,9 +27,9 @@ Sometimes, I like to imagine the invention of the Set of Natural Numbers:
 > CURT: "It's exciting, I wonder how many kids I have. Great to see you too. Bye!"\
 > MACK: "Bye!"
 
-How did people count their children before numbers were invented? Is it possible that the vocabulary for counting existed first, and then the Set of Natural Numbers were invented from that?
+Did Mack really not know how many kids he had until numbers were invented? Or, is it possible that the vocabulary for counting was first present in our language, and then the Set of Natural Numbers was invented from that?
 
-I don't think it's just possible; it's likely the only way that we can create new mathematical tools. We must first, as a collective, realize the tool in our language, and then create a mathematical formalism for it.
+I don't think it's just possible; it's likely the only way that we can create new mathematical tools. We must first, as a collective consciousness, realize the tool in our language, and then create a mathematical formalism for it.
 
 
 ## When Folklore Gives Birth to Math
