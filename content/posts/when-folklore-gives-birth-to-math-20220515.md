@@ -1,22 +1,59 @@
 ---
-title: "When Folklore Gives Birth to Math"
+title: "How Did We Count Before We Invented Numbers?"
 date: 2022-05-15T09:47:45+02:00
 draft: false
 # comments: true
 ---
 
-## For Want of a Theory...
-In describing the history of Chaos Theory in his book [Chaos](https://www.amazon.com/Chaos-Making-Science-James-Gleick/dp/0143113453), James Gleick observes that "Sensitive dependence on initial conditions was not an altogether new notion. It had a place in folklore: 'For want of a nail, the shoe was lost; For want of a shoe, the horse was lost; For want of a horse, the rider was lost; For want of a rider, the battle was lost; For want of a battle, the kingdom was lost!”
+## The Invention of the Set of Natural Numbers?
+Sometimes, I like to imagine the invention of the Set of Natural Numbers:
+> _Stage Left: Curt the caveman walks in to Mack's cave; Mack is picking his teeth with a bone._\
+> MACK: "Hey, Curt!"\
+> CURT: "Mack! Great to see you. Beautiful day for tooth-pickin', huh?"\
+> MACK: "You bet, Curt. To what do I owe the pleasure of your visit?"\
+> CURT: "Well, I was wondering--how many kids do you have? I can't remember."\
+> MACK: "Great question! There's Pauly, Angela, Curtis, Tim, Penelope, Steve, Jack, Rack, Stack, and Tack".\
+> CURT: "See, that's the thing. I'm going to forget those names again, it's a lot of kids! I wish there was a way I could remember exactly how many there are, I don't need to know all their names."\
+> MACK: "Oh! I hear ya Curt, remembering can be tough. Have you heard about numbers?"\
+> CURT: "Numbers?"\
+> MACK: "Yeah, numbers. Jessica invented them last week."\
+> CURT: "Oh, Jessica, she's smart, it was awesome when she created the wheel last year."\
+> MACK: "Well buddy, if you liked the wheel, then you're going to just love numbers."\
+> CURT: "Oh goody, tell me more."\
+> MACK: "It's called the Set of Natural Numbers. It's basically an infinite set of symbols, that you can use to label, or 'count' items. So, I have '10' kids: Pauly (1), Angela (2), Curtis (3), Tim (4), Penelope (5), Steve (6), Jack (7), Rack (8), Stack (9), and Tack (10)"\
+> CURT: "Wow! Such a simple and useful invention. Thanks Mack, and thanks Jessica! I'm going to go home now and count my kids."\
+> MACK: "Always great to see you buddy."\
+> CURT: "It's exciting, I wonder how many kids I have. Great to see you too. Bye!"\
+> MACK: "Bye!"
+
+How did people count their children before numbers were invented? Is it possible that the vocabulary for counting existed first, and then the Set of Natural Numbers were invented from that?
+
+I don't think it's just possible; it's likely the only way that we can create new mathematical tools. We must first, as a collective, realize the tool in our language, and then create a mathematical formalism for it.
+
+
+## When Folklore Gives Birth to Math
+The idea that all math is an abstraction of language has been on my mind for quite a while, but remained voiceless until something I came across in the book [Chaos](https://www.amazon.com/Chaos-Making-Science-James-Gleick/dp/0143113453) by James Gleick about the history of the discovery and invention of Chaos Theory.
+
+### First, a Little Bit of Chaos
+Chaos Theory is the field of math that deals with "The Butterfly Effect", that "the flap of a butterfly’s wings in Brazil \[can\] set off a tornado in Texas."[^1] It works to model and understand systems that are highly sensitive to initial conditions, that appear to have disordered and random behavior, but nonetheless have some emergent order in the disorder. Some examples of such systems are weather, animal populations, stock prices, the famous three-body problem, or even something as simple as a bicycle being pushed and let go.  
+![Hmm, we couldn't fetch the image, sorry!](https://i.redd.it/wzux1azjcob01.jpg "When Order Emerges from Disorder")
+
+### For Want of a Theory
+In describing the history of Chaos Theory, James Gleick observes that:
+> "Sensitive dependence on initial conditions was not an altogether new notion. It had a place in folklore: 'For want of a nail, the shoe was lost; For want of a shoe, the horse was lost; For want of a horse, the rider was lost; For want of a rider, the battle was lost; For want of a battle, the kingdom was lost!”
 
 This proverb, according to wikipedia, [can be dated back to as early as the 13th century](https://en.wikipedia.org/wiki/For_Want_of_a_Nail), even though Chaos Theory was only discovered/invented in the mid 20th century.
 
-It got me wondering... how often are new mathematical abstractions created in this way? Must we collectively discover concepts in our culture and language before we invent abstract formalisms for them?
+It got me wondering... are there any other concrete examples of this phenomenon, in which our collective consciousness was aware of a mathematical tool long before we invented an abstract formalism for it?
 
 ## Some Other Examples:
 Another day, another wikipedia rabbit hole:
-* Humans were most likely counting stuff (e.g. their children) long before [the Egyptians and the Babylonians invented the first abstractions for the Set of Natural Numbers](https://en.wikipedia.org/wiki/Natural_number#Ancient_roots).
-* Our religions and stories were pondering [eternity and afterlife](https://en.wikipedia.org/wiki/Heaven) many years before the [first recorded idea of mathematical infinity by the Greeks](https://en.wikipedia.org/wiki/Infinity#History).
-* We’ve always known that [“the rich get richer”](https://en.wikipedia.org/wiki/The_rich_get_richer_and_the_poor_get_poorer); we didn’t need the abstraction of [preferential attachment models invented in the 1900’s](https://en.wikipedia.org/wiki/Preferential_attachment#History).
-* The US justice system touts an adherence to the [Blackstone Ratio](https://en.wikipedia.org/wiki/Blackstone%27s_ratio), that “It is better that ten guilty persons escape than that one innocent suffer”. In other words, operating at high-precision and low-recall. The Blackstone Ratio was first published in the 1760’s, and the [first paper describing precision and recall was only published in 1955](https://en.wikipedia.org/wiki/Information_retrieval#Timeline).
+* Our religions and stories were pondering [eternity and an infinite afterlife](https://en.wikipedia.org/wiki/Heaven) many years before the [first recorded idea of mathematical infinity by the Greeks](https://en.wikipedia.org/wiki/Infinity#History).
+* We’ve always known that [“the rich get richer”](https://en.wikipedia.org/wiki/The_rich_get_richer_and_the_poor_get_poorer), from as early as the days of the New Testament. However, the math underlying the process of rich getting richer, preferential attachment models, was only [invented in the 1900’s](https://en.wikipedia.org/wiki/Preferential_attachment#History). This mathematical tool has now been used extensively to understand many different phenomena, such as the fact that [many Twitter users have few followers and few Twitter users have many followers](https://en.wikipedia.org/wiki/Scale-free_network), and [how most words are rarely used and few words are incredibly common (e.g. "the", "that")](https://en.wikipedia.org/wiki/Zipf%27s_law).
+* The US justice system proudly touts an adherence to the [Blackstone Ratio](https://en.wikipedia.org/wiki/Blackstone%27s_ratio), that “It is better that ten guilty persons escape than that one innocent suffer”. In other words, the US justice system is a classification system that likes to operate at [high-precision and low-recall](https://en.wikipedia.org/wiki/Precision_and_recall). The Blackstone Ratio was first published in the 1760’s, and the [first paper describing precision and recall was only published in 1955](https://en.wikipedia.org/wiki/Information_retrieval#Timeline).
+* "If a tree falls in a forest and no one is around to hear it, does it make a sound?" This philosophical thought experiment that many of us learn about as children [can be traced back to before 1900](https://en.wikipedia.org/wiki/If_a_tree_falls_in_a_forest#History), but we only began scientifically thinking about it with [the inception of quantum mechanics](https://en.wikipedia.org/wiki/Schr%C3%B6dinger%27s_cat) and its associated wavefunction collapse in the 1920's.
 
 Any other examples? Or, better yet, some counter-examples?
+
+## References
+[^1] Lorenz: "Predictability", AAAS 139th meeting, 1972 Archived 2013-06-12 at the Wayback Machine Retrieved May 22, 2015
