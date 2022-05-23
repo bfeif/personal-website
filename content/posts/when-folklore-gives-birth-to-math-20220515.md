@@ -31,18 +31,18 @@ Is this story fact or fiction? Did Mack really not know how many kids he had unt
 
 Probably not.  
 
-It's more likely that the vocabulary for counting was first present in our language, and then the Set of Natural Numbers was invented from afterward. In fact, I believe that this is likely the only way that we can create new mathematical tools. We must first, as a collective consciousness, realize the tool in our language, and then create a mathematical formalism for it.
+It's more likely that the vocabulary for counting was first present in our language, and then the Set of Natural Numbers was invented from that collective wisdom. In fact, I believe that this is likely the only way that we can create new mathematical tools. We must first, as a collective consciousness, realize the tool in our language, and then create a mathematical formalism for it.
 
 
 ## When Folklore Gives Birth to Math
-The idea that all math is an abstraction of language has been on my mind for quite a while, but remained voiceless until something I came across in the book [Chaos](https://www.amazon.com/Chaos-Making-Science-James-Gleick/dp/0143113453) by James Gleick about the history of the discovery and invention of Chaos Theory.
+The idea, that our mathematical tools follow from our language, has been on my mind for quite a while, but remained voiceless until something I came across in the book [Chaos](https://www.amazon.com/Chaos-Making-Science-James-Gleick/dp/0143113453) by James Gleick about the history of the discovery and invention of Chaos Theory.
 
 ### First, a Little Bit of Chaos
-Chaos Theory is the field of math that deals with "The Butterfly Effect", that "the flap of a butterfly’s wings in Brazil \[can\] set off a tornado in Texas."[^1] Chaos Theory works to model and understand systems that are highly sensitive to initial conditions, that appear to have disordered and random behavior, but nonetheless have some emergent order in the disorder. Some examples of such systems are weather, animal populations, the famous three-body problem, prices, or even something as simple as a bicycle being pushed and let go.  
+Chaos Theory is the field of math that deals with sensitivity to initial conditions, aka "The Butterfly Effect", that "the flap of a butterfly’s wings in Brazil \[can\] set off a tornado in Texas."[^1] Chaos Theory works to model and understand systems that behave this way; systems that appear to have disordered and random behavior, but nonetheless have some emergent order in the disorder. Some examples of such systems are weather, animal populations, the famous three-body problem, prices, or even something as simple as a bicycle being pushed and let go.  
 ![Hmm, we couldn't fetch the image, sorry!](https://i.redd.it/wzux1azjcob01.jpg "When Order Emerges from Disorder")
 
 ### For Want of a Theory
-In describing the history of Chaos Theory, James Gleick observes that:
+In describing the inception of Chaos Theory, Gleick observes that:
 > "\[Chaos Theory\] was not an altogether new notion. \[Sensitivity to initial conditions\] had a place in folklore: 'For want of a nail, the shoe was lost; For want of a shoe, the horse was lost; For want of a horse, the rider was lost; For want of a rider, the battle was lost; For want of a battle, the kingdom was lost!”
 
 This proverb, according to wikipedia, [can be dated back to as early as the 13th century](https://en.wikipedia.org/wiki/For_Want_of_a_Nail), even though Chaos Theory was only discovered/invented in the mid 20th century.
@@ -56,13 +56,13 @@ Another day, another wikipedia rabbit hole:
 * The US justice system proudly touts an adherence to the [Blackstone Ratio](https://en.wikipedia.org/wiki/Blackstone%27s_ratio), that “It is better that ten guilty persons escape than that one innocent suffer”. In other words, the US justice system is a guilty/not-guilty classification system that likes to operate at [high-precision and low-recall](https://en.wikipedia.org/wiki/Precision_and_recall). The Blackstone Ratio was first published in the 1760’s, and the [first paper describing precision and recall was only published in 1955](https://en.wikipedia.org/wiki/Information_retrieval#Timeline).
 * "If a tree falls in a forest and no one is around to hear it, does it make a sound?" This philosophical thought experiment that many of us learn about as children [can be traced back to before 1900](https://en.wikipedia.org/wiki/If_a_tree_falls_in_a_forest#History), but it only became a useful scientific tool with [the inception of quantum mechanics](https://en.wikipedia.org/wiki/Schr%C3%B6dinger%27s_cat) (and its associated wavefunction collapse) in the 1920's.
 
-Do you have any other examples? Or, better yet, some counter-examples?
+Do you have any other examples? Or, better yet, some counter-examples? If so, whisper me some sweet somethings in the comments below.
 
 ## Final Thoughts
 
-Of course, no mathematical tool is bound to the folklores, proverbs, or concepts from which they trace their ancestry. Precision/recall is one of the most popularly used metrics in machine learning; preferential attachment models have been used to model many diverse phenomena, such as the fact that [many Twitter users have few followers and few Twitter users have many followers](https://en.wikipedia.org/wiki/Scale-free_network), and [how, in a language, most words are infrequently used but few words are frequently used](https://en.wikipedia.org/wiki/Zipf%27s_law); and numbers are used to count many things besides Curt and Mack's children.  
+Of course, no mathematical tool is bound to the folklores, proverbs, or concepts from which they trace their ancestry. Precision/recall is today one of the most popularly used metrics in machine learning; preferential attachment models have by now been used to model many diverse phenomena beyond just wealth accumulation, such as the fact that [many Twitter users have few followers and few Twitter users have many followers](https://en.wikipedia.org/wiki/Scale-free_network), and [how, in a language, most words are infrequently used but few words are frequently used](https://en.wikipedia.org/wiki/Zipf%27s_law); and numbers have since been used to count many things besides Curt and Mack's children.  
 
-I've found in my scientific education and career that the scientific community sometimes does not respect and appreciate the opinions of the unscientific. I, myself, have been guilty of this in the past. However, it's important as scientists to listen to and appreciate wisdom from everyone and everything that crosses our paths. After all, we don't know what tomorrow's math will be, what tomorrow's truths may be, nor from where they may come.
+I've found in my scientific education and career that the scientific community sometimes does not respect and appreciate the opinions of the unscientific. I, myself, have been guilty of this in the past. However, we must listen to and appreciate wisdom from everyone and everything that crosses our paths. After all, we don't know what tomorrow's math will be, what tomorrow's truths may be, nor from where they may come.
 
 
 [^1]: Lorenz: "Predictability", AAAS 139th meeting, 1972 Archived 2013-06-12 at the Wayback Machine Retrieved May 22, 2015
