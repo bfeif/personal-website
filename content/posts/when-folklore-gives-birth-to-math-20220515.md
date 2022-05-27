@@ -1,6 +1,5 @@
 ---
 title: "How Did We Count Before We Invented Numbers?"
-subtitle: "babana"
 date: 2022-05-15T09:47:45+02:00
 draft: false
 # comments: true
@@ -62,7 +61,7 @@ Do you have any other examples? Or, better yet, some counter-examples? If so, wh
 
 Of course, no mathematical tool is bound to the folklores, proverbs, or concepts from which they trace their ancestry. Precision/recall is today one of the most popularly used metrics in machine learning; preferential attachment models have by now been used to model many diverse phenomena beyond just wealth accumulation, such as the fact that [many Twitter users have few followers and few Twitter users have many followers](https://en.wikipedia.org/wiki/Scale-free_network), and [how, in a language, most words are infrequently used but few words are frequently used](https://en.wikipedia.org/wiki/Zipf%27s_law); and numbers have since been used to count many things besides Curt and Mack's children.  
 
-I've found in my scientific education and career that the scientific community sometimes does not respect and appreciate the opinions of the unscientific. I, myself, have been guilty of this in the past. However, we must listen to and appreciate wisdom from everyone and everything that crosses our paths. After all, we don't know what tomorrow's math will be, what tomorrow's truths may be, nor from where they may come.
+I've found in my scientific education and career that the scientific community sometimes does not respect and appreciate the opinions of the unscientific. I myself have been guilty of this in the past. However, we must listen to and appreciate wisdom from everyone and everything that crosses our paths. After all, we don't know what tomorrow's math will be, what tomorrow's truths may be, nor from where they may come.
 
 
 [^1]: Lorenz: "Predictability", AAAS 139th meeting, 1972 Archived 2013-06-12 at the Wayback Machine Retrieved May 22, 2015
