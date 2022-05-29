@@ -1,6 +1,6 @@
 ---
 title: "How Did We Count Before We Invented Numbers?"
-date: 2022-05-15T09:47:45+02:00
+date: 2022-05-29T09:47:45+02:00
 draft: false
 # comments: true
 ---
@@ -52,7 +52,7 @@ It got me wondering... are there any other concrete examples of this phenomenon,
 Another day, another wikipedia rabbit hole:
 * Our religions and stories were pondering [eternity and an infinite afterlife](https://en.wikipedia.org/wiki/Heaven) many years before the [first recorded idea of mathematical infinity by the Greeks](https://en.wikipedia.org/wiki/Infinity#History).
 * We’ve always known that [“the rich get richer and the poor get poorer”](https://en.wikipedia.org/wiki/The_rich_get_richer_and_the_poor_get_poorer), from as early as the days of the New Testament. However, the math underlying the process of the rich getting richer, preferential attachment models, was only [invented in the 1900’s](https://en.wikipedia.org/wiki/Preferential_attachment#History).
-* The US justice system proudly touts an adherence to the [Blackstone Ratio](https://en.wikipedia.org/wiki/Blackstone%27s_ratio), that “It is better that ten guilty persons escape than that one innocent suffer”. In other words, the US justice system is a guilty/not-guilty classification system that likes to operate at [high-precision and low-recall](https://en.wikipedia.org/wiki/Precision_and_recall). The Blackstone Ratio was first published in the 1760’s, and the [first paper describing precision and recall was only published in 1955](https://en.wikipedia.org/wiki/Information_retrieval#Timeline).
+* The US justice system proudly touts an adherence to the [Blackstone Ratio](https://en.wikipedia.org/wiki/Blackstone%27s_ratio), that “It is better that ten guilty persons escape than that one innocent suffer”. In other words, the US justice system is a guilty/not-guilty classification system that likes to operate at [high-precision and low-recall](https://en.wikipedia.org/wiki/Precision_and_recall), and "beyond reasonable doubt" is where it sets the predicted-probability-threshold in order to do so. The Blackstone Ratio was first published in the 1760’s, and the [first paper describing precision and recall was only published in 1955](https://en.wikipedia.org/wiki/Information_retrieval#Timeline).
 * "If a tree falls in a forest and no one is around to hear it, does it make a sound?" This philosophical thought experiment that many of us learn about as children [can be traced back to before 1900](https://en.wikipedia.org/wiki/If_a_tree_falls_in_a_forest#History), but it only became a useful scientific tool with [the inception of quantum mechanics](https://en.wikipedia.org/wiki/Schr%C3%B6dinger%27s_cat) (and its associated wavefunction collapse) in the 1920's.
 
 Do you have any other examples? Or, better yet, some counter-examples? If so, whisper me some sweet somethings in the comments below.
