@@ -34,7 +34,6 @@ weight = 4
   mainSection = "All Posts"
   mainSectionTitle = "Writings"
   showAllPostsOnHomePage = true
-  googleAnalyticsAsync = true # not required
   # postsOnHomePage = 5
   # mathjax = true
   [params.comments]
