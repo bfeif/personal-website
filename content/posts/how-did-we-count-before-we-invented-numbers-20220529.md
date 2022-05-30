@@ -2,6 +2,16 @@
 title: "How Did We Count Before We Invented Numbers?"
 date: 2022-05-29T09:47:45+02:00
 draft: false
+tags:
+    - math
+    - language
+    - chaos-theory
+    - data-science
+keywords:
+    - math
+    - language
+    - chaos-theory
+    - data-science
 # comments: true
 ---
 
