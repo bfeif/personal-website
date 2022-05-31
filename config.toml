@@ -5,7 +5,7 @@ title = 'Call me Ben'
 theme = "cactus"
 gravatar = "benfeifke@gmail.com"
 disqusShortname = "benfeifke"
-googleAnalytics = "G-X9DV5E72YH" # or G-XXXXXXXX if you are using Google Analytics v4 (gtag.js)
+googleAnalytics = "G-80ZM6F6VG2" # or G-XXXXXXXX if you are using Google Analytics v4 (gtag.js)
 
 # Main menu which appears below site header.
 [[menu.main]]
