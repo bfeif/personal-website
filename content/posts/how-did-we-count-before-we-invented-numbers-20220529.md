@@ -1,6 +1,6 @@
 ---
 title: "How Did We Count Before We Invented Numbers?"
-date: 2022-05-29T09:47:45+02:00
+date: 2022-06-24T09:47:45+02:00
 draft: false
 tags:
     - math
