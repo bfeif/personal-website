@@ -48,7 +48,8 @@ The idea, that our mathematical tools follow from our language, has been on my m
 
 ### First, a Little Bit of Chaos
 Chaos Theory is the field of math that deals with sensitivity to initial conditions, aka "The Butterfly Effect", that "the flap of a butterfly’s wings in Brazil \[can\] set off a tornado in Texas."[^1] Chaos Theory works to model and understand systems that behave this way; systems that appear to have disordered and random behavior, but nonetheless have some emergent order in the disorder. Some examples of such systems are weather, animal populations, the famous three-body problem, prices, or even something as simple as a bicycle being pushed and let go.  
-![Hmm, we couldn't fetch the image, sorry!](https://i.redd.it/wzux1azjcob01.jpg "When Order Emerges from Disorder")
+{{< figure src="https://i.redd.it/wzux1azjcob01.jpg" >}}
+
 
 ### For Want of a Theory
 In describing the inception of Chaos Theory, Gleick observes that:
