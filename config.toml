@@ -63,3 +63,6 @@ weight = 4
 [[params.social]]
   name = "twitter"
   link = "https://twitter.com/normanrookwell"
+
+[markup.goldmark.renderer]
+unsafe= true

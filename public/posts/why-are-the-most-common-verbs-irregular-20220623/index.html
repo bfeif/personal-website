@@ -16,16 +16,18 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="Why are the Most Common Verbs Irregular?" />
-<meta property="og:description" content="Why are the Most Common Verbs Irregular? Recently, I was wondering something that most romance language learners probably wonder at some point&ndash;why the hell are there so many irregular verb conjugations in this language? And why are they so weird (See: Portuguese Subjunctive of the verb &lsquo;ser&rsquo;)? And why, oh why, do they always happen with the most commonly used verbs (e.g. &rsquo;to want&rsquo;, &rsquo;to do&rsquo;, &rsquo;to say&rsquo;, &rsquo;to be&rsquo;)? It&rsquo;s like someone purposely designed Portuguese to be hard to learn." />
+<meta property="og:description" content="Recently, I&rsquo;ve started learning Hebrew, and I found myself wondering something that most language-learners probably wonder at some point: why the hell are there so many irregular verb conjugations in this language? And why are they so weird? It&rsquo;s like someone purposely designed this language to be hard to learn!
+As it turns out, somebody didn&rsquo;t design it to be that way; but rather, a natural process designed it so, one that has been playing out over thousands of years&hellip;" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://benfeifke.com/posts/why-are-the-most-common-verbs-irregular-20220623/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-06-23T09:47:45+02:00" />
-<meta property="article:modified_time" content="2022-06-23T09:47:45+02:00" />
+<meta property="article:published_time" content="2022-07-12T09:47:45+02:00" />
+<meta property="article:modified_time" content="2022-07-12T09:47:45+02:00" />
 
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Why are the Most Common Verbs Irregular?"/>
-<meta name="twitter:description" content="Why are the Most Common Verbs Irregular? Recently, I was wondering something that most romance language learners probably wonder at some point&ndash;why the hell are there so many irregular verb conjugations in this language? And why are they so weird (See: Portuguese Subjunctive of the verb &lsquo;ser&rsquo;)? And why, oh why, do they always happen with the most commonly used verbs (e.g. &rsquo;to want&rsquo;, &rsquo;to do&rsquo;, &rsquo;to say&rsquo;, &rsquo;to be&rsquo;)? It&rsquo;s like someone purposely designed Portuguese to be hard to learn."/>
+<meta name="twitter:description" content="Recently, I&rsquo;ve started learning Hebrew, and I found myself wondering something that most language-learners probably wonder at some point: why the hell are there so many irregular verb conjugations in this language? And why are they so weird? It&rsquo;s like someone purposely designed this language to be hard to learn!
+As it turns out, somebody didn&rsquo;t design it to be that way; but rather, a natural process designed it so, one that has been playing out over thousands of years&hellip;"/>
 
   
   
@@ -60,6 +62,12 @@
     </script>
   
   
+
+  
+  
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
+  
 </head>
 
 <body class="max-width mx-auto px3 ltr">
@@ -86,17 +94,11 @@
       <ul>
         
         <li>
-          <a class="icon" href=" https://benfeifke.com/about/" aria-label="Previous">
+          <a class="icon" href=" https://benfeifke.com/posts/how-did-we-count-before-we-invented-numbers-20220624/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
-        
-        <li>
-          <a class="icon" href="https://benfeifke.com/posts/how-did-we-count-before-we-invented-numbers-20220624/" aria-label="Next">
-            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
-          </a>
-        </li>
         
         <li>
           <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
@@ -159,7 +161,7 @@
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fbenfeifke.com%2fposts%2fwhy-are-the-most-common-verbs-irregular-20220623%2f&name=Why%20are%20the%20Most%20Common%20Verbs%20Irregular%3f&description=Why%20are%20the%20Most%20Common%20Verbs%20Irregular%3f%20Recently%2c%20I%20was%20wondering%20something%20that%20most%20romance%20language%20learners%20probably%20wonder%20at%20some%20point%26ndash%3bwhy%20the%20hell%20are%20there%20so%20many%20irregular%20verb%20conjugations%20in%20this%20language%3f%20And%20why%20are%20they%20so%20weird%20%28See%3a%20Portuguese%20Subjunctive%20of%20the%20verb%20%26lsquo%3bser%26rsquo%3b%29%3f%20And%20why%2c%20oh%20why%2c%20do%20they%20always%20happen%20with%20the%20most%20commonly%20used%20verbs%20%28e.g.%20%26rsquo%3bto%20want%26rsquo%3b%2c%20%26rsquo%3bto%20do%26rsquo%3b%2c%20%26rsquo%3bto%20say%26rsquo%3b%2c%20%26rsquo%3bto%20be%26rsquo%3b%29%3f%20It%26rsquo%3bs%20like%20someone%20purposely%20designed%20Portuguese%20to%20be%20hard%20to%20learn." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fbenfeifke.com%2fposts%2fwhy-are-the-most-common-verbs-irregular-20220623%2f&name=Why%20are%20the%20Most%20Common%20Verbs%20Irregular%3f&description=Recently%2c%20I%26rsquo%3bve%20started%20learning%20Hebrew%2c%20and%20I%20found%20myself%20wondering%20something%20that%20most%20language-learners%20probably%20wonder%20at%20some%20point%3a%20why%20the%20hell%20are%20there%20so%20many%20irregular%20verb%20conjugations%20in%20this%20language%3f%20And%20why%20are%20they%20so%20weird%3f%20It%26rsquo%3bs%20like%20someone%20purposely%20designed%20this%20language%20to%20be%20hard%20to%20learn%21%0aAs%20it%20turns%20out%2c%20somebody%20didn%26rsquo%3bt%20design%20it%20to%20be%20that%20way%3b%20but%20rather%2c%20a%20natural%20process%20designed%20it%20so%2c%20one%20that%20has%20been%20playing%20out%20over%20thousands%20of%20years%26hellip%3b" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
@@ -175,7 +177,18 @@
     <div id="toc">
       <nav id="TableOfContents">
   <ul>
+    <li><a href="#a-day-in-the-life-of-a-language-learner">A Day in the Life of a Language Learner</a></li>
+    <li><a href="#hey-who-you-callin-irregular">Hey, Who you Callin&rsquo; &ldquo;Irregular&rdquo;?</a></li>
     <li><a href="#why-are-the-most-common-verbs-irregular">Why are the Most Common Verbs Irregular?</a></li>
+    <li><a href="#use-it-or-lose-it">Use it or Lose it</a></li>
+    <li><a href="#zipf-up-your-boots">Zipf up your Boots</a></li>
+    <li><a href="#show-me-the-data">Show me the Data</a>
+      <ul>
+        <li><a href="#verb-frequency-by-rank">Verb Frequency by Rank</a></li>
+        <li><a href="#verb-irregularity-by-verb-frequency-of-usage">Verb Irregularity by Verb Frequency of Usage</a></li>
+      </ul>
+    </li>
+    <li><a href="#final-thoughts">Final Thoughts</a></li>
   </ul>
 </nav>
     </div>
@@ -193,7 +206,7 @@
         
         <div class="postdate">
           
-          <time datetime="2022-06-23 09:47:45 &#43;0200 CEST" itemprop="datePublished">2022-06-23</time>
+          <time datetime="2022-07-12 09:47:45 &#43;0200 CEST" itemprop="datePublished">2022-07-12</time>
           
         </div>
         
@@ -223,16 +236,205 @@
   
     
     <div class="content" itemprop="articleBody">
-      <h2 id="why-are-the-most-common-verbs-irregular">Why are the Most Common Verbs Irregular?</h2>
-<p>Recently, I was wondering something that most romance language learners probably wonder at some point&ndash;why the hell are there so many irregular verb conjugations in this language? And why are they so weird (See: Portuguese Subjunctive of the verb &lsquo;ser&rsquo;)? And why, oh why, do they always happen with the most commonly used verbs (e.g. &rsquo;to want&rsquo;, &rsquo;to do&rsquo;, &rsquo;to say&rsquo;, &rsquo;to be&rsquo;)? It&rsquo;s like someone purposely designed Portuguese to be hard to learn.</p>
-<p>So, I started researching this question, and came across an interesting hypothesis (thought? idea? already proven? observation? gotta research more&hellip;) by the linguist /u/bohnicz in a thread on the linguistics subreddit:</p>
-<p>At least for [Indo-European] languages, the verbs meaning to be (usually) are the most irregular verbs in the entire language, with a so-called suppletive paradigm consisting of three or more different roots.</p>
-<p>Just take a look at the Old High German forms of sīn &rsquo;to be&rsquo;: bim ~ bin : bist : ist ; birum ~ birun : birut : sind (Indicative) sī : sīst : sī ; sīn : sīt : sīn (Subjunctive) This paradigm already contains words formed from three different roots, and we havn&rsquo;t looked at the past tense and conditional mood yet&hellip;</p>
+      <p>Recently, I&rsquo;ve started learning Hebrew, and I found myself wondering something that most language-learners probably wonder at some point: why the hell are there so many irregular verb conjugations in this language? And why are they so weird? It&rsquo;s like someone purposely designed this language to be hard to learn!</p>
+<p>As it turns out, somebody didn&rsquo;t design it to be that way; but rather, a natural process designed it so, one that has been playing out over thousands of years&hellip;</p>
+<h2 id="a-day-in-the-life-of-a-language-learner">A Day in the Life of a Language Learner</h2>
+<p>Let&rsquo;s learn some verb conjugations in English, yay! This will be fun!</p>
+<ul>
+<li>To walk: I walk, you walk, she walks; I walked, you walked, she walked&hellip; cool, that&rsquo;s easy to remember.</li>
+<li>To play: I play, you play, she plays; I played, you played, she played&hellip; cool, that&rsquo;s also easy to remember.</li>
+<li>To be: I am, you are, she is; I was, you were, she was&hellip; what the word?!</li>
+</ul>
+<p>Ugh! Why does &ldquo;to be&rdquo; have the most irregular conjugations? And why are they so weird? Oh, how I wish that the less common, less useful verbs had the irregular conjugations instead of &ldquo;to be&rdquo;. That would make my life so much easier&hellip;</p>
+<h2 id="hey-who-you-callin-irregular">Hey, Who you Callin&rsquo; &ldquo;Irregular&rdquo;?</h2>
+<p>Before moving any further, let&rsquo;s define an &ldquo;irregular&rdquo; conjugation vs a &ldquo;regular&rdquo; conjugation. In English, the regular rules for verb conjugation are demonstrated by &ldquo;to walk&rdquo; and &ldquo;to play&rdquo; in the table below:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><em>to walk</em></th>
+<th><em>to play</em></th>
+<th><em>to come</em></th>
+<th><em>to be</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>1st person present</em></td>
+<td>I walk</td>
+<td>I play</td>
+<td>I come</td>
+<td><strong>I am</strong></td>
+</tr>
+<tr>
+<td><em>2nd person present</em></td>
+<td>you walk</td>
+<td>you play</td>
+<td>you come</td>
+<td><strong>you are</strong></td>
+</tr>
+<tr>
+<td><em>3rd person present</em></td>
+<td>she walks</td>
+<td>she plays</td>
+<td>she comes</td>
+<td><strong>she is</strong></td>
+</tr>
+<tr>
+<td><em>1st person past</em></td>
+<td>I walked</td>
+<td>I played</td>
+<td><strong>I came</strong></td>
+<td><strong>I was</strong></td>
+</tr>
+<tr>
+<td><em>2nd person past</em></td>
+<td>you walked</td>
+<td>you played</td>
+<td><strong>you came</strong></td>
+<td><strong>you were</strong></td>
+</tr>
+<tr>
+<td><em>3rd person past</em></td>
+<td>she walked</td>
+<td>she played</td>
+<td><strong>she came</strong></td>
+<td><strong>she was</strong></td>
+</tr>
+</tbody>
+</table>
+<p>To conjugate the 3rd person present, an &ldquo;-s&rdquo; is added to the infinitive verb, and to conjugate all past tense conjugations, an &ldquo;-ed&rdquo; is added to the infinitive verb. Any conjugations that deviate from these rules, e.g. the past tense conjugations of &ldquo;to come&rdquo; and all conjugations of &ldquo;to be&rdquo;, are called irregular.</p>
+<h2 id="why-are-the-most-common-verbs-irregular">Why are the Most Common Verbs Irregular?</h2>
+<p>You might notice in the table above that the verbs are ordered from left to right, by both increasing frequency-of-usage and number of irregular conjugations. This correlation between frequency-of-usage is generally the rule, not an exception, regardless of language. So, why is this the case?</p>
+<blockquote>
+<p>&ldquo;Hey, I was thinking, let&rsquo;s make the most common verbs really hard for students to learn. What do you think?&rdquo;<br>
+&ldquo;That&rsquo;s a good one! Let&rsquo;s also give them 6 books for summer-reading, yeah?&rdquo;<br>
+&ldquo;Damn, you&rsquo;re good. Here&rsquo;s a raise.&rdquo;</p>
+</blockquote>
+<p>Though compelling, it&rsquo;s unlikely that prehistoric language teachers got together in a cave back when language was forming and decided to make the most common verbs irregular. Is there any other possible explanation?</p>
+<p>I started researching this question, and came across an interesting hypothesis by a linguist <a href="https://www.reddit.com/user/bohnicz/">/u/bohnicz</a> in a <a href="https://www.reddit.com/r/linguistics/comments/97wfeq/why_are_the_most_common_verbs_always_treated_as/">thread on the linguistics subreddit</a>:</p>
+<blockquote>
+<p>At least for [Indo-European] languages, the verbs meaning <em>to be</em> (usually) are the most irregular verbs in the entire language, with a so-called suppletive paradigm consisting of three or more different roots.</p>
+<p>Just take a look at the Old High German forms of <em>sīn</em> &rsquo;to be&rsquo;: <em>bim ~ bin : bist : ist ; birum ~ birun : birut : sind</em> (Indicative) <em>sī : sīst : sī ; sīn : sīt : sīn</em> (Subjunctive) This paradigm already contains words formed from three different roots, and we havn&rsquo;t looked at the past tense and conditional mood yet&hellip;</p>
+<p><strong>Irregular verbs tend to be VERY old and highly frequent in use - being highly frequent is in fact what keeps them from becoming &ldquo;regular&rdquo; verbs.</strong></p>
+</blockquote>
+<h2 id="use-it-or-lose-it">Use it or Lose it</h2>
+<p>The more frequently a word is used, the more slowly it evolves over time. And that makes sense. Just think for a second&ndash;the word &ldquo;the&rdquo; is pronounced correctly by every native English speaker, while almost everyone I know has an answer to the question &ldquo;what&rsquo;s a word you had only ever read and never heard out loud, and then said it for the first time when you were decently old, and your pronunciation was completely wrong?&rdquo;<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p>This idea is so cool. I especially like /u/bohnicz&rsquo;s thought that &ldquo;irregular verbs tend to be VERY old&rdquo;. It makes me feel like, when I&rsquo;m saying a common phrase like &ldquo;this is good&rdquo;, I&rsquo;m reaching back into ancient civilizations and living for a brief second in history books.</p>
+<h2 id="zipf-up-your-boots">Zipf up your Boots</h2>
+<p>Thinking about verb frequency-of-usage and how it might have some special relationship with irregularity gets me thinking about Zipf&rsquo;s Law. <a href="https://en.wikipedia.org/wiki/Zipf%27s_law">Zipf&rsquo;s Law</a>, as applied to word frequency in language, states that (<a href="https://en.wikipedia.org/wiki/Zipf%27s_law">from Wikipedia</a>):</p>
+<blockquote>
+<p>&ldquo;&hellip;given some corpus of natural language utterances, the frequency of any word is inversely proportional to its rank in the frequency table. Thus the most frequent word will occur approximately twice as often as the second most frequent word, three times as often as the third most frequent word, etc&hellip;&rdquo;</p>
+</blockquote>
+<p><figure><img src="https://chumley.barstoolsports.com/union/2021/08/27/Screen-Shot-2021-08-27-at-12.57.59-PM.59cc8116.png"/>
+</figure>
+<br>
+<a href="https://en.wikipedia.org/wiki/Preferential_attachment">Power laws are observed in all sorts of emergent systems; not just in language</a>. Could it be that verb-frequency-of-usage also follows power law like behavior, and that this reflects in how irregular the verb&rsquo;s conjugations are?</p>
+<h2 id="show-me-the-data">Show me the Data</h2>
+<p>Is verb-frequency by rank Zipfian? To what degree is verb irregularity correlated with verb-frequency? To measure these things, I use <a href="https://www.kevintang.org/Tools.html">a database of movie subtitles in Brazilian Portuguese</a>, built by <a href="https://www.linkedin.com/in/kevintangcantab/">Dr. Kevin Tang</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<h3 id="verb-frequency-by-rank">Verb Frequency by Rank</h3>
+
+
+<div id="/plotly_charts/verb_rank_vs_frequency.json" class="plotly" style="height:500px;"></div>
+<script>
+  d3.json("/plotly_charts/verb_rank_vs_frequency.json").then(function (fig) {
+      Plotly.newPlot('\/plotly_charts\/verb_rank_vs_frequency.json', fig.data, fig.layout, { responsive: true });
+  });
+</script>
+<p>Zipfy-doo-da, can somebody say &ldquo;jackpot&rdquo;? This looks positively Zipfian, even promisingly power(law)ful. Let&rsquo;s take a look at irregularity versus frequency&ndash;</p>
+<h3 id="verb-irregularity-by-verb-frequency-of-usage">Verb Irregularity by Verb Frequency of Usage</h3>
+<p>I measure a verb&rsquo;s irregularity as &ldquo;what fraction of this verb&rsquo;s conjugations are irregular&rdquo;. So, noting this in the table from above, we&rsquo;d have:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><em>to walk</em></th>
+<th><em>to play</em></th>
+<th><em>to come</em></th>
+<th><em>to be</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>1st person present</em></td>
+<td>I walk</td>
+<td>I play</td>
+<td>I come</td>
+<td><strong>I am</strong></td>
+</tr>
+<tr>
+<td><em>2nd person present</em></td>
+<td>you walk</td>
+<td>you play</td>
+<td>you come</td>
+<td><strong>you are</strong></td>
+</tr>
+<tr>
+<td><em>3rd person present</em></td>
+<td>she walks</td>
+<td>she plays</td>
+<td>she comes</td>
+<td><strong>she is</strong></td>
+</tr>
+<tr>
+<td><em>1st person past</em></td>
+<td>I walked</td>
+<td>I played</td>
+<td><strong>I came</strong></td>
+<td><strong>I was</strong></td>
+</tr>
+<tr>
+<td><em>2nd person past</em></td>
+<td>you walked</td>
+<td>you played</td>
+<td><strong>you came</strong></td>
+<td><strong>you were</strong></td>
+</tr>
+<tr>
+<td><em>3rd person past</em></td>
+<td>she walked</td>
+<td>she played</td>
+<td><strong>she came</strong></td>
+<td><strong>she was</strong></td>
+</tr>
+<tr>
+<td><em>irregularity</em> <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></td>
+<td>0</td>
+<td>0</td>
+<td>0.5</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<p>So, this table roughly increases in both frequency-of-usage and irregularity, from left to right. Let&rsquo;s take a look at this in the SUBTLEX dataset:</p>
+
+
+<div id="/plotly_charts/verb_frequency_vs_irregularity.json" class="plotly" style="height:500px;"></div>
+<script>
+  d3.json("/plotly_charts/verb_frequency_vs_irregularity.json").then(function (fig) {
+      Plotly.newPlot('\/plotly_charts\/verb_frequency_vs_irregularity.json', fig.data, fig.layout, { responsive: true });
+  });
+</script>
+<p>And this matches our intuition! There&rsquo;s a nice correlation between</p>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>It can be a bit frustrating for language-learners that the most common verbs have the most irregular conjugations.<br>
+There can be a lot of pressure in language education, as in all education, to measure students by their deviation from a perfect correctness. Next time you hear someone mispronouncing something, take a pause before you correct them&ndash;perhaps they&rsquo;re onto something. Perhaps it might just be the way that the word is pronounced a few thousand years from now.<br>
+I&rsquo;ve recently begun learning my fifth language (Hebrew), and, as with every new one that I learn, it&rsquo;s time to retool! I was looking for something to help me learn the specific natural language that I myself use (i.e. I don&rsquo;t need to learn beach-volleyball vocabulary, but boy do I need chess vocabulary), but I couldn&rsquo;t find anything. So, I began working on my new language learning app (as a successor to the one I built for learning German)</p>
+<div class="footnotes" role="doc-endnotes">
 <hr>
-<p>Irregular verbs tend to be VERY old and highly frequent in use - being highly frequent is in fact what keeps them from becoming &ldquo;regular&rdquo; verbs, just like [another Reddit user] already stated.</p>
-<p>The idea is that (in my understanding), the more frequent a word is used, the more slowly it&rsquo;s pronunciation and writing evolves over time in the language. Just think for a second&ndash;the word &ldquo;the&rdquo; is pronounced &lsquo;correctly&rsquo; (correctly in the born accent, that is, even though the pronunciation doesn&rsquo;t differ much across accents) by almost every native English speaker, while everyone I know has an answer to the question &ldquo;what&rsquo;s a word you had only ever read and never heard out loud and then said it for the first time when you were decently old and your pronunciation was completely wrong?&rdquo;. (For me, &rsquo;epilogue&rsquo; was pronounced &rsquo;eh-pill-oh-gew&rsquo; instead of &rsquo;eh-pill-og&rsquo;.)</p>
-<p>But this idea is so cool. I especially like /u/bohnicz&rsquo;s thought that &ldquo;irregular verbs tend to be VERY old&rdquo;. It makes me feel like, when I&rsquo;m saying a phrase with common verbs like &ldquo;this is good&rdquo;, I&rsquo;m reaching back into ancient civilizations and LIVING for a brief second in history books. On this note, this video does a great overview of how the verb for &rsquo;to be&rsquo; evolved from Vulgar Latin into each Romance Language.</p>
-<p>This thinking about &lsquo;verb frequency of usage&rsquo; and how it might have some special relationship with irregularity (a property that we believe is directly influenced by frequency of usage) gets me thinking about Zipf&rsquo;s law. Zipf&rsquo;s law, as applied to word frequency in language, states that (from Wikipedia):</p>
+<ol>
+<li id="fn:1">
+<p>Mispronunciations of words can be quite humorous, if we allow them to be. For me, &ldquo;epilogue&rdquo; was pronounced &ldquo;eh-pill-oh-gew&rdquo; instead of &ldquo;eh-pill-og&rdquo;; for my mom, &ldquo;bicarbonate&rdquo; was pronounced &ldquo;bick-er-bone-it&rdquo; instead of &ldquo;by-car-bun-it&rdquo;; for my little brother, &ldquo;decadence&rdquo; was pronounced &ldquo;deck-a-denk-ee&rdquo; instead of &ldquo;deck-a-dense&rdquo;; and for my high school math teacher, &ldquo;infrared&rdquo; was pronounced &ldquo;in-fraired&rdquo; instead of &ldquo;in-fra-red&rdquo;. What was it for you? Drop it in the comments ;)&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>There&rsquo;s a considerable difference between written language and spoken language, and any linguistics study of natural language data is better off using spoken language. This is because written language is premeditated, edited, and curated, while only spoken language is truly spontaneous and generative. The only problem is that spoken language isn&rsquo;t usually recorded (<a href="https://www.washingtonpost.com/technology/2019/05/06/alexa-has-been-eavesdropping-you-this-whole-time/">unless if you have an Alexa in your home</a>). So, movie subtitle data is a pretty decent approximation at spoken language, as <a href="https://www.researchgate.net/publication/238885981_A_61_Million_Word_Corpus_of_Brazilian_Portuguese_Film_Subtitles_as_a_Resource_for_Linguistic_Research">Dr. Tang&rsquo;s paper about the SUBTLEX dataset demonstrates</a>.<br>
+Further on this point, everything we know about Latin actually comes from <a href="https://en.wikipedia.org/wiki/Classical_Latin">Classical Latin</a>, or Literary Latin, i.e. the Latin that was written down. All of today&rsquo;s modern romance languages actually descend from <a href="https://en.wikipedia.org/wiki/Vulgar_Latin">Vulgar Latin</a>, the tongue spoken by the Roman Empire commoners.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>This is an abridged conjugation table. It ignores all the other verb tenses, e.g. future, past participle, subjunctive, etc. The irregularity is measured only on the abridged table, to be as clearly demonstrative as possible.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 
     </div>
   </article>
@@ -287,7 +489,18 @@
     <div id="toc-footer" style="display: none">
       <nav id="TableOfContents">
   <ul>
+    <li><a href="#a-day-in-the-life-of-a-language-learner">A Day in the Life of a Language Learner</a></li>
+    <li><a href="#hey-who-you-callin-irregular">Hey, Who you Callin&rsquo; &ldquo;Irregular&rdquo;?</a></li>
     <li><a href="#why-are-the-most-common-verbs-irregular">Why are the Most Common Verbs Irregular?</a></li>
+    <li><a href="#use-it-or-lose-it">Use it or Lose it</a></li>
+    <li><a href="#zipf-up-your-boots">Zipf up your Boots</a></li>
+    <li><a href="#show-me-the-data">Show me the Data</a>
+      <ul>
+        <li><a href="#verb-frequency-by-rank">Verb Frequency by Rank</a></li>
+        <li><a href="#verb-irregularity-by-verb-frequency-of-usage">Verb Irregularity by Verb Frequency of Usage</a></li>
+      </ul>
+    </li>
+    <li><a href="#final-thoughts">Final Thoughts</a></li>
   </ul>
 </nav>
     </div>
@@ -337,7 +550,7 @@
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fbenfeifke.com%2fposts%2fwhy-are-the-most-common-verbs-irregular-20220623%2f&name=Why%20are%20the%20Most%20Common%20Verbs%20Irregular%3f&description=Why%20are%20the%20Most%20Common%20Verbs%20Irregular%3f%20Recently%2c%20I%20was%20wondering%20something%20that%20most%20romance%20language%20learners%20probably%20wonder%20at%20some%20point%26ndash%3bwhy%20the%20hell%20are%20there%20so%20many%20irregular%20verb%20conjugations%20in%20this%20language%3f%20And%20why%20are%20they%20so%20weird%20%28See%3a%20Portuguese%20Subjunctive%20of%20the%20verb%20%26lsquo%3bser%26rsquo%3b%29%3f%20And%20why%2c%20oh%20why%2c%20do%20they%20always%20happen%20with%20the%20most%20commonly%20used%20verbs%20%28e.g.%20%26rsquo%3bto%20want%26rsquo%3b%2c%20%26rsquo%3bto%20do%26rsquo%3b%2c%20%26rsquo%3bto%20say%26rsquo%3b%2c%20%26rsquo%3bto%20be%26rsquo%3b%29%3f%20It%26rsquo%3bs%20like%20someone%20purposely%20designed%20Portuguese%20to%20be%20hard%20to%20learn." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fbenfeifke.com%2fposts%2fwhy-are-the-most-common-verbs-irregular-20220623%2f&name=Why%20are%20the%20Most%20Common%20Verbs%20Irregular%3f&description=Recently%2c%20I%26rsquo%3bve%20started%20learning%20Hebrew%2c%20and%20I%20found%20myself%20wondering%20something%20that%20most%20language-learners%20probably%20wonder%20at%20some%20point%3a%20why%20the%20hell%20are%20there%20so%20many%20irregular%20verb%20conjugations%20in%20this%20language%3f%20And%20why%20are%20they%20so%20weird%3f%20It%26rsquo%3bs%20like%20someone%20purposely%20designed%20this%20language%20to%20be%20hard%20to%20learn%21%0aAs%20it%20turns%20out%2c%20somebody%20didn%26rsquo%3bt%20design%20it%20to%20be%20that%20way%3b%20but%20rather%2c%20a%20natural%20process%20designed%20it%20so%2c%20one%20that%20has%20been%20playing%20out%20over%20thousands%20of%20years%26hellip%3b" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
