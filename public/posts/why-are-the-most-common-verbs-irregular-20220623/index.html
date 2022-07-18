@@ -188,7 +188,11 @@ As it turns out, somebody didn&rsquo;t design it to be that way; but rather, a n
         <li><a href="#verb-irregularity-by-verb-frequency-of-usage">Verb Irregularity by Verb Frequency of Usage</a></li>
       </ul>
     </li>
-    <li><a href="#final-thoughts">Final Thoughts</a></li>
+    <li><a href="#final-thoughts">Final Thoughts</a>
+      <ul>
+        <li><a href="#denkmit">Denkmit</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -303,9 +307,9 @@ As it turns out, somebody didn&rsquo;t design it to be that way; but rather, a n
 </tr>
 </tbody>
 </table>
-<p>To conjugate the 3rd person present, an &ldquo;-s&rdquo; is added to the infinitive verb, and to conjugate all past tense conjugations, an &ldquo;-ed&rdquo; is added to the infinitive verb. Any conjugations that deviate from these rules, e.g. the past tense conjugations of &ldquo;to come&rdquo; and all conjugations of &ldquo;to be&rdquo;, are called irregular.</p>
+<p>To conjugate the 3rd person present, an &ldquo;-s&rdquo; is added to the infinitive verb, and to conjugate all past tense conjugations, an &ldquo;-ed&rdquo; is added to the infinitive verb. This is the &ldquo;regular&rdquo; conjugation pattern. Any conjugations that deviate from these rules, e.g. the past tense conjugations of &ldquo;to come&rdquo; and all conjugations of &ldquo;to be&rdquo;, are called &ldquo;irregular&rdquo;.</p>
 <h2 id="why-are-the-most-common-verbs-irregular">Why are the Most Common Verbs Irregular?</h2>
-<p>You might notice in the table above that the verbs are ordered from left to right, by both increasing frequency-of-usage and number of irregular conjugations. This correlation between frequency-of-usage is generally the rule, not an exception, regardless of language. So, why is this the case?</p>
+<p>You might notice in the table above that the verbs are ordered from left to right, by both increasing frequency-of-usage and number of irregular conjugations. This correlation between frequency-of-usage and number of irregular conjugations is generally the rule, not an exception, regardless of the language. So, why is this the case?</p>
 <blockquote>
 <p>&ldquo;Hey, I was thinking, let&rsquo;s make the most common verbs really hard for students to learn. What do you think?&rdquo;<br>
 &ldquo;That&rsquo;s a good one! Let&rsquo;s also give them 6 books for summer-reading, yeah?&rdquo;<br>
@@ -319,7 +323,7 @@ As it turns out, somebody didn&rsquo;t design it to be that way; but rather, a n
 <p><strong>Irregular verbs tend to be VERY old and highly frequent in use - being highly frequent is in fact what keeps them from becoming &ldquo;regular&rdquo; verbs.</strong></p>
 </blockquote>
 <h2 id="use-it-or-lose-it">Use it or Lose it</h2>
-<p>The more frequently a word is used, the more slowly it evolves over time. And that makes sense. Just think for a second&ndash;the word &ldquo;the&rdquo; is pronounced correctly by every native English speaker, while almost everyone I know has an answer to the question &ldquo;what&rsquo;s a word you had only ever read and never heard out loud, and then said it for the first time when you were decently old, and your pronunciation was completely wrong?&rdquo;<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p>The more frequently a word is used, the more slowly it evolves over time. And that makes sense. Just think for a second&ndash;the word &ldquo;the&rdquo; is pronounced correctly by every native English speaker, while almost everyone I know has an answer to the question &ldquo;what&rsquo;s a word you had only ever read and never heard out loud, and then said it for the first time when you were a teenager, and your pronunciation was completely wrong?&rdquo;<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <p>This idea is so cool. I especially like /u/bohnicz&rsquo;s thought that &ldquo;irregular verbs tend to be VERY old&rdquo;. It makes me feel like, when I&rsquo;m saying a common phrase like &ldquo;this is good&rdquo;, I&rsquo;m reaching back into ancient civilizations and living for a brief second in history books.</p>
 <h2 id="zipf-up-your-boots">Zipf up your Boots</h2>
 <p>Thinking about verb frequency-of-usage and how it might have some special relationship with irregularity gets me thinking about Zipf&rsquo;s Law. <a href="https://en.wikipedia.org/wiki/Zipf%27s_law">Zipf&rsquo;s Law</a>, as applied to word frequency in language, states that (<a href="https://en.wikipedia.org/wiki/Zipf%27s_law">from Wikipedia</a>):</p>
@@ -331,7 +335,7 @@ As it turns out, somebody didn&rsquo;t design it to be that way; but rather, a n
 <br>
 <a href="https://en.wikipedia.org/wiki/Preferential_attachment">Power laws are observed in all sorts of emergent systems; not just in language</a>. Could it be that verb-frequency-of-usage also follows power law like behavior, and that this reflects in how irregular the verb&rsquo;s conjugations are?</p>
 <h2 id="show-me-the-data">Show me the Data</h2>
-<p>Is verb-frequency by rank Zipfian? To what degree is verb irregularity correlated with verb-frequency? To measure these things, I use <a href="https://www.kevintang.org/Tools.html">a database of movie subtitles in Brazilian Portuguese</a>, built by <a href="https://www.linkedin.com/in/kevintangcantab/">Dr. Kevin Tang</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>Is verb-frequency by rank Zipfian? To what degree is verb irregularity correlated with verb-frequency? To measure these things, I use <a href="https://www.kevintang.org/Tools.html">a database of movie subtitles in Brazilian Portuguese</a>, built by <a href="https://www.linkedin.com/in/kevintangcantab/">Dr. Kevin Tang</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> Portuguese is by best foreign language, so it&rsquo;s a natural choice for me.</p>
 <h3 id="verb-frequency-by-rank">Verb Frequency by Rank</h3>
 
 
@@ -341,9 +345,9 @@ As it turns out, somebody didn&rsquo;t design it to be that way; but rather, a n
       Plotly.newPlot('\/plotly_charts\/verb_rank_vs_frequency.json', fig.data, fig.layout, { responsive: true });
   });
 </script>
-<p>Zipfy-doo-da, can somebody say &ldquo;jackpot&rdquo;? This looks positively Zipfian, even promisingly power(law)ful. Let&rsquo;s take a look at irregularity versus frequency&ndash;</p>
+<p>Zipfy-doo-da, can somebody say &ldquo;jackpot&rdquo;? This looks positively Zipfian, promisingly power(law)ful. Let&rsquo;s take a look at irregularity versus frequency&ndash;</p>
 <h3 id="verb-irregularity-by-verb-frequency-of-usage">Verb Irregularity by Verb Frequency of Usage</h3>
-<p>I measure a verb&rsquo;s irregularity as &ldquo;what fraction of this verb&rsquo;s conjugations are irregular&rdquo;. So, noting this in the table from above, we&rsquo;d have:</p>
+<p>I measure a verb&rsquo;s irregularity as &ldquo;what fraction of this verb&rsquo;s conjugations are irregular&rdquo;<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. So, noting this in the table from above, we&rsquo;d have:</p>
 <table>
 <thead>
 <tr>
@@ -398,7 +402,7 @@ As it turns out, somebody didn&rsquo;t design it to be that way; but rather, a n
 <td><strong>she was</strong></td>
 </tr>
 <tr>
-<td><em>irregularity</em> <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></td>
+<td><em>irregularity</em> <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></td>
 <td>0</td>
 <td>0</td>
 <td>0.5</td>
@@ -415,11 +419,12 @@ As it turns out, somebody didn&rsquo;t design it to be that way; but rather, a n
       Plotly.newPlot('\/plotly_charts\/verb_frequency_vs_irregularity.json', fig.data, fig.layout, { responsive: true });
   });
 </script>
-<p>And this matches our intuition! There&rsquo;s a nice correlation between</p>
+<p>It&rsquo;s nice when the numbers match the intuition! There&rsquo;s a nice correlation between verb irregularity and frequency-of-usage. Hover over the plot to see the individual verbs ;)</p>
 <h2 id="final-thoughts">Final Thoughts</h2>
-<p>It can be a bit frustrating for language-learners that the most common verbs have the most irregular conjugations.<br>
-There can be a lot of pressure in language education, as in all education, to measure students by their deviation from a perfect correctness. Next time you hear someone mispronouncing something, take a pause before you correct them&ndash;perhaps they&rsquo;re onto something. Perhaps it might just be the way that the word is pronounced a few thousand years from now.<br>
-I&rsquo;ve recently begun learning my fifth language (Hebrew), and, as with every new one that I learn, it&rsquo;s time to retool! I was looking for something to help me learn the specific natural language that I myself use (i.e. I don&rsquo;t need to learn beach-volleyball vocabulary, but boy do I need chess vocabulary), but I couldn&rsquo;t find anything. So, I began working on my new language learning app (as a successor to the one I built for learning German)</p>
+<p>It can be a bit frustrating for language-learners that the most common verbs have the most irregular conjugations, myself included. However, this phenomenon is also a window into the beauty of language. Insofar as a language is a naturally evolving system, it adheres to certain self-organizing behaviors that other emergent systems do. For example, the human brain makes up for about <a href="https://en.wikipedia.org/wiki/Brain_size#:~:text=The%20adult%20human%20brain%20weighs,in%20women%20about%201200%20g.">3% of the weight of an average adult-male</a>, but <a href="https://en.wikipedia.org/wiki/Cerebral_circulation">consumes a disproportionate 15% of the heart&rsquo;s cardiac output</a>. In a sense, the verbs &ldquo;to be&rdquo; and &ldquo;to go&rdquo; in a natural language, like the human brain in the human body, is where most of the magic happens, and thus receive the most attention. Languages, like the human body, are living, breathing emergent systems.</p>
+<h3 id="denkmit">Denkmit</h3>
+<p>One of the joys of learning a new language is discovering yourself in the language. Each new language is like a new color palette or musical instrument for self-expression. Everybody wields their language in a unique way; everybody has a unique voice. As I&rsquo;ve begun to learn my next language (Hebrew), it&rsquo;s time to retool. There are a lot of language-learning tools out there, but I was seeking something that would cater to my specific voice, and help me to pay closer attention where I needed to. I couldn&rsquo;t find the right thing, so I decided to create it.<br>
+<a href="https://example.com/">Denkmit</a> creates language learning flashcards from your own WhatsApp chats, and prioritizes learning words and phrases that you and your conversation partners use most often, and that you have the most difficulty remembering. All language-learning requires some small amount of memorization, and Denkmit helps you to do it as effectively as possible. Denkmit helps you to learn your language, your way. Drop your email in the website to get early access to the tool ;)</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -431,7 +436,10 @@ I&rsquo;ve recently begun learning my fifth language (Hebrew), and, as with ever
 Further on this point, everything we know about Latin actually comes from <a href="https://en.wikipedia.org/wiki/Classical_Latin">Classical Latin</a>, or Literary Latin, i.e. the Latin that was written down. All of today&rsquo;s modern romance languages actually descend from <a href="https://en.wikipedia.org/wiki/Vulgar_Latin">Vulgar Latin</a>, the tongue spoken by the Roman Empire commoners.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>This is an abridged conjugation table. It ignores all the other verb tenses, e.g. future, past participle, subjunctive, etc. The irregularity is measured only on the abridged table, to be as clearly demonstrative as possible.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>I scraped data for which verb-conjugations are irregular from a common Portuguese verb-conjugation website, <a href="https://www.conjugacao.com.br/">https://www.conjugacao.com.br/</a>. As an example, see the conjugations (and which ones are irregular) for <a href="https://www.conjugacao.com.br/verbo-ir/">the verb &ldquo;ir&rdquo; (to go)</a>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>This is an abridged conjugation table. It ignores all the other verb tenses, e.g. future, past participle, subjunctive, etc. The irregularity is measured only on the abridged table, to be as clearly demonstrative as possible.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
@@ -500,7 +508,11 @@ Further on this point, everything we know about Latin actually comes from <a hre
         <li><a href="#verb-irregularity-by-verb-frequency-of-usage">Verb Irregularity by Verb Frequency of Usage</a></li>
       </ul>
     </li>
-    <li><a href="#final-thoughts">Final Thoughts</a></li>
+    <li><a href="#final-thoughts">Final Thoughts</a>
+      <ul>
+        <li><a href="#denkmit">Denkmit</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>

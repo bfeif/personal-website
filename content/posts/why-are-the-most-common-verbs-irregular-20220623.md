@@ -42,11 +42,11 @@ Before moving any further, let's define an "irregular" conjugation vs a "regular
 | _2nd person past_    | you walked | you played | **you came** | **you were** |
 | _3rd person past_    | she walked | she played | **she came** | **she was**  |
 
-To conjugate the 3rd person present, an "-s" is added to the infinitive verb, and to conjugate all past tense conjugations, an "-ed" is added to the infinitive verb. Any conjugations that deviate from these rules, e.g. the past tense conjugations of "to come" and all conjugations of "to be", are called irregular.
+To conjugate the 3rd person present, an "-s" is added to the infinitive verb, and to conjugate all past tense conjugations, an "-ed" is added to the infinitive verb. This is the "regular" conjugation pattern. Any conjugations that deviate from these rules, e.g. the past tense conjugations of "to come" and all conjugations of "to be", are called "irregular".
 
 ## Why are the Most Common Verbs Irregular? 
 
-You might notice in the table above that the verbs are ordered from left to right, by both increasing frequency-of-usage and number of irregular conjugations. This correlation between frequency-of-usage is generally the rule, not an exception, regardless of language. So, why is this the case?
+You might notice in the table above that the verbs are ordered from left to right, by both increasing frequency-of-usage and number of irregular conjugations. This correlation between frequency-of-usage and number of irregular conjugations is generally the rule, not an exception, regardless of the language. So, why is this the case?
 
 > "Hey, I was thinking, let's make the most common verbs really hard for students to learn. What do you think?"  
 > "That's a good one! Let's also give them 6 books for summer-reading, yeah?"  
@@ -64,7 +64,7 @@ I started researching this question, and came across an interesting hypothesis b
 
 ## Use it or Lose it
 
-The more frequently a word is used, the more slowly it evolves over time. And that makes sense. Just think for a second--the word "the" is pronounced correctly by every native English speaker, while almost everyone I know has an answer to the question "what's a word you had only ever read and never heard out loud, and then said it for the first time when you were decently old, and your pronunciation was completely wrong?"[^1].
+The more frequently a word is used, the more slowly it evolves over time. And that makes sense. Just think for a second--the word "the" is pronounced correctly by every native English speaker, while almost everyone I know has an answer to the question "what's a word you had only ever read and never heard out loud, and then said it for the first time when you were a teenager, and your pronunciation was completely wrong?"[^1].
 
 This idea is so cool. I especially like /u/bohnicz's thought that "irregular verbs tend to be VERY old". It makes me feel like, when I'm saying a common phrase like "this is good", I'm reaching back into ancient civilizations and living for a brief second in history books.
 
@@ -79,17 +79,17 @@ Thinking about verb frequency-of-usage and how it might have some special relati
 
 ## Show me the Data
 
-Is verb-frequency by rank Zipfian? To what degree is verb irregularity correlated with verb-frequency? To measure these things, I use [a database of movie subtitles in Brazilian Portuguese](https://www.kevintang.org/Tools.html), built by [Dr. Kevin Tang](https://www.linkedin.com/in/kevintangcantab/).[^2]
+Is verb-frequency by rank Zipfian? To what degree is verb irregularity correlated with verb-frequency? To measure these things, I use [a database of movie subtitles in Brazilian Portuguese](https://www.kevintang.org/Tools.html), built by [Dr. Kevin Tang](https://www.linkedin.com/in/kevintangcantab/).[^2] Portuguese is by best foreign language, so it's a natural choice for me.
 
 ### Verb Frequency by Rank
 {{< plotly json="/plotly_charts/verb_rank_vs_frequency.json" height="500px" >}}  
 
-Zipfy-doo-da, can somebody say "jackpot"? This looks positively Zipfian, even promisingly power(law)ful. Let's take a look at irregularity versus frequency--
+Zipfy-doo-da, can somebody say "jackpot"? This looks positively Zipfian, promisingly power(law)ful. Let's take a look at irregularity versus frequency--
 
 
 ### Verb Irregularity by Verb Frequency of Usage
 
-I measure a verb's irregularity as "what fraction of this verb's conjugations are irregular". So, noting this in the table from above, we'd have:
+I measure a verb's irregularity as "what fraction of this verb's conjugations are irregular"[^3]. So, noting this in the table from above, we'd have:
 
 |                      | _to walk_  | _to play_  | _to come_    | _to be_      |
 |----------------------|------------|------------|--------------|--------------|
@@ -99,22 +99,23 @@ I measure a verb's irregularity as "what fraction of this verb's conjugations ar
 | _1st person past_    | I walked   | I played   | **I came**   | **I was**    |
 | _2nd person past_    | you walked | you played | **you came** | **you were** |
 | _3rd person past_    | she walked | she played | **she came** | **she was**  |
-| _irregularity_ [^3]  | 0          | 0          | 0.5          | 1.0          |
+| _irregularity_ [^4]  | 0          | 0          | 0.5          | 1.0          |
 
 So, this table roughly increases in both frequency-of-usage and irregularity, from left to right. Let's take a look at this in the SUBTLEX dataset:
 
 {{< plotly json="/plotly_charts/verb_frequency_vs_irregularity.json" height="500px" >}}  
 
-And this matches our intuition! There's a nice correlation between 
+It's nice when the numbers match the intuition! There's a nice correlation between verb irregularity and frequency-of-usage. Hover over the plot to see the individual verbs ;)
 
 ## Final Thoughts
 
-It can be a bit frustrating for language-learners that the most common verbs have the most irregular conjugations.  
-There can be a lot of pressure in language education, as in all education, to measure students by their deviation from a perfect correctness. Next time you hear someone mispronouncing something, take a pause before you correct them--perhaps they're onto something. Perhaps it might just be the way that the word is pronounced a few thousand years from now.  
-I've recently begun learning my fifth language (Hebrew), and, as with every new one that I learn, it's time to retool! I was looking for something to help me learn the specific natural language that I myself use (i.e. I don't need to learn beach-volleyball vocabulary, but boy do I need chess vocabulary), but I couldn't find anything. So, I began working on my new language learning app (as a successor to the one I built for learning German)
-
+It can be a bit frustrating for language-learners that the most common verbs have the most irregular conjugations, myself included. However, this phenomenon is also a window into the beauty of language. Insofar as a language is a naturally evolving system, it adheres to certain self-organizing behaviors that other emergent systems do. For example, the human brain makes up for about [3% of the weight of an average adult-male](https://en.wikipedia.org/wiki/Brain_size#:~:text=The%20adult%20human%20brain%20weighs,in%20women%20about%201200%20g.), but [consumes a disproportionate 15% of the heart's cardiac output](https://en.wikipedia.org/wiki/Cerebral_circulation). In a sense, the verbs "to be" and "to go" in a natural language, like the human brain in the human body, is where most of the magic happens, and thus receive the most attention. Languages, like the human body, are living, breathing emergent systems.  
+### Denkmit
+One of the joys of learning a new language is discovering yourself in the language. Each new language is like a new color palette or musical instrument for self-expression. Everybody wields their language in a unique way; everybody has a unique voice. As I've begun to learn my next language (Hebrew), it's time to retool. There are a lot of language-learning tools out there, but I was seeking something that would cater to my specific voice, and help me to pay closer attention where I needed to. I couldn't find the right thing, so I decided to create it.  
+[Denkmit](https://example.com/) creates language learning flashcards from your own WhatsApp chats, and prioritizes learning words and phrases that you and your conversation partners use most often, and that you have the most difficulty remembering. All language-learning requires some small amount of memorization, and Denkmit helps you to do it as effectively as possible. Denkmit helps you to learn your language, your way. Drop your email in the website to get early access to the tool ;)  
 
 [^1]: Mispronunciations of words can be quite humorous, if we allow them to be. For me, "epilogue" was pronounced "eh-pill-oh-gew" instead of "eh-pill-og"; for my mom, "bicarbonate" was pronounced "bick-er-bone-it" instead of "by-car-bun-it"; for my little brother, "decadence" was pronounced "deck-a-denk-ee" instead of "deck-a-dense"; and for my high school math teacher, "infrared" was pronounced "in-fraired" instead of "in-fra-red". What was it for you? Drop it in the comments ;)
 [^2]: There's a considerable difference between written language and spoken language, and any linguistics study of natural language data is better off using spoken language. This is because written language is premeditated, edited, and curated, while only spoken language is truly spontaneous and generative. The only problem is that spoken language isn't usually recorded ([unless if you have an Alexa in your home](https://www.washingtonpost.com/technology/2019/05/06/alexa-has-been-eavesdropping-you-this-whole-time/)). So, movie subtitle data is a pretty decent approximation at spoken language, as [Dr. Tang's paper about the SUBTLEX dataset demonstrates](https://www.researchgate.net/publication/238885981_A_61_Million_Word_Corpus_of_Brazilian_Portuguese_Film_Subtitles_as_a_Resource_for_Linguistic_Research).  
 Further on this point, everything we know about Latin actually comes from [Classical Latin](https://en.wikipedia.org/wiki/Classical_Latin), or Literary Latin, i.e. the Latin that was written down. All of today's modern romance languages actually descend from [Vulgar Latin](https://en.wikipedia.org/wiki/Vulgar_Latin), the tongue spoken by the Roman Empire commoners.
-[^3]: This is an abridged conjugation table. It ignores all the other verb tenses, e.g. future, past participle, subjunctive, etc. The irregularity is measured only on the abridged table, to be as clearly demonstrative as possible.
+[^3]: I scraped data for which verb-conjugations are irregular from a common Portuguese verb-conjugation website, https://www.conjugacao.com.br/. As an example, see the conjugations (and which ones are irregular) for [the verb "ir" (to go)](https://www.conjugacao.com.br/verbo-ir/).
+[^4]: This is an abridged conjugation table. It ignores all the other verb tenses, e.g. future, past participle, subjunctive, etc. The irregularity is measured only on the abridged table, to be as clearly demonstrative as possible.
