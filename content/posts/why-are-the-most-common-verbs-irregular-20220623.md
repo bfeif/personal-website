@@ -24,7 +24,7 @@ As it turns out, somebody didn't design it to be that way. Rather, natural proce
 
 Let's learn some verb conjugations in Portuguese, yay! This will be fun!  
 - trabalhar (to work): eu trabalho (I work), ela trabalha (she works), nós trabalhamos (we work), eles trabalham (they work)... cool, that's easy enough to remember.  
-- andar (to walk): eu ando (I walk), você anda (you walk), ela anda (she walks), nós andamos (we walk)... cool, that's also easy to remember.  
+- andar (to walk): eu ando (I walk), ela anda (she walks), nós andamos (we walk), eles andam (they walk)... cool, that's also easy to remember.  
 - ser (to be): eu sou (I am), ela é (she is), nós somos (we are), eles são (they are)... what the word?!
 
 Ugh! Why does "to be" have the most irregular conjugations? And why are they so weird? Oh, how I wish that the less common, less useful verbs had the irregular conjugations instead of "to be". That would make my life so much easier...
@@ -58,8 +58,6 @@ I started researching this question, and came across an interesting hypothesis b
 
 So, it's less about "where do irregular verbs come from", and more about "where do regular verbs come from". If we think about verbs that have been created in the past 20 years (e.g. "to email", "to text", or "to google") all of them follow the regular verb conjugation patterns of adding an '-ed' to form the past tense (e.g. "I emailed you yesterday" or "I just googled it"). So, the oldest and most irregular verbs, like "to come" and "to be" (with their respective "I came yesterday" and "I was just there"), have been around in our language since a time when conjugation rules were different.  
 
-Furthermore, the more frequently a word is used, the more slowly it evolves over time. And that makes sense. Just think for a second--the word "the" is pronounced correctly by every native English speaker, while almost everyone I know has an answer to the question "what's a word you had only ever read and never heard out loud, and then said it for the first time when you were a teenager, and your pronunciation was completely wrong?"[^1]. Like this, the word "the" is much less susceptible to change (or even disappearance) than some word that numerous teenagers don't know how to pronounce.
-
 ## Zipf up your Boots
 
 Thinking about verb frequency-of-usage and how it might have some special relationship with irregularity gets me thinking about Zipf's Law. [Zipf's Law](https://en.wikipedia.org/wiki/Zipf%27s_law), as applied to word frequency in language, states that ([from Wikipedia](https://en.wikipedia.org/wiki/Zipf%27s_law)):
@@ -81,7 +79,7 @@ Zipfy-doo-da, can somebody say "jackpot"? This looks positively Zipfian, promisi
 
 ### Verb Irregularity by Verb Frequency of Usage
 
-I measure a verb's irregularity as "what fraction of this verb's conjugations are irregular"[^3]. Noting this in the table from above, we'd have the following irregularity scores:
+I measure a verb's irregularity as "what fraction of this verb's conjugations are irregular"[^3]. Noting this in the conjugation table from above, we'd have the following irregularity scores in the bottom-most row:
 
 |                             | _regular<br>rules_ | _trabalhar<br>(to work)_        | _andar<br>(to walk)_       | _vir<br>(to come)_            | _ser<br>(to be)_             |
 |-----------------------------|--------------------|---------------------------------|----------------------------|-------------------------------|------------------------------|
@@ -89,7 +87,7 @@ I measure a verb's irregularity as "what fraction of this verb's conjugations ar
 | _3rd person present_        | -a                 | ela trabalha<br>_(she works)_   | ela anda<br>_(she walks)_  | **ela vem<br>_(she comes)_**  | **ela é<br>_(she is)_**      |
 | _1st person plural present_ | -amos              | nós trabalhamos<br>_(we work)_  | nós andamos<br>_(we walk)_ | nós vimos<br>_(we come)_      | **nós somos<br>_(we are)_**  |
 | _3rd person plural present_ | -am                | eles trabalham<br>_(they work)_ | eles andam<br>_(I walk)_   | **eles vêm<br>_(they come)_** | **eles são<br>_(they are)_** |
-| _irregularity_[^4]          |                    | 0                               | 0                          | 0.75                          | 1.0                          |
+| **_irregularity[^4]_**      |                    | **0**                           | **0**                      | **0.75**                      | **1.0**                      |
 
 So, this table roughly increases in both frequency-of-usage and irregularity, from left to right. With this intuition, let's now take a look at this phenomenon in the Portuguese movie subtitle dataset:
 
@@ -99,7 +97,7 @@ It's nice when the numbers match the intuition! There's a nice correlation betwe
 
 ## Final Thoughts
 
-It can be a bit frustrating for language-learners that the most common verbs have the most irregular conjugations; myself included. However, this phenomenon is also a window into the beauty of language. Insofar as a language is a naturally evolving system, it adheres to certain self-organizing behaviors that other emergent systems do. For example, the human brain makes up for about [3% of the weight of an average adult-male](https://en.wikipedia.org/wiki/Brain_size#:~:text=The%20adult%20human%20brain%20weighs,in%20women%20about%201200%20g.), but [consumes a disproportionate 15% of the heart's cardiac output](https://en.wikipedia.org/wiki/Cerebral_circulation). In a sense, the verbs "to be" and "to go" in Portuguese, like the human brain in the human body, is where most of the magic happens, and so they receive the most attention. Languages, like the human body, are living, breathing emergent systems.  
+It can be a bit frustrating for language-learners that the most common verbs have the most irregular conjugations; myself included. However, this phenomenon is also a window into the beauty of language. Insofar as a language is a naturally evolving system, it adheres to certain self-organizing behaviors that other emergent systems do. Languages, are living, breathing emergent systems.  
 
 ### Denkmit
 
