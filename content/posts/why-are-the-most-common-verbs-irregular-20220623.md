@@ -16,35 +16,35 @@ plotly: true
 # comments: true
 ---
 
-Back when I was learning Portuguese, I found myself wondering something that most language-learners probably wonder at some point: why the hell are there so many irregular verb conjugations in this language? And why are they so weird? It's like someone purposefully designed this language to be hard to learn!  
+Back when I was learning Portuguese, I often found myself wondering something that most language-learners probably wonder at some point: why the hell are there so many irregular verb conjugations in this language? And why are they so weird? It's like someone purposefully designed this language to be hard to learn!  
 
 As it turns out, somebody didn't design it to be that way. Rather, natural processes designed it so; processes that have been playing out over thousands of years.
 
 ## A Day in the Life of a Language Learner
 
 Let's learn some verb conjugations in Portuguese, yay! This will be fun!  
-- trabalhar (to work): eu trabalho (I work), ela trabalha (she works), nós trabalhamos (we work), eles trabalham (they work)... cool, that's easy enough to remember.  
-- andar (to walk): eu ando (I walk), ela anda (she walks), nós andamos (we walk), eles andam (they walk)... cool, that's also easy to remember.  
+- andar (to walk): eu ando (I walk), ela anda (she walks), nós andamos (we walk), eles andam (they walk)... cool, that's easy enough to remember.  
+- chegar (to arrive): eu chego (I arrive), ela chega (she arrives), nós chegamos (we arrive), eles chegam (they arrive)... cool, that's also easy to remember.  
 - ser (to be): eu sou (I am), ela é (she is), nós somos (we are), eles são (they are)... what the word?!
 
 Ugh! Why does "to be" have the most irregular conjugations? And why are they so weird? Oh, how I wish that the less common, less useful verbs had the irregular conjugations instead of "to be". That would make my life so much easier...
 
 ## Hey, Who you Callin' "Irregular"?
 
-Before moving any further, let's define an "irregular" conjugation vs a "regular" conjugation. The regular rules for verb conjugation in Portuguese are demonstrated by "trabalhar (to work)" and "andar (to walk)" in the table below:
+Before moving any further, let's define an "irregular" conjugation vs a "regular" conjugation. The regular rules for verb conjugation in Portuguese are demonstrated by "andar (to walk)" and "chegar (to arrive)" in the table below:
 
-|                             | _regular<br>rules_ | _trabalhar<br>(to work)_        | _andar<br>(to walk)_       | _vir<br>(to come)_            | _ser<br>(to be)_             |
-|-----------------------------|--------------------|---------------------------------|----------------------------|-------------------------------|------------------------------|
-| _1st person present_        | -o                 | eu trabalho<br>_(I work)_       | eu ando<br>_(I walk)_      | **eu venho<br>_(I come)_**    | **eu sou<br>_(I am)_**       |
-| _3rd person present_        | -a                 | ela trabalha<br>_(she works)_   | ela anda<br>_(she walks)_  | **ela vem<br>_(she comes)_**  | **ela é<br>_(she is)_**      |
-| _1st person plural present_ | -mos               | nós trabalhamos<br>_(we work)_  | nós andamos<br>_(we walk)_ | nós vimos<br>_(we come)_      | **nós somos<br>_(we are)_**  |
-| _3rd person plural present_ | -m                 | eles trabalham<br>_(they work)_ | eles andam<br>_(I walk)_   | **eles vêm<br>_(they come)_** | **eles são<br>_(they are)_** |
+|                             | _regular<br>rules_ | _andar<br>(to walk)_       | _chegar<br>(to arrive)_        | _dar<br>(to give)_            | _ser<br>(to be)_             |
+|-----------------------------|--------------------|----------------------------|--------------------------------|-------------------------------|------------------------------|
+| _1st person present_        | -o                 | eu ando<br>_(I walk)_      | eu chego<br>_(I arrive)_       | **eu dou<br>_(I give)_**      | **eu sou<br>_(I am)_**       |
+| _3rd person present_        | -a                 | ela anda<br>_(she walks)_  | ela chega<br>_(she arrives)_   | **ela dá<br>_(she gives)_**   | **ela é<br>_(she is)_**      |
+| _1st person plural present_ | -amos              | nós andamos<br>_(we walk)_ | nós chegamos<br>_(we arrive)_  | nós damos<br>_(we give)_      | **nós somos<br>_(we are)_**  |
+| _3rd person plural present_ | -am                | eles andam<br>_(I walk)_   | eles chegam<br>_(they arrive)_ | **eles dão<br>_(they give)_** | **eles são<br>_(they are)_** |
 
-Any conjugation that adheres to the "regular rules" is a regular conjugation; in contrast, any conjugation that deviates from these rules (in bold text in the table above) is an irregular conjugation.
+Any conjugation that adheres to the "regular rules" (in unbolded text in the table above) is a regular conjugation; in contrast, any conjugation that deviates from these rules (in bold text in the table above) is an irregular conjugation.
 
 ## Where do Irregular Verbs come from?
 
-You might notice in the table above that the verbs are ordered from left to right, by both increasing frequency-of-usage and number of irregular conjugations (in Portuguese, like in English, "to be" and "to come" are two of the most commonly used, most irregular verbs). This correlation between frequency-of-usage and number of irregular conjugations is generally the rule, not an exception, regardless of the language. So, why is this the case?
+You might notice in the table above that the verbs are ordered from left to right, by both increasing frequency-of-usage and number of irregular conjugations (in Portuguese, like in English, "to give" and "to be" are two of the most commonly used, most irregular verbs). This correlation between frequency-of-usage and number of irregular conjugations is generally the rule, regardless of the language. So, why is this the case?
 
 I started researching this question, and came across an interesting hypothesis by a linguist [/u/bohnicz](https://www.reddit.com/user/bohnicz/) in a [thread on the linguistics subreddit](https://www.reddit.com/r/linguistics/comments/97wfeq/why_are_the_most_common_verbs_always_treated_as/):
 
@@ -56,58 +56,61 @@ I started researching this question, and came across an interesting hypothesis b
 
 ## Use it or Lose it
 
-So, it's less about "where do irregular verbs come from", and more about "where do regular verbs come from". If we think about verbs that have been created in the past 20 years (e.g. "to email", "to text", or "to google") all of them follow the regular verb conjugation patterns of adding an '-ed' to form the past tense (e.g. "I emailed you yesterday" or "I just googled it"). So, the oldest and most irregular verbs, like "to come" and "to be" (with their respective "I came yesterday" and "I was just there"), have been around in our language since a time when conjugation rules were different.  
+So, it's less about where the _irregular_ verbs come from, and more about where the _regular_ verbs come from. If we think about verbs that have been created in the past 20 years (e.g. "to email", "to text", or "to google") all of them follow the regular verb conjugation patterns of adding an '-ed' to form the past tense (e.g. "I emailed you yesterday" or "I just googled it"). With this, the oldest, most irregular, most frequent verbs (like "to give" and "to be") have been around in our language since a time when conjugation rules were different. All the other old verbs that were birthed alongside "to give" or "to be" died out due to irrelevance, and new verbs were created to define the new concepts we discovered as our world unfolded.[^1]
+
+## Show me the Data
+
+To understand the numerical relationship between verb frequency-of-usage and verb irregularity, we need to measure the two quantities from data.  
+
+To measure verb frequency-of-usage, I use [a database of movie subtitles in Brazilian Portuguese](https://www.kevintang.org/Tools.html), built by [linguist Kevin Tang](https://www.linkedin.com/in/kevintangcantab/).[^2]  
+
+To measure verb irregularity, I scrape data on verb-conjugations and their irregularity from [a popular Portuguese verb-conjugation website](https://www.conjugacao.com.br/). I then measure verb irregularity as "what fraction of this verb's conjugations are irregular"[^3].
+
+Including these measurements in our table from above, we get the following frequencies and irregularities, noted in the bottom two rows:
+
+|                             | _regular<br>rules_ | _andar<br>(to walk)_       | _chegar<br>(to arrive)_        | _dar<br>(to give)_            | _ser<br>(to be)_             |
+|-----------------------------|--------------------|----------------------------|--------------------------------|-------------------------------|------------------------------|
+| _1st person present_        | -o                 | eu ando<br>_(I walk)_      | eu chego<br>_(I arrive)_       | **eu dou<br>_(I give)_**      | **eu sou<br>_(I am)_**       |
+| _3rd person present_        | -a                 | ela anda<br>_(she walks)_  | ela chega<br>_(she arrives)_   | **ela dá<br>_(she gives)_**   | **ela é<br>_(she is)_**      |
+| _1st person plural present_ | -amos              | nós andamos<br>_(we walk)_ | nós chegamos<br>_(we arrive)_  | nós damos<br>_(we give)_      | **nós somos<br>_(we are)_**  |
+| _3rd person plural present_ | -am                | eles andam<br>_(I walk)_   | eles chegam<br>_(they arrive)_ | **eles dão<br>_(they give)_** | **eles são<br>_(they are)_** |
+| **_frequency_**             |                    | **0.004**                  | **0.007**                      | **0.015**                     | **0.154**                    |
+| **_irregularity[^4]_**      |                    | **0**                      | **0**                          | **0.75**                      | **1.0**                      |
+
+As mentioned earlier, this table increases from left to right by both frequency-of-usage and irregularity; and now we have the numbers to show it! With this intuition, let's take a look at this phenomenon for the top 50 most common verbs:
+
+{{< plotly json="/plotly_charts/verb_frequency_vs_irregularity.json" height="500px" >}}  
+
+It's nice when the numbers match the intuition! There's a correlation between verb irregularity and frequency-of-usage; hover over the plot to see the individual verbs ;)
 
 ## Zipf up your Boots
 
-Thinking about verb frequency-of-usage and how it might have some special relationship with irregularity gets me thinking about Zipf's Law. [Zipf's Law](https://en.wikipedia.org/wiki/Zipf%27s_law), as applied to word frequency in language, states that ([from Wikipedia](https://en.wikipedia.org/wiki/Zipf%27s_law)):
+Thinking about verb frequency-of-usage gets me further thinking about Zipf's Law. Zipf's Law, as applied to word frequency in language, states that ([from Wikipedia](https://en.wikipedia.org/wiki/Zipf%27s_law)):
 
 > "...given some corpus of natural language utterances, the frequency of any word is inversely proportional to its rank in the frequency table. Thus the most frequent word will occur approximately twice as often as the second most frequent word, three times as often as the third most frequent word, etc..."
 
 {{< figure src="https://chumley.barstoolsports.com/union/2021/08/27/Screen-Shot-2021-08-27-at-12.57.59-PM.59cc8116.png" >}}  
-[Power laws are found in all sorts of emergent systems; not just in language](https://en.wikipedia.org/wiki/Preferential_attachment). Could it be that verb frequency-of-usage also follows power law like behavior, and that this also reflects in how irregular the verb's conjugations are?
 
-## Show me the Data
+[Power laws are found in all sorts of emergent systems; not just in language](https://en.wikipedia.org/wiki/Preferential_attachment). Could it be that verb frequency-of-usage also follows power law like behavior? Let's have a look:
 
-Is verb-frequency versus rank Zipfian? To what degree is verb irregularity correlated with verb-frequency? To measure these things, I use [a database of movie subtitles in Brazilian Portuguese](https://www.kevintang.org/Tools.html), built by [Dr. Kevin Tang](https://www.linkedin.com/in/kevintangcantab/).[^2]
-
-### Verb Frequency by Rank
 {{< plotly json="/plotly_charts/verb_rank_vs_frequency.json" height="500px" >}}  
 
-Zipfy-doo-da, can somebody say "jackpot"? This looks positively Zipfian, promisingly power(law)ful. Let's take a look at irregularity versus frequency--
-
-
-### Verb Irregularity by Verb Frequency of Usage
-
-I measure a verb's irregularity as "what fraction of this verb's conjugations are irregular"[^3]. Noting this in the conjugation table from above, we'd have the following irregularity scores in the bottom-most row:
-
-|                             | _regular<br>rules_ | _trabalhar<br>(to work)_        | _andar<br>(to walk)_       | _vir<br>(to come)_            | _ser<br>(to be)_             |
-|-----------------------------|--------------------|---------------------------------|----------------------------|-------------------------------|------------------------------|
-| _1st person present_        | -o                 | eu trabalho<br>_(I work)_       | eu ando<br>_(I walk)_      | **eu venho<br>_(I come)_**    | **eu sou<br>_(I am)_**       |
-| _3rd person present_        | -a                 | ela trabalha<br>_(she works)_   | ela anda<br>_(she walks)_  | **ela vem<br>_(she comes)_**  | **ela é<br>_(she is)_**      |
-| _1st person plural present_ | -amos              | nós trabalhamos<br>_(we work)_  | nós andamos<br>_(we walk)_ | nós vimos<br>_(we come)_      | **nós somos<br>_(we are)_**  |
-| _3rd person plural present_ | -am                | eles trabalham<br>_(they work)_ | eles andam<br>_(I walk)_   | **eles vêm<br>_(they come)_** | **eles são<br>_(they are)_** |
-| **_irregularity[^4]_**      |                    | **0**                           | **0**                      | **0.75**                      | **1.0**                      |
-
-So, this table roughly increases in both frequency-of-usage and irregularity, from left to right. With this intuition, let's now take a look at this phenomenon in the Portuguese movie subtitle dataset:
-
-{{< plotly json="/plotly_charts/verb_frequency_vs_irregularity.json" height="500px" >}}  
-
-It's nice when the numbers match the intuition! There's a nice correlation between verb irregularity and frequency-of-usage. Hover over the plot to see the individual verbs ;)
+Zipfy-doo-da, can somebody say "jackpot"? This looks positively Zipfian, promisingly power(law)ful. 
 
 ## Final Thoughts
 
-It can be a bit frustrating for language-learners that the most common verbs have the most irregular conjugations; myself included. However, this phenomenon is also a window into the beauty of language. Insofar as a language is a naturally evolving system, it adheres to certain self-organizing behaviors that other emergent systems do. Languages, are living, breathing emergent systems.  
+It can be a bit frustrating for language-learners that the most common verbs have the most irregular conjugations; myself included. However, this phenomenon is also a window into the beauty of language. Insofar as a language is a naturally evolving system, it adheres to certain self-organizing behaviors that other emergent systems do. Languages are living, breathing systems that evolve over millenia, and the verbs "to go" and "to be" have been a part of them since the time of my most distant linguistic ancestors. As such, I don't mind giving these verbs the most attention; on the contrary, it feels even honorable and respectful to do so.  
 
 ### Denkmit
 
 One of the joys of learning a new language is discovering yourself in the language. Each new language is like a new color palette or musical instrument for self-expression. Everybody wields their language in a unique way; everybody has a unique voice. As I've begun to learn my next language (Hebrew), it's time to retool. There are a lot of language-learning tools out there, but I was seeking something that would cater to my specific voice, and help me to pay closer attention where I needed to. I couldn't find the right tool, so I decided to create it.  
 
-[Denkmit](https://example.com/) creates language learning flashcards from your own WhatsApp chats. It prioritizes learning words and phrases that you and your conversation partners use most often, and that you have the most difficulty remembering. All language-learning requires some small amount of memorization, and Denkmit helps you to do it as effectively as possible by teaching you your own words, while reminding you of the context in which you learned them. Denkmit helps you to learn your language, your way. Drop your email in the website to get early access to the tool ;)  
+[Denkmit](https://example.com/) creates language learning flashcards from your own WhatsApp chats. It prioritizes learning words and phrases that you and your conversation partners use most often, and that you have the most difficulty remembering. All language-learning requires some small amount of memorization, and Denkmit helps you to do that memorization as effectively as possible. It does so by teaching you your own words, while reminding you of the context in which you learned them. Denkmit helps you to learn your language, your way. Drop your email in the website to get early access to the tool ;)  
 
-[^1]: Mispronunciations of words can be quite humorous, if we allow them to be. For me, "epilogue" was pronounced "eh-pill-oh-gew" instead of "eh-pill-og"; for my mom, "bicarbonate" was pronounced "bick-er-bone-it" instead of "by-car-bun-it"; for my little brother, "decadence" was pronounced "deck-a-denk-ee" instead of "deck-a-dense"; and for my high school math teacher, "infrared" was pronounced "in-fraired" instead of "in-fra-red". What was it for you? Drop it in the comments ;)
-[^2]: There's a considerable difference between written language and spoken language, and any linguistics study of natural language data is better off using spoken language. This is because written language is premeditated, edited, and curated, while only spoken language is truly spontaneous and generative. The only problem is that spoken language isn't usually recorded ([unless if you have an Alexa in your home](https://www.washingtonpost.com/technology/2019/05/06/alexa-has-been-eavesdropping-you-this-whole-time/)). So, movie subtitle data is a pretty decent approximation at spoken language, as [Dr. Tang's paper about the movie-subtitle dataset demonstrates](https://www.researchgate.net/publication/238885981_A_61_Million_Word_Corpus_of_Brazilian_Portuguese_Film_Subtitles_as_a_Resource_for_Linguistic_Research). As a curious side-note on this point, everything that we know about Latin actually comes from [Classical Latin](https://en.wikipedia.org/wiki/Classical_Latin), or Literary Latin, i.e. the Latin that was written down. However, all of today's modern romance languages actually descend from [Vulgar Latin](https://en.wikipedia.org/wiki/Vulgar_Latin), the tongue spoken by the Roman Empire commoners.
-[^3]: I scraped data on verb-conjugations and their irregularity from a common Portuguese verb-conjugation website, https://www.conjugacao.com.br/. As an example, see the conjugations for [the verb "ir" (to go)](https://www.conjugacao.com.br/verbo-ir/) (irregular conjugations are denoted as such with an asterisk "\*") .
+[^1]: There exist many complex processes involved in the creation, regularization, and irregularization of verbs. Famous linguist [Steven Pinker](https://en.wikipedia.org/wiki/Steven_Pinker) gives two examples of such processes from as recent as the past 100 years, with the verbs "to sneak" and "to dive". [In the past 100 years, the past tense of the verb "to sneak" recently irregularized from "I sneaked" to "I snuck", while the past tense of "to dive" recently irregularized from "I dived" to "I dove"](https://superpowerspeech.com/2016/09/irregular-verbs-where-do-they-come-from-and-how-can-we-help.html). Verbs can be created, become regular, and become irregular (for example, check out the [complex suppletive etymology of the English verb "to be"](https://en.wikipedia.org/wiki/Suppletion#English)). Verb evolution and irregularity is until this day a contentious linguistics research topic, and the reasoning provided in this post is simplified for the sake of clarity and brevity. For a deeper understanding, consider the book ["Words and Rules", by Pinker](https://en.wikipedia.org/wiki/Words_and_Rules), which explains more about where regular and irregular verbs come from.
+[^2]: There's a considerable difference between written language and spoken language, and any linguistics study of natural language data is better off using spoken language. This is because written language is premeditated, edited, and curated, while only spoken language is truly spontaneous and generative. The only problem is that spoken language isn't usually recorded ([unless if you have an Alexa in your home](https://www.washingtonpost.com/technology/2019/05/06/alexa-has-been-eavesdropping-you-this-whole-time/)). So, movie subtitle data is a pretty decent approximation at spoken language, as [Dr. Tang's paper about the movie-subtitle dataset demonstrates](https://www.researchgate.net/publication/238885981_A_61_Million_Word_Corpus_of_Brazilian_Portuguese_Film_Subtitles_as_a_Resource_for_Linguistic_Research).  
+As a curious side-note on this point, everything that we know about Latin actually comes from [Classical Latin](https://en.wikipedia.org/wiki/Classical_Latin), or Literary Latin, i.e. the Latin that was written down. It's often said that Latin is the parent of all modern Romance Languages. However, that's not entirely true. All of today's modern romance languages actually descend from the Latin of the commoners, [Vulgar Latin](https://en.wikipedia.org/wiki/Vulgar_Latin); not from Classical Latin.
+[^3]: As an example, see the conjugations for [the verb "ir" (to go)](https://www.conjugacao.com.br/verbo-ir/); irregular conjugations are denoted as such with an asterisk "\*").
 [^4]: This is an abridged conjugation table. It ignores all the other verb tenses, e.g. future, past participle, subjunctive, etc. The irregularity is measured only on the abridged table, to be as clearly demonstrative as possible.
 
 <!--
