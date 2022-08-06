@@ -42,6 +42,15 @@ As it turns out, somebody didn&amp;rsquo;t design it to be that way. Rather, nat
     </item>
     
     <item>
+      <title>Denkmit</title>
+      <link>https://benfeifke.com/posts/denkmit/</link>
+      <pubDate>Fri, 24 Jun 2022 09:47:45 +0200</pubDate>
+      
+      <guid>https://benfeifke.com/posts/denkmit/</guid>
+      <description>Denkmit One of the joys of learning a new language is discovering yourself in the language. Each new language is like a new color palette or musical instrument for self-expression. Everybody wields their language in a unique way; everybody has a unique voice. As I&amp;rsquo;ve begun to learn my next language (Hebrew), it&amp;rsquo;s time to retool. There are a lot of language-learning tools out there, but I was seeking something that would cater to my specific voice, and help me to pay closer attention where I needed to.</description>
+    </item>
+    
+    <item>
       <title>How Did We Count Before We Invented Numbers?</title>
       <link>https://benfeifke.com/posts/how-did-we-count-before-we-invented-numbers-20220624/</link>
       <pubDate>Fri, 24 Jun 2022 09:47:45 +0200</pubDate>
@@ -60,7 +69,9 @@ MACK: &amp;ldquo;You bet, Curt. To what do I owe the pleasure of your visit?</de
       <pubDate>Wed, 24 Aug 2016 17:51:42 +0000</pubDate>
       
       <guid>https://benfeifke.com/about/</guid>
-      <description>Hi there!</description>
+      <description>Got data? You&amp;rsquo;ve come to the right place.
+I&amp;rsquo;m from the US, and I currently live in Berlin, Germany. I have a background in optical physics, and have since been working in the data field for 4+ years. I love data, science, languages, and chess; and I especially love creating web products and writing about all of them.
+In my career, I&amp;rsquo;ve researched, built, and deployed machine learning models across a variety of operational and commercial contexts; I&amp;rsquo;ve researched and created business-metrics, and created invaluable dashboards to communicate those metrics to business and product people; I&amp;rsquo;ve helped build data-science teams; and I&amp;rsquo;ve mentored junior data scientists.</description>
     </item>
     
   </channel>
