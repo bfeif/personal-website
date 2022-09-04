@@ -1,5 +1,5 @@
 ---
-title: "No, Neil Degrasse Tyson, Science isn't true whether or not I believe in it."
+title: "Science is an Art"
 date: 2022-07-31T09:47:45+02:00
 draft: true
 tags:
@@ -16,14 +16,12 @@ plotly: true
 # comments: true
 ---
 
-# Intro
-Back when Donald Trump got elected...
+# What's Right?
+Neil DeGrasse Tyson writes that "the good thing about science is that it's right, whether or not you agree with it".
 
-list of quotes:
-- degrasse tyson quote
-- other quote
+I couldn't disagree more. See, I believe that science can, at worst, prove something wrong; at better, it can prove things more right than something else; and at best, it can prove things useful. But science can never prove things absolutely right. And that's because there are always infinite testable hypotheses that might explain a given phenomenon.
 
-the problem is, they're wrong
+Whether we realize it or not, chooseing a hypothesis to test is quite a delicate process. And with this choice, we subconsciously inflect our culture, our bias, our practice, and even our personal or financial ambitions. With each chosen hypothesis, we guide our collective understanding of the world forward. And in this way, science is an art.
 
 # The Scientific Method
 when the sci
