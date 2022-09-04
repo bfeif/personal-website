@@ -3,15 +3,17 @@ title: "Why Are the Most Common Verbs Irregular?"
 date: 2022-09-04T09:47:45+02:00
 draft: false
 tags:
-    - math
     - language
-    - chaos-theory
+    - language-learning
     - data-science
+    - portuguese
+    - statistics
 keywords:
-    - math
     - language
-    - chaos-theory
+    - language-learning
     - data-science
+    - portuguese
+    - statistics
 plotly: true
 # comments: true
 ---
