@@ -25,6 +25,7 @@ As it turns out, somebody didn't design it to be that way. Rather, natural proce
 Let's learn some verb conjugations in Portuguese, yay! This will be fun!  
 
 **andar (to walk):**
+
 |                             | **_Portuguese_** | **_English_** |
 |-----------------------------|------------------|---------------|
 | _1st person present_        | eu ando          | _I walk_      |
@@ -35,6 +36,7 @@ Let's learn some verb conjugations in Portuguese, yay! This will be fun!
 Nice! These verb conjugations follow a clear pattern; that'll be easy to remember.
 
 **ser (to be):**
+
 |                             | **_Portuguese_** | **_English_** |
 |-----------------------------|------------------|---------------|
 | _1st person present_        | eu sou           | _I am_        |

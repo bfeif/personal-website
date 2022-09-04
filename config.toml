@@ -4,7 +4,7 @@ languageCode = 'en-us'
 title = 'Call me Ben'
 theme = "cactus"
 gravatar = "benfeifke@gmail.com"
-disqusShortname = "benfeifke"
+# disqusShortname = "benfeifke"
 googleAnalytics = "G-CXBJ7FZNWP" # or G-XXXXXXXX if you are using Google Analytics v4 (gtag.js)
 
 # Main menu which appears below site header.
