@@ -51,12 +51,12 @@ Ugh! These are some weird ones, how will I remember them? And why does "to be" h
 What I'm calling a "weird" verb conjugation here is actually referred to as "irregular" in language and language learning. In any language, there are regular rules for verb conjugation that the vast majority of verbs follow (e.g. "andar" follows them all). Any verb conjugation that does not adhere to these rules (such as those of "ser") is called "irregular".  
 In the table below, irregular verb conjugations are bolded, and regular verb conjugations are unbolded:
 
-|                             | _regular<br>rules_ | _andar<br>(to walk)_       | _chegar<br>(to arrive)_        | _dar<br>(to give)_            | _ser<br>(to be)_             |
+|                             | _regular<br> rules_ | _andar<br> (to walk)_       | _chegar<br> (to arrive)_        | _dar<br> (to give)_            | _ser<br> (to be)_             |
 |-----------------------------|--------------------|----------------------------|--------------------------------|-------------------------------|------------------------------|
-| _1st person present_        | -o                 | eu ando<br>_(I walk)_      | eu chego<br>_(I arrive)_       | **eu dou<br>_(I give)_**      | **eu sou<br>_(I am)_**       |
-| _3rd person present_        | -a                 | ela anda<br>_(she walks)_  | ela chega<br>_(she arrives)_   | **ela dá<br>_(she gives)_**   | **ela é<br>_(she is)_**      |
-| _1st person plural present_ | -amos              | nós andamos<br>_(we walk)_ | nós chegamos<br>_(we arrive)_  | nós damos<br>_(we give)_      | **nós somos<br>_(we are)_**  |
-| _3rd person plural present_ | -am                | eles andam<br>_(I walk)_   | eles chegam<br>_(they arrive)_ | **eles dão<br>_(they give)_** | **eles são<br>_(they are)_** |
+| _1st person present_        | -o                 | eu ando<br>  _(I walk)_      | eu chego<br> _(I arrive)_       | **eu dou<br> _(I give)_**      | **eu sou<br> _(I am)_**       |
+| _3rd person present_        | -a                 | ela anda<br>  _(she walks)_  | ela chega<br> _(she arrives)_   | **ela dá<br> _(she gives)_**   | **ela é<br> _(she is)_**      |
+| _1st person plural present_ | -amos              | nós andamos<br>  _(we walk)_ | nós chegamos<br> _(we arrive)_  | nós damos<br> _(we give)_      | **nós somos<br> _(we are)_**  |
+| _3rd person plural present_ | -am                | eles andam<br>  _(I walk)_   | eles chegam<br> _(they arrive)_ | **eles dão<br> _(they give)_** | **eles são<br> _(they are)_** |
 
 ## Where do Irregular Verbs Come from?
 
@@ -84,12 +84,12 @@ To measure verb irregularity, I scrape data on verb-conjugations and their irreg
 
 Including these measurements in our table from above, we get the following frequencies and irregularities, noted in the bottom two rows:
 
-|                             | _regular<br>rules_ | _andar<br>(to walk)_       | _chegar<br>(to arrive)_        | _dar<br>(to give)_            | _ser<br>(to be)_             |
+|                             | _regular<br> rules_ | _andar<br> (to walk)_       | _chegar<br> (to arrive)_        | _dar<br> (to give)_            | _ser<br> (to be)_             |
 |-----------------------------|--------------------|----------------------------|--------------------------------|-------------------------------|------------------------------|
-| _1st person present_        | -o                 | eu ando<br>_(I walk)_      | eu chego<br>_(I arrive)_       | **eu dou<br>_(I give)_**      | **eu sou<br>_(I am)_**       |
-| _3rd person present_        | -a                 | ela anda<br>_(she walks)_  | ela chega<br>_(she arrives)_   | **ela dá<br>_(she gives)_**   | **ela é<br>_(she is)_**      |
-| _1st person plural present_ | -amos              | nós andamos<br>_(we walk)_ | nós chegamos<br>_(we arrive)_  | nós damos<br>_(we give)_      | **nós somos<br>_(we are)_**  |
-| _3rd person plural present_ | -am                | eles andam<br>_(I walk)_   | eles chegam<br>_(they arrive)_ | **eles dão<br>_(they give)_** | **eles são<br>_(they are)_** |
+| _1st person present_        | -o                 | eu ando<br> _(I walk)_      | eu chego<br> _(I arrive)_       | **eu dou<br> _(I give)_**      | **eu sou<br> _(I am)_**       |
+| _3rd person present_        | -a                 | ela anda<br> _(she walks)_  | ela chega<br> _(she arrives)_   | **ela dá<br> _(she gives)_**   | **ela é<br> _(she is)_**      |
+| _1st person plural present_ | -amos              | nós andamos<br> _(we walk)_ | nós chegamos<br> _(we arrive)_  | nós damos<br> _(we give)_      | **nós somos<br> _(we are)_**  |
+| _3rd person plural present_ | -am                | eles andam<br> _(I walk)_   | eles chegam<br> _(they arrive)_ | **eles dão<br> _(they give)_** | **eles são<br> _(they are)_** |
 | **_frequency_**             |                    | **0.004**                  | **0.007**                      | **0.015**                     | **0.154**                    |
 | **_irregularity[^4]_**      |                    | **0**                      | **0**                          | **0.75**                      | **1.0**                      |
 
