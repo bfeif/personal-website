@@ -1,6 +1,6 @@
 ---
 title: "Why Are the Most Common Verbs Irregular?"
-date: 2022-07-12T09:47:45+02:00
+date: 2022-09-04T09:47:45+02:00
 draft: true
 tags:
     - math
@@ -16,7 +16,7 @@ plotly: true
 # comments: true
 ---
 
-Back when I was learning Portuguese, I often found myself wondering something that most language-learners probably wonder at some point: why do some of these verb conjugations sound so weird? Some verbs, like "andar" (to walk), have more normal sounding verb conjugations and seem to follow some pattern; but verbs like "ser" (to be) have some really weird verb conjugations--what's up with that? Why are some verb conjugations normal and predictable, and some aren't? And most of all, why are the most common verbs the weirdest? It's like someone purposefully designed this language to be hard to learn!  
+Back when I was learning Portuguese, I often found myself wondering something that most language-learners probably wonder at some point: most verbs seem to follow some pattern, but some verbs have some really weird verb conjugations--what's up with that? What's more, why is it that the most common verbs are usually the ones with the most weird conjugations? It's like someone purposefully designed this language to be hard to learn!
 
 As it turns out, somebody didn't design it to be that way. Rather, natural processes designed it so; processes that have been playing out over thousands of years.
 
@@ -46,7 +46,7 @@ Ugh! These are some weird ones, how will I remember them? And why does "to be" h
 
 ## Ain't Nothing Wrong with Being Weird
 
-What I'm calling a "weird" verb conjugation here is actually referred to as "irregular" in language and language learning. In any language, there are regular rules for verb conjugation that the vast majority of verbs follow ("andar" follows them all). Any verb conjugation that does not adhere to these rules (such as those of "ser") is called "irregular".  
+What I'm calling a "weird" verb conjugation here is actually referred to as "irregular" in language and language learning. In any language, there are regular rules for verb conjugation that the vast majority of verbs follow (e.g. "andar" follows them all). Any verb conjugation that does not adhere to these rules (such as those of "ser") is called "irregular".  
 In the table below, irregular verb conjugations are bolded, and regular verb conjugations are unbolded:
 
 |                             | _regular<br>rules_ | _andar<br>(to walk)_       | _chegar<br>(to arrive)_        | _dar<br>(to give)_            | _ser<br>(to be)_             |
@@ -70,7 +70,7 @@ I started researching this question, and came across an interesting hypothesis b
 
 ## Use It or Lose It
 
-So, it's less about where the _irregular_ verbs come from, and more about where the _regular_ verbs come from. If we think about verbs that have been created in the past 20 years (e.g. "to email", "to text", or "to google") all of them follow the regular verb conjugation patterns of adding an '-ed' to form the past tense (e.g. "I emailed you yesterday" or "I just googled it"). With this, the oldest, most irregular, most frequent verbs (like "to give" and "to be") have been around in our language since a time when conjugation rules were different. All the old verbs that were birthed alongside "to give" and "to be" have since slipped into a bottomless pit of irrelevance, and new, more regular verbs replaced them to define the new concepts we discovered as our world unfolded before us.[^1]
+So, it's less about where the _irregular_ verbs come from, and more about where the _regular_ verbs come from. If we think about verbs that have been created in the past 20 years (e.g. "to email", "to text", or "to google") all of them follow the regular verb conjugation patterns of adding an '-ed' to form the past tense (e.g. "I emailed you yesterday" or "I just googled it"). On the other hand, the oldest, most irregular, most frequent verbs (like "to give" and "to be") have been around in our language since a time when conjugation rules were different. All the old verbs that were birthed alongside "to give" and "to be" have since slipped into a bottomless pit of irrelevance, and new, more regular verbs replaced them to define the new concepts we discovered as our world unfolded before us.[^1]
 
 ## Show Me the Data
 
@@ -109,7 +109,7 @@ Thinking about verb frequency-of-usage gets me further thinking about Zipf's Law
 
 {{< plotly json="/plotly_charts/verb_rank_vs_frequency.json" height="500px" >}}  
 
-Zipfy-doo-da, can somebody say "jackpot"? This looks positively Zipfian, promisingly power(law)ful. 
+Zipfy-doo-da, can somebody say "jackpot"? This looks positively Zipfian, even promisingly powerful. 
 
 ## Final Thoughts
 
