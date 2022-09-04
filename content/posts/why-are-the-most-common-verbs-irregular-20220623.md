@@ -1,5 +1,5 @@
 ---
-title: "Why are the Most Common Verbs Irregular?"
+title: "Why Are the Most Common Verbs Irregular?"
 date: 2022-07-12T09:47:45+02:00
 draft: true
 tags:
@@ -16,22 +16,38 @@ plotly: true
 # comments: true
 ---
 
-Back when I was learning Portuguese, I often found myself wondering something that most language-learners probably wonder at some point: why the hell are there so many irregular verb conjugations in this language? And why are they so weird? It's like someone purposefully designed this language to be hard to learn!  
+Back when I was learning Portuguese, I often found myself wondering something that most language-learners probably wonder at some point: why do some of these verb conjugations sound so weird? Some verbs, like "andar" (to walk), have more normal sounding verb conjugations and seem to follow some pattern; but verbs like "ser" (to be) have some really weird verb conjugations--what's up with that? Why are some verb conjugations normal and predictable, and some aren't? And most of all, why are the most common verbs the weirdest? It's like someone purposefully designed this language to be hard to learn!  
 
 As it turns out, somebody didn't design it to be that way. Rather, natural processes designed it so; processes that have been playing out over thousands of years.
 
 ## A Day in the Life of a Language Learner
 
 Let's learn some verb conjugations in Portuguese, yay! This will be fun!  
-- andar (to walk): eu ando (I walk), ela anda (she walks), nós andamos (we walk), eles andam (they walk)... cool, that's easy enough to remember.  
-- chegar (to arrive): eu chego (I arrive), ela chega (she arrives), nós chegamos (we arrive), eles chegam (they arrive)... cool, that's also easy to remember.  
-- ser (to be): eu sou (I am), ela é (she is), nós somos (we are), eles são (they are)... what the word?!
 
-Ugh! Why does "to be" have the most irregular conjugations? And why are they so weird? Oh, how I wish that the less common, less useful verbs had the irregular conjugations instead of "to be". That would make my life so much easier...
+**andar (to walk):**
+|                             | **_Portuguese_** | **_English_** |
+|-----------------------------|------------------|---------------|
+| _1st person present_        | eu ando          | _I walk_      |
+| _3rd person present_        | ela anda         | _she walks_   |
+| _1st person plural present_ | nós andamos      | _we walk_     |
+| _3rd person plural present_ | eles andam       | _they walk_   |
 
-## Hey, Who you Callin' "Irregular"?
+Nice! These verb conjugations follow a clear pattern; that'll be easy to remember.
 
-Before moving any further, let's define an "irregular" conjugation vs a "regular" conjugation. The regular rules for verb conjugation in Portuguese are demonstrated by "andar (to walk)" and "chegar (to arrive)" in the table below:
+**ser (to be):**
+|                             | **_Portuguese_** | **_English_** |
+|-----------------------------|------------------|---------------|
+| _1st person present_        | eu sou           | _I am_        |
+| _3rd person present_        | ela é            | _she is_      |
+| _1st person plural present_ | nós somos        | _we are_      |
+| _3rd person plural present_ | eles são         | _they are_    |
+
+Ugh! These are some weird ones, how will I remember them? And why does "to be" have to be the verb with all the weird conjugations? Couldn't a less frequent, less useful verb have the weird conjugations?
+
+## Ain't Nothing Wrong with Being Weird
+
+What I'm calling a "weird" verb conjugation here is actually referred to as "irregular" in language and language learning. In any language, there are regular rules for verb conjugation that the vast majority of verbs follow ("andar" follows them all). Any verb conjugation that does not adhere to these rules (such as those of "ser") is called "irregular".  
+In the table below, irregular verb conjugations are bolded, and regular verb conjugations are unbolded:
 
 |                             | _regular<br>rules_ | _andar<br>(to walk)_       | _chegar<br>(to arrive)_        | _dar<br>(to give)_            | _ser<br>(to be)_             |
 |-----------------------------|--------------------|----------------------------|--------------------------------|-------------------------------|------------------------------|
@@ -40,25 +56,23 @@ Before moving any further, let's define an "irregular" conjugation vs a "regular
 | _1st person plural present_ | -amos              | nós andamos<br>_(we walk)_ | nós chegamos<br>_(we arrive)_  | nós damos<br>_(we give)_      | **nós somos<br>_(we are)_**  |
 | _3rd person plural present_ | -am                | eles andam<br>_(I walk)_   | eles chegam<br>_(they arrive)_ | **eles dão<br>_(they give)_** | **eles são<br>_(they are)_** |
 
-Any conjugation that adheres to the "regular rules" (in unbolded text in the table above) is a regular conjugation; in contrast, any conjugation that deviates from these rules (in bold text in the table above) is an irregular conjugation.
-
-## Where do Irregular Verbs come from?
+## Where do Irregular Verbs Come from?
 
 You might notice in the table above that the verbs are ordered from left to right, by both increasing frequency-of-usage and number of irregular conjugations (in Portuguese, like in English, "to give" and "to be" are two of the most commonly used, most irregular verbs). This correlation between frequency-of-usage and number of irregular conjugations is generally the rule, regardless of the language. So, why is this the case?
 
 I started researching this question, and came across an interesting hypothesis by a linguist [/u/bohnicz](https://www.reddit.com/user/bohnicz/) in a [thread on the linguistics subreddit](https://www.reddit.com/r/linguistics/comments/97wfeq/why_are_the_most_common_verbs_always_treated_as/):
 
-> At least for \[Indo-European\] languages, the verbs meaning _to be_ (usually) are the most irregular verbs in the entire language, with a so-called suppletive paradigm consisting of three or more different roots.
+> At least for \[Indo-European\] languages, the verbs meaning _to be_ (usually) are the most irregular verbs in the entire language, with a so-called suppletive paradigm consisting of three or more different roots.
 > 
-> Just take a look at the Old High German forms of _sīn_ 'to be': _bim ~ bin : bist : ist ; birum ~ birun : birut : sind_ (Indicative) _sī : sīst : sī ; sīn : sīt : sīn_ (Subjunctive) This paradigm already contains words formed from three different roots, and we havn't looked at the past tense and conditional mood yet...
+> Just take a look at the Old High German forms of _sīn_ 'to be': _bim ~ bin : bist : ist ; birum ~ birun : birut : sind_ (Indicative) _sī : sīst : sī ; sīn : sīt : sīn_ (Subjunctive) This paradigm already contains words formed from three different roots, and we havn't looked at the past tense and conditional mood yet...
 > 
 > **Irregular verbs tend to be VERY old and highly frequent in use - being highly frequent is in fact what keeps them from becoming "regular" verbs.**
 
-## Use it or Lose it
+## Use It or Lose It
 
-So, it's less about where the _irregular_ verbs come from, and more about where the _regular_ verbs come from. If we think about verbs that have been created in the past 20 years (e.g. "to email", "to text", or "to google") all of them follow the regular verb conjugation patterns of adding an '-ed' to form the past tense (e.g. "I emailed you yesterday" or "I just googled it"). With this, the oldest, most irregular, most frequent verbs (like "to give" and "to be") have been around in our language since a time when conjugation rules were different. All the old verbs that were birthed alongside "to give" and "to be" have since slipped into a bottomless pit of irrelevance, and new, more regular verbs replaced them to define the new concepts we discovered as our world unfolded.[^1]
+So, it's less about where the _irregular_ verbs come from, and more about where the _regular_ verbs come from. If we think about verbs that have been created in the past 20 years (e.g. "to email", "to text", or "to google") all of them follow the regular verb conjugation patterns of adding an '-ed' to form the past tense (e.g. "I emailed you yesterday" or "I just googled it"). With this, the oldest, most irregular, most frequent verbs (like "to give" and "to be") have been around in our language since a time when conjugation rules were different. All the old verbs that were birthed alongside "to give" and "to be" have since slipped into a bottomless pit of irrelevance, and new, more regular verbs replaced them to define the new concepts we discovered as our world unfolded before us.[^1]
 
-## Show me the Data
+## Show Me the Data
 
 To understand the numerical relationship between verb frequency-of-usage and verb irregularity, we need to measure the two quantities from data.  
 
@@ -85,13 +99,13 @@ It's nice when the numbers match the intuition! There's a correlation between ve
 
 ## Zipf up your Boots
 
-Thinking about verb frequency-of-usage gets me further thinking about Zipf's Law. Zipf's Law, as applied to word frequency in language, states that ([from Wikipedia](https://en.wikipedia.org/wiki/Zipf%27s_law)):
+Thinking about verb frequency-of-usage gets me further thinking about Zipf's Law. Zipf's Law, as applied to word frequency in language, states that ([from Wikipedia](https://en.wikipedia.org/wiki/Zipf%27s_law)):
 
-> "...given some corpus of natural language utterances, the frequency of any word is inversely proportional to its rank in the frequency table. Thus the most frequent word will occur approximately twice as often as the second most frequent word, three times as often as the third most frequent word, etc..."
+> "...given some corpus of natural language utterances, the frequency of any word is inversely proportional to its rank in the frequency table. Thus the most frequent word will occur approximately twice as often as the second most frequent word, three times as often as the third most frequent word, etc..."
 
 {{< figure src="https://chumley.barstoolsports.com/union/2021/08/27/Screen-Shot-2021-08-27-at-12.57.59-PM.59cc8116.png" >}}  
 
-[Power laws are found in all sorts of emergent systems; not just in language](https://en.wikipedia.org/wiki/Preferential_attachment). Could it be that verb frequency-of-usage also follows power law like behavior? Let's have a look:
+[Power laws are found in all sorts of emergent systems; not just in language](https://en.wikipedia.org/wiki/Preferential_attachment). Could it be that verb frequency-of-usage also follows power law like behavior? Let's have a look:  
 
 {{< plotly json="/plotly_charts/verb_rank_vs_frequency.json" height="500px" >}}  
 
