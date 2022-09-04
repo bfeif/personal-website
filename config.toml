@@ -37,8 +37,6 @@ weight = 4
   googleAnalyticsAsync = false
   # postsOnHomePage = 5
   # mathjax = true
-  [params.comments]
-  enabled = true
 
 [[params.social]]
   name = "github"
