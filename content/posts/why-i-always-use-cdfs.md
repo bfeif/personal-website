@@ -17,40 +17,38 @@ keywords:
 
 https://www.andata.at/en/software-blog-reader/why-we-love-the-cdf-and-do-not-like-histograms-that-much.html
 
-# Subtitle
-...except for maybe scatter plots.
-
-# Intro
-
-The modern data scientist lives in an ocean of plotting techniques. From matplotlib to ggplot2; from plotly to d3.js; from histograms, to box and whisker plots, to scatter plots, to whatever crazy chart seaborn comes up with next; it can be hard for novice data scientists to make sense of it all, drowning under all these charts! 
+The modern data scientist lives in an ocean of plotting techniques. From matplotlib to ggplot2; from plotly to d3.js; from histograms, to box and whisker plots, to scatter plots, to whatever crazy chart seaborn comes up with next; it can be hard for novice data scientists to make sense of it all, drowning under all these different plotting tools! 
 
 --> insert image of raining plot types.
 
-But not to worry--let Cumulative Distribution Functions (CDFs) be your life-jacket; they are the one EDA companion you truly need; the one that cuts through all the noise, and is there to illuminate the statistical darkness.
+But not to worry--let Cumulative Distribution Functions (CDFs) be your life-jacket; they are the one EDA companion you truly need; the one that cuts through all the noise; the one that is there to reliably illuminate your dark statistical world of not-yet understood data.
 
 # What's a Cumulative Distribution Function?
 
-I've been working in commerical data science applications for 4+ years now, and I can tell you--I rarely see CDFs, except on my own screen. So, in case you're not familiar, let's take some time to explain:  
+I've been working in commerical data science applications for 4+ years now, and I can tell you--I rarely see CDFs, except on my own laptop. So, in case you're not familiar, let's take a moment to explain:  
 
-While a Probability Distribution Function (PDF) measures `P(x=0)` for some probability function `P` over some support variable `x`, a CDF measures `P(x<0)` for that same probability function `P` over the same support `x`. Or, for the calculus fans in the audience, a CDF is the integral of the PDF. A histogram is an approximation of the underlying PDF of some empirical column or feature in our data.
+While a Probability Distribution Function (PDF) measures `P(x=0)` for some probability function `P` over some support variable `x`, a CDF measures `P(x<0)` for that same probability function `P` over the same support `x`.  
 
+Or, for the calculus fans in the audience, a CDF is the integral of the PDF.  
+<iframe src="https://math.embed.fun/embed/jekWHsynLThYAB8hiQ3jJu" frameborder="0" width="200" height="155"></iframe>
 
+Most typically, we estimate the PDF of some empirical column or feature in our data by plotting histograms. Histograms can be nice in their immediate visual interpretability, but the list of reasons ends there. It pays to learn to love CDFs, and I can convince you in 7 reasons:  
 
+# 7 Reasons Why CDFs Render Histograms Obsolete
 
-# 7 Reasons Why CDFs Are the Best Tool for Understanding Your Data's Distribution
+Disclaimer: of course, there's more to the plotting world than PDFs and CDFs. For example, scatter plots serve quite a different function to PDFs and CDFs, in that they are mostly used for getting a first look at the relationship between two variables.  
 
-Of course, there's more to the plotting world than PDFs and CDFs. For example, scatter plots serve quite a different function to PDFs and CDFs, in that they are unmatched in their ability for getting a first look at correlation, and the relationship between two variables.  
-But, if your goal is to understand your data's distribution, then there's simply no match for the CDF.
+That said, if your goal is to understand your data's distribution, then there's simply no match for the CDF. So, without further ado:
 
-## 1. Key Values are Obvious
-I almost forgot to mention--yes, the box and whisker plot is utterly useless; it is but a shadow of the CDF.
+## 1. Key Values Become Immediately Obvious
+With all this talk of histograms, I almost forgot to mention--yes, the box and whisker plot is utterly useless; it is but a shadow of the CDF.
 
 ## 2. The Perils of Binning Artifacts, and the Disappearance of Multi-Modality
 ...  
-You might be wondering to yourself now, "but can't I just decrease the bin size, and then the binning artifacts are gone?" Yes, you can! But you can only reduce the bin size as much as your data volume allows you to, which brings me to my next point.
+You might be wondering to yourself now, "but can't I just decrease the bin size, and then the binning artifacts are gone?" Yes, you can! But you can only reduce the bin size as much as your data volume allows you to, which brings me to my next point:
 
-## 3. CDFs Remain High-Integrity Under Low Data Volume.
-## 4. Pontificating on the data's underlying Statistical Distribution Becomes Much More Productive.
+## 3. CDFs Remain Relatively High-Integrity Under Low Data Volume.
+## 4. Pontificating on Your Data's Underlying Statistical Distribution Becomes Much More Productive.
 ## 5. Missing Values and Outliers are Self-Evident.
 ## 6. Distribution Comparisons are Simply Easy.
 ## 7. The Data Tells You All its Secrets.
