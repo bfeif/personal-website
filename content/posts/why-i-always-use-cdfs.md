@@ -17,7 +17,7 @@ keywords:
 
 https://www.andata.at/en/software-blog-reader/why-we-love-the-cdf-and-do-not-like-histograms-that-much.html
 
-The modern data scientist lives in an ocean of plotting techniques. From matplotlib to ggplot2; from plotly to d3.js; from histograms, to box and whisker plots, to scatter plots, to whatever crazy chart seaborn comes up with next; it can be hard for novice data scientists to make sense of it all, drowning under all these different plotting tools! 
+The modern data scientist swims in an ocean of plotting techniques. From matplotlib to ggplot2; from plotly to d3.js; from histograms, to box and whisker plots, to scatter plots, to whatever crazy chart seaborn comes up with next; it can be hard for novice data scientists to make sense of it all, drowning under all these different plotting tools! 
 
 --> insert image of raining plot types.
 
@@ -27,7 +27,9 @@ But not to worry--let Cumulative Distribution Functions (CDFs) be your life-jack
 
 I've been working in commerical data science applications for 4+ years now, and I can tell you--I rarely see CDFs, except on my own laptop. So, in case you're not familiar, let's take a moment to explain:  
 
-While a Probability Distribution Function (PDF) measures `P(x=0)` for some probability function `P` over some support variable `x`, a CDF measures `P(x<0)` for that same probability function `P` over the same support `x`.  
+While a Probability Distribution Function (PDF) measures `P(x=X)` for a random draw `x` from some probability function `P` over some support variable `X`, a CDF measures `P(x<X)` for that same probability function `P` over the same support `X`.  
+
+
 
 Or, for the calculus fans in the audience, a CDF is the integral of the PDF.  
 <iframe src="https://math.embed.fun/embed/jekWHsynLThYAB8hiQ3jJu" frameborder="0" width="200" height="155"></iframe>
