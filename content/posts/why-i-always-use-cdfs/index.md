@@ -59,16 +59,16 @@ What do I mean when I say "Key Quartile Values"? I mean:
 - 75th percentile value of the data;
 - 100th percentile value (i.e. maximum) of the data
 
-This information is readily available in both box and whisker plots and CDFs, but it is quite ambiguous in histograms:
+This information is readily available in both Box Plots and ECDFs, but it is quite ambiguous in histograms:
 
 ![PDF and Histogram of Normal Distribution](/images/normal-histogram-boxplot-ecdf.png "PDF and Histogram of Normal Distribution")
 
 And there it is. We can see:
-- from the box and whisker plot, that the 25th percentile is about `-0.6`, the median `0`, and the 75th percentile about `0.6`;
+- from the Box plot, that the 25th percentile is about `-0.6`, the median `0`, and the 75th percentile about `0.6`;
 - from the ECDF, the 25th percentile is about `-0.6`, the median `0`, and the 75th percentile about `0.6`;
 - from the histogram... well, we can't really see much. We can guess that the median is at about `0`, but that's about it, and it's only really because of the symmetry of the data.
 
-That's right! With all this talk of histograms, I forgot to mention: the box and whisker plot is decidedly redundant! Though it's true that it can do something that the histogram cannot, it is but a shadow of the CDF.
+That's right! With all this talk of histograms, I forgot to mention: the Box Plot is decidedly redundant! Though it's true that it can do something that the histogram cannot, it is but a shadow of the CEDF.
 
 ## 2. ECDFs Remain Relatively High-Integrity Under Low Data Volume.
 So far in this article, we've only considered data of `10,000` draws from a normal distribution. How do things start to look when we decrease the amount of data? Let's have a look:
@@ -76,53 +76,64 @@ So far in this article, we've only considered data of `10,000` draws from a norm
 
 Histograms do a pretty good job of estimating the latent PDF for `10000` draws, and even for `1000` draws; but at `100` draws, it's starting to look a bit dubious. In fact, I can't with much confidence say anymore that it's a normal distribution. The ECDFs, however, remain far more robustly adherent to the underlying CDF, even still at `100` draws!  
 
-You might be wondering to yourself now, "But Ben, why don't we just increase the bin size? Wouldn't that smoothen the histogram, and then it would look like our latent normal distribution again?" Yes, it would, but that introduces a myriad of other issues:
+You might be wondering to yourself now, "But Ben, why don't we just increase the bin size? Wouldn't that smoothen the histogram, and then it would look like our latent normal distribution again?" Yes, it would, but that introduces other issues:
 
 ## 3. With Histograms, You Never Know How Many Bins to Use
-Well, let's indulge ourselves for a moment: what would the histogram from above look like if we decreased the bin size?
+Well, let's indulge ourselves for a moment: what would the histogram from above look like if we decreased the number of bins?
 ![Histogram and CDF by n_bins](/images/normal-histogram-ecdf-by-n-bins.png "Histogram and CDF by n_bins")
 While the 7-bin histogram is still not quite convincingly the normal distribution that we know it to be, it's nonetheless more convincing than the 25-bin histogram. But here's the thing: regardless of how good the histogram _can_ look (so long as you get the number of bins right) an ECDF doesn't require this guessing game of number of bins at all!  
 ![How Many Bins?](/images/how-many-bins.png "How Many Bins?")  
 
-## 4. The Perils of Binning Bias, or "Where'd My Outlier Go?"
-Let's say you still want to use a histogram. So, you just decrease the bin size to accommodate whatever your data volume is, until you get it looking perfect.
+https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width
+
+## 4. The Perils of Binning Bias, or "Are You My Outlier?"
+Let's say you still want to use a histogram. So, you simply decrease the bin size to accommodate whatever your data volume is, until you get it looking perfect.
 
 --> insert chef's kiss meme
 
-If so, then be careful: if your data has outliers, then your histogram might just lie to you.
+If so, then be warned: if your data has outliers, then your histogram might be lying to you.
 
 In the following charts, I've taken the same Gaussian sampled data from above, but manually added an outlier. Let's see how the outlier looks, depending on the number of bins:
 ![Histogram and CDF by n_bins](/images/normal-histogram-ecdf-by-n-bins-w-outlier.png "Histogram and CDF by n_bins, with Outlier")  
 Depending on the number of bins, the perceived nature of the outlier and the latent distribution underlying the data completely changes:
-- When we use `25` bins, we see an outlier out at `X = 11`. But, the bins are a bit noisy; perhaps it's not truly an outlier, so we decrease to `7` bins.
-- When we use `7` bins, the hypothesized PDF is now smooth, but now the outlier is out at `X = 10`. What happened? Where exactly in the bin is the outlier? Is it even an outlier?
+- When we use `25` bins, we see an outlier out at `X = 11`. But, the bins appear a bit noisy, so we decrease to `7` bins.
+- When we use `7` bins, the hypothesized PDF is smooth, but now the outlier is out at `X = 10`. What happened? Where exactly in the bin is the outlier? Is it even an outlier?
 - When we decrease to `3` bins, the outlier skews the entire distribution, because the bins have to make up for all the space between the distribution mean of `0` and the outlier location of `11`. Looking at the `3` bins distribution, we are no longer sure--is it even a normal distribution?
 
 With the histograms, we saw the outlier creep closer and closer to the main body of the distribution as the number of bins decreases. However, if we look to the corresponding ECDFs, there is no ambiguity whatsoever: by `X = 2.5`, we've seen 99% of the data; then, the CDF traces out a long line to get to the singular outlier at a value of `X = 11`. Voila!
 
-## 5. Visualization Becomes an Artistically Trivial Endeavour.
-It's often said that "data scientists are storytellers", and the longer I work in data science, the more I believe this to be true.
+## 5. Comparing Empirically Distribution Becomes More Straightforward, both Mathematically and Visually.
 
-We as a data scientists must not only clean data, define metrics, train and deploy models, build data pipelines, and so much more. We also must communicate to our less-technical stakeholders the truth, utility, and business value of our results. To accomplish this endeavour, we weave our insights into compelling stories, ingestible to audiences of all technical levels.  
+Don't take it from me, though; take it from Andrey Kolmogorov and Nikolai Smirnov, the creators of the Kolmogorov-Smirnov Test (K-S Test), one of the most commonly used tests for comparing two empirical distributions. From [Wikipedia](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test):
 
-When all's said and done, these stories turn out more like picture-books than stories, filled with color-coded charts, graphs, and tables. And, a piece of information we often try to communicate is the distribution of some data. And how do we do this? With histograms that end up looking something like this:
+> _In statistics, the Kolmogorov–Smirnov test (K-S test or KS test) is a nonparametric test of the equality of continuous, one-dimensional probability distributions that can be used to compare a sample with a reference probability distribution (one-sample K–S test), or to compare two samples (two-sample K–S test)..._
+> 
+> _...The Kolmogorov–Smirnov statistic quantifies a distance between the \[ECDF\] of the sample and the \[CDF\] of the reference distribution, or between the \[ECDFs\] of two samples..._
+> 
+> _...Intuitively, the \[K-S\] statistic takes the largest absolute difference between the two distribution functions across all x values, \[represented by the black arrow in following image\]..._
+>
+> ![KS Statistic](https://upload.wikimedia.org/wikipedia/commons/c/cf/KS_Example.png "KS Statistic")
 
-How does
+ECDFs are not only useful for visual comparisons; they are also useful for statistical comparisons. Histograms, however, by necessitating aggregation-by-binning, are strictly visual tools.
 
-## 6. Postulating about Your Data's Underlying Statistical Distribution Becomes Much More Productive.
+But even as visual comparison tools, ECDFs are just as performant as histograms, if not more so.
 
-Even the Kolmogorov-Smirnov Test agrees!
+Take, for example, data about people's heights and genders from a [dataset of all athletes from the 2016 Rio de Janeiro Olympics, hosted on Kaggle](https://www.kaggle.com/datasets/rio2016/olympic-games). In particular, let's see how heights compare across Male and Female sexes:
 
-## 7. The Data Tells You All its Secrets.
-When you remove 
+![Athlete Height Histogram Visualization Comparison](/images/athlete-height-histogram-visualization-comparison.png "Athlete Height Histogram Visualization Comparison")
 
-# The Singular Pitfall of ECDFs
-I believe there's a simple reason that ECDFs aren't so popular in commercial data science: communication.  
+[Seaborn gives the four methods above for cmoparing two histograms](https://seaborn.pydata.org/generated/seaborn.histplot.html). Which one looks the best? Stacking bars, or showing them side by side? With ECDFs, there's one clear method:
 
-The first time I showed a CDF to my product manager, I dove into an explanation of the distribution of the data, my hypotheses for the observed phenomena, everything. She paused for five seconds, and said to me "um... what am I looking at?".  
+![Athlete Height ECDF](/images/athlete-height-ecdf.png "Athlete Height ECDF")
 
-I certainly learned my lesson on that one.  
+There's simply no ambiguity.
 
-And, while I'd like to say I never make the same mistake twice, it's definitely taken me some years to become effective at what I believe to be the most difficult job we must do as data scientists: communicating technical material to non-technical stakeholders. After learning my lesson, now, when I communicate CDFs to non-technical stakeholders, I take twenty seconds to carefully guide them through how the ECDF works. And then we can have a more fruitful conversation. 
 
-https://www.andata.at/en/software-blog-reader/why-we-love-the-cdf-and-do-not-like-histograms-that-much.html
+## 6. The Data Tells You All its Secrets.
+When we include all these things together, an ECDF tells you everything you need to know about a dataset:
+- the key quartile values;
+- the distribution shape;
+- any outliers;
+- how the dataset compares to other datasets, or to theoretical distributions.
+
+With all this, the ECDF is a looking glass, through which a dataset can reveal all its secrets, unobfuscated by any binning.
