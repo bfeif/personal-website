@@ -1,2 +1,6 @@
 .DS_Store
 .idea/
+code/.venv/
+code/.ipynb_checkpoints/
+code/notebooks/.ipynb_checkpoints/
+code/data/

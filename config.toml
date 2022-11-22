@@ -4,7 +4,6 @@ languageCode = 'en-us'
 title = 'Call me Ben'
 theme = "cactus"
 gravatar = "benfeifke@gmail.com"
-# disqusShortname = "benfeifke"
 googleAnalytics = "G-CXBJ7FZNWP" # or G-XXXXXXXX if you are using Google Analytics v4 (gtag.js)
 
 # Main menu which appears below site header.
@@ -17,11 +16,6 @@ weight = 1
 name = "Writings"
 url = "/posts"
 weight = 2
-
-# [[menu.main]]
-# name = "Tags"
-# url = "/tags"
-# weight = 3
 
 [[menu.main]]
 name = "About"
@@ -39,16 +33,16 @@ weight = 4
   # mathjax = true
 
 [[params.social]]
-  name = "github"
-  link = "https://github.com/bfeif"
-
-[[params.social]]
   name = "email"
   link = "benfeifke@gmail.com" # no need for "mailto:" at the start
 
 [[params.social]]
   name = "linkedin"
   link = "https://www.linkedin.com/in/benjamin-feifke/"
+
+[[params.social]]
+  name = "github"
+  link = "https://github.com/bfeif"
 
 [[params.social]]
   name = "youtube"
