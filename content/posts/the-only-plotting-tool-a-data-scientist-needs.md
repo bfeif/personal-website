@@ -16,7 +16,7 @@ keywords:
 ---
 ***After reading this article, you'll never use a histogram again.***
 
-The modern data scientist swims in an ocean of plotting techniques. From matplotlib to ggplot2; from plotly to d3.js; from histograms, to box plots, to scatter plots, to whatever crazy chart seaborn comes up with next; it can be hard for data scientists to make use of it all!  
+The modern data scientist swims in an ocean of plotting techniques. From matplotlib to ggplot2; from plotly to d3.js; from histograms, to box plots, to scatter plots, to whatever crazy chart seaborn comes up with next; it can be hard for data scientists to make sense of it all!  
 
 ![Raining Plot Types](/images/raining-plot-types.png "Raining Plot Types, modified from https://publicdomainvectors.org/en/free-clipart/Umbrella-kid/83011.html")
 
@@ -66,7 +66,7 @@ plt.show()
 
 ![PDF and Histogram of Normal Distribution](/images/normal-pdf-histogram-and-ecdf-cdf.png "PDF and Histogram of Normal Distribution")
 
-Histograms can be nice in their immediate visual interpretability, but the list of reasons ends there. It pays to learn to love ECDFs, and I can convince you in 5 reasons.
+Histograms can be nice in their immediate visual interpretability, but their list of benefits ends there. It pays to learn to love ECDFs, and I can convince you in 5 reasons.
 
 # 5 Reasons Why ECDFs Render Histograms Obsolete
 
@@ -104,7 +104,7 @@ Let's indulge ourselves for a moment: what would the histogram from above look l
 While the 7-bin histogram is still not quite convincingly the normal distribution that we know it to be, it's nonetheless more convincing than the 25-bin histogram. But here's the thing: regardless of how good the histogram _can_ look if you get the number of bins right, an ECDF doesn't require this guessing game at all!  
 ![How Many Bins?](/images/how-many-bins.png "How Many Bins?")  
 
-In this sense, "number of bins" or "bin size" becomes a type of a hyperparameter. And Exploratory Data Analysis is a time for understanding your data in all its richness as quickly and effectively as possible; it's not a time for tuning hyperparameters.
+In this sense, "number of bins" or "bin size" becomes a sort of hyperparameter. And Exploratory Data Analysis is a time for understanding your data in all its richness as quickly and effectively as possible; it's not a time for tuning hyperparameters.
 
 ## 4. The Perils of Binning Bias, or "Are You My Outlier?"
 Let's say you still want to use a histogram. So, you simply decrease the bin size to accommodate whatever your data volume is, until you get it looking perfect.
@@ -117,10 +117,10 @@ In the following charts, I've taken the same Gaussian sampled data from above, b
 ![Histogram and CDF by n_bins](/images/normal-histogram-ecdf-by-n-bins-w-outlier.png "Histogram and CDF by n_bins, with Outlier")  
 Depending on the number of bins, the perceived nature of the outlier and the latent distribution underlying the data completely changes:
 - When we use `25` bins, we see an outlier out at `X = 10`. But, the bins appear a bit noisy, so we decrease to `7` bins.
-- When we use `7` bins, the hypothesized PDF is smooth, but now the outlier is out at `X = 10`. What happened? Where exactly in the bin is the outlier? Is it even an outlier?
-- When we decrease to `3` bins, the outlier skews the entire distribution, because the bins have to make up for all the space between the distribution mean of `0` and the outlier location of `11`. Looking at the `3` bins distribution, we are no longer sure: is it even a normal distribution?
+- When we use `7` bins, the hypothesized PDF is smooth, but now the outlier is out at `X = 9`. What happened? Where exactly in the bin is the outlier? Is it even an outlier?
+- When we decrease to `3` bins, the outlier skews the entire distribution, so much so that it doesn't even look like an outlier anymore! It also becomes dubious: might this not be a normal distribution? Is it exponential or log-normal?
 
-With the histograms, we saw the outlier creep closer and closer to the main body of the distribution as the number of bins decreases. However, if we look to the corresponding ECDFs, there is no ambiguity whatsoever: by `X = 2.5`, we've seen 99% of the data; then, the CDF traces out a long, almost horizontal line to get to the singular outlier at a value of `X = 10`. Voila!
+With the histograms, we see the outlier creep closer and closer to the main body of the distribution as the number of bins decreases. However, if we look to the corresponding ECDFs, there is no ambiguity whatsoever: by `X = 2.5`, we've seen 99% of the data; then, the CDF traces out a long, almost horizontal line to get to the singular outlier at a value of `X = 10`. Voila!
 
 ## 5. Comparing Empirical Distributions Becomes More Straightforward, both Mathematically and Visually
 
@@ -138,7 +138,7 @@ ECDFs are not only useful for visual comparisons; they are also useful for stati
 
 But even as visual comparison tools, ECDFs are just as performant as histograms, if not more so.
 
-Take, for example, data about people's heights and genders from a [dataset of all athletes from the 2016 Rio de Janeiro Olympics, hosted on Kaggle](https://www.kaggle.com/datasets/rio2016/olympic-games). In particular, let's see how heights compare across Male and Female sexes:
+Take, for example, data about people's heights and genders from a [dataset of all athletes from the 2016 Rio de Janeiro Olympics, hosted on Kaggle](https://www.kaggle.com/datasets/rio2016/olympic-games). In particular, let's see how heights compare across Male and Female sexes, using [Seaborn's four different methods for comparing two histograms](https://seaborn.pydata.org/generated/seaborn.histplot.html):
 
 ```python
 # Import and load.
@@ -161,7 +161,7 @@ plt.show()
 
 ![Athlete Height Histogram Visualization Comparison](/images/athlete-height-histogram-visualization-comparison.png "Athlete Height Histogram Visualization Comparison")
 
-[Seaborn gives the four methods above for comparing two histograms](https://seaborn.pydata.org/generated/seaborn.histplot.html). Which one looks the best? Stacking bars, or showing them side by side? With ECDFs, there's one clear method:
+Which one looks the best: showing bars side by side, overlapping bars, stacking bars, or the nauseating "fill" approach all the way on the right? With ECDFs, there's one clear method:
 
 ```python
 # Plot a separate distribution for each sex.
@@ -187,12 +187,12 @@ When we include all these things together, an ECDF tells you everything you need
 - the key quartile values;
 - the distribution shape;
 - precisely where any outliers are;
-- how the data compares to other data, or to theoretical distributions.
+- how the data compares to other data, or to theoretical distributions;
+
+...and it does so with incomparable clarity and beauty.
 
 With all this, the ECDF is a looking glass through which a dataset can reveal to you all its secrets, unobfuscated by any binning.  
 
-Of course, ECDFs and histograms have many brother and sistograms: there are other plotting tools out there, many of which serve vastly different functions. For just one example, scatter plots serve quite a different function to histograms and ECDFs, in that they are mostly used for getting a first look at the relationship between two variables. That said, if your goal is to gain a full understanding of one column's distribution, then there's simply no match for the ECDF.  
-
-Still planning on using histograms? Let me know why in the comments!
+Of course, ECDFs and histograms still have many brother and sistograms: there are other plotting tools out there, many of which serve vastly different functions. For just one example, scatter plots are mostly used for getting a first look at correlation between two joint columns of data, something which histograms and ECDFs can't do. That said, if your goal is to gain a full understanding of one column of data in all its peculiarities, or to compare two columns' empirical distributions, then there's simply no match for the ECDF.  
 
 PS: All code used in the creation of this post can be found [here](https://github.com/bfeif/personal-website/blob/main/code/notebooks/why-i-always-use-cdfs.ipynb).
