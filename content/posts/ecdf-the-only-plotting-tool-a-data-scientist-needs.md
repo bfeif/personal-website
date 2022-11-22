@@ -1,7 +1,7 @@
 ---
 title: "ECDF: The Only Plotting Tool a Data Scientist Needs"
 date: 2022-11-22T09:47:45+02:00
-draft: true
+draft: false
 tags:
     - math
     - language
