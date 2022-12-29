@@ -19,7 +19,7 @@ keywords:
 
 We all have different reasons for learning a language: for some, a job or an opportunity might have brought them to a country where they don't speak the language; for others, it could be an effort to learn more about our own ancestry; and still for others (like myself), it could be to get closer to one's partner's family. But for many of us, our diverse reasons source from the same common goal - *we want to build inter-cultural relationships*.
 
-Regardless of how we approach it - with books, courses, teachers, online, language partners, grammar resources, etc - learning a language is a journey of understanding, getting to know, or even becoming one with a culture.
+Regardless of how we approach it - with books, courses, teachers, online, language partners, grammar resources, etc - learning a language is inextricably tied with a journey of understanding, getting to know, or even becoming one with a culture. Insofar as these two journeys are linked, it follows that as your language skills advance, the social and cultural situations that you are exposed to advance as well.
 
 These 7 social situations, ranked by difficulty, will most certainly be encountered along your language-learning journey. For me, they provide stepping stones for that journey, and in my opinion, they must be overcome in order to truly master a language:
 
@@ -29,23 +29,24 @@ These 7 social situations, ranked by difficulty, will most certainly be encounte
 4. Explain to somebody why you are learning their language.
 5. Learn a song by heart.
 6. Tell a joke that somebody laughs at.
-7. Win a political or philosophical debate.
+7. Get into a political or philosophical debate.
+8. Tell a joke that somebody laughs at in a group conversation.
 
-I chose these 7 social situations for very specific reasons. Read on to find out why...
+I chose these 8 social situations for very specific reasons. Read on to find out why...
 
 ## 1. Buy a Coffee at a Coffee Shop
 This is level 1. You've just arrived to a new country, and you need your caffeine! You require just some basic vocabulary and grammar; you don't even need much in terms of listening comprehension skills! It also helps that you're basically paying the cashier to listen to you :P (Note: this social situation works just as well with beer, soda, or water).
 
 ## 2. Order Food at a Restaurant
-This is similar to buying a coffee at a coffee shop, but it's a bit more complicated! You'll need to be able to read and understand a menu, and you'll need to have a bit deeper of a conversation than you had with the coffee-shop cashier.
+This is similar to buying a coffee at a coffee shop, but it's a bit more complicated! You'll need to be able to read and understand a menu, and you'll need to have a bit deeper of a conversation than you had with the cashier at the coffee-shop.
 
 ## 3. Ask Somebody About Their Day, and Ask Them At Least One Follow-up Question.
 Things are starting to get interesting now; you can be understood by cashiers, waiters, and waitresses, and that's no small feat! So people can understand you, but can you understand others? This social situation is the first step towards building relationships in your target language. In order to do so, you need to be able to listen, understand, and respond.
 
 ## 4. Explain to Somebody Why You Are Learning Their Language.
-When we meet people and unexpectedly speak to them in their mother tongue, they are usually pleasantly surprised! Especially if they can't speak our mother tongue, and so it's the only way that we can communicate. And so, one of the most common questions we get asked is an excited "hey! why do you speak Portuguese/Hebrew/German?".
+When we meet people and unexpectedly speak to them in their mother tongue, they are usually pleasantly surprised! And so, one of the most common questions we get asked is an excited "hey! why do you speak Portuguese/Hebrew/German?".
 
-Answering this common question will force you to discuss your background, your story, use multiple verb-tenses, and use vocabulary that is probably quite important to you (e.g. vocabulary about where you're from, what you do, important relationships, etc). This is your first step to constsructing long-form speech, and is the second step for building relationships in your target language.
+Answering this common question will force you to discuss your background, your story, use multiple verb-tenses, and use vocabulary that is probably quite important to you (e.g. vocabulary about where you're from, what you do, important relationships, etc). This is your first step to constructing long-form speech, and is the second step for building relationships in your target language.
 
 ## 5. Learn a Song by Heart.
 Yes, I know, this isn't truly a social situation! I had to include it, though, because learning music is a great way to learn a language, for so many reasons:
@@ -60,7 +61,7 @@ Committing a song in your target language to memory requires a moderately advanc
 ![Cultural Iceberg](/images/cultural-iceberg.png "Cultural Iceberg, from https://yfci.org/story/the-cultural-iceberg-tcks/")
 
 ## 6. Tell a Joke that Somebody Laughs at.
-What is a joke, really? A joke - whether it derives its humor from pun, word play, irony, or sarcasm - is, by defintion, a non-conventional usage of language. When you tell a joke, you're testing the limits of a language, purposefully using it incorrectly!
+What is a joke, really? A joke - whether it derives its humor from pun, word play, irony, or sarcasm - is, by definition, a non-conventional usage of language. When you tell a joke, you're testing the limits of a language, purposefully using it incorrectly!
 
 Whenever I've told a joke early on in learning a language, the person I'm telling it to usually corrects my speech: _"actually"_, they say, _"you wouldn't say it like that"_; to which I invariably say _"I know... it was a joke"_; to which they force out a laugh and a _"oh, I didn't realize!"_.
 
@@ -73,11 +74,19 @@ Conquering this social situation requires two particular aptitudes in your targe
 
 In the early days of learning a language, you learn vocabulary like "book", "to buy", "to drink". Once you're approaching fluency, however, you learn vocabulary like "vote", "paradigm", or even names of the local political parties, and teachings of great thinkers who are pivotal to the culture of your target language.
 
-To have a poltical or philosophical debate requires that you can ask thought-provoking, engaging questions in your target language that are culturally assimilated. It also requires a number of language- and culture-specific skills, including tone, body-language, and knowing when it is and isn't okay to interrupt someone. It requires that the language flows seamlessly through you; it requires that the language has become a user of you, and not only that you are a user of the language; it requires fluency.
+To have a political or philosophical debate requires that you can ask thought-provoking, engaging questions in your target language that are culturally assimilated. 
+
+## 8. Tell a Joke that Somebody Laughs at in a Group Conversation.
+
+This is the boss level. Group conversations can be hard enough in your native language, let alone in a foreign language--when do you enter the conversation? Are you talking too much? Are you not talking enough? Is it appropriate to make a joke here?
+
+Beyond the skills necessary to tell a joke, this social situation requires that you can follow the tempo of a group conversation. It requires a number of language- and culture-specific skills, including tone, body-language, and knowing when it is and isn't okay to interrupt someone. It requires that the language flows seamlessly through you; it requires that the language has become a user of you, and not only that you are a user of the language; it requires fluency.
 
 # Conclusion
 
-These are my 7 steps to learn a language, and I've used it to learn Spanish, Portuguese, German (for which I'm working on #6), and Hebrew (for which I'm working on #4). How you move from social situation to social situation is up to you!
+You might note that the last three social situations are outcome-based goals, rather than action-based goals. And this is intentional! Back when I was learning Portuguese, people would often ask me "are you fluent?", to which I would turn to my Brazilian friend and say "do you think I'm fluent?". The best judges of whether or not you've mastered a language will always be the native speakers.
+
+These are my 8 steps to learn a language, and I've used it to learn Spanish, Portuguese, German (for which I'm working on #6), and Hebrew (for which I'm working on #5). How you move from social situation to social situation is up to you!
 
 Happy learning!
 
