@@ -33,6 +33,8 @@ In this article, I'll explain:
     2. `.scan_parquet()` and `.sink_parquet()`;
     3. Data-oriented programming.
 
+![Panda vs Polar](/images/panda-vs-polar.png)
+
 ## Introducing Polars: The Fastest Python Dataframe Library That You've (Maybe) Never Heard Of.
 
 Maybe you've heard of `Polars`, maybe you haven't! Either way it's slowly taking over Python's data-processing landscape, starting right here on Towards Data Science...
@@ -89,7 +91,7 @@ If you're like me, you're probably wondering, "why do I have to use the `.str` n
 
 ![Unveil Mask Meme](/images/pandas_array_str_meme.jpg)
 
-`Pandas` makes it work, but the `.str` can't do all `list` operations that one might desire. In `Polars`, however, this is not a problem. By conforming to Apache Arrow's columnar data format, `Polars` has all standard data-types, and appropriate namespaces for handling all of them -- including `list`s:
+Unfortunately, `Pandas`'s `.str` namespace can't do all `list` operations that one might desire. In `Polars`, however, this is not a problem. By conforming to Apache Arrow's columnar data format, `Polars` has all standard data-types, and appropriate namespaces for handling all of them -- including `list`s:
 
 ```python
 import polars as pl
@@ -131,9 +133,11 @@ for o in [column_name_indexer, boolean_mask_indexer, slice_indexer]:
     print(df[o])
 ```
 
-In this code snippet, the same Pandas syntax `df[...]` can do three distinct operations: retrieving a column of the dataframe, performing a row-based boolean mask on the dataframe, and retrieving a slice of the dataframe by index.
+In this code snippet, the same `Pandas` syntax `df[...]` can do three distinct operations: retrieving a column of the dataframe, performing a row-based boolean mask on the dataframe, and retrieving a slice of the dataframe by index.
 
-In Pandas, you can't do everything (for example, `Polars` has a `struct` data-type for handling `dict` columns, unlike `Pandas`), and for the things that you can do, there's sometimes multiple ways to do them! Compare this with `Polars`, where you can do everything, the data-types are clear, and there's usually only one way to do the same thing.
+Another troubling example is that, to process `dict` columns with `Pandas`, you usually have to do a costly `apply()` function; `Polars`, on the other hand, has a `struct` data-type for handling `dict` columns directly!
+
+In `Pandas`, you can't do everything you want, and for the things that you can do, there's sometimes multiple ways to do them. Compare this with `Polars`, where you can do everything, the data-types are clear, and there's usually only one way to do the same thing.
 
 ### 2. `.scan_parquet()` and `.sink_parquet()`
 
@@ -141,9 +145,9 @@ One of the best things about `Polars` is the fact that it offers two API's: an e
 
 The eager API runs all commands in-memory, like `Pandas`.
 
-The lazy API however, does everything only when explicitly asked for a response (e.g. with a `.collect()` statement), like `dask`. And, upon being asked for a response, `Polars` will lean on its query optimization engine to get you your result in the fastest time possible.
+The lazy API, however, does everything only when explicitly asked for a response (e.g. with a `.collect()` statement), a bit like `dask`. And, upon being asked for a response, `Polars` will lean on its query optimization engine to get you your result in the fastest time possible.
 
-Consider the following code snippet, comparing the `Polars` eager `DataFrame` to its lazy counterpart `LazyFrame`:
+Consider the following code snippet, comparing the syntax of the `Polars` eager `DataFrame` to that of its lazy counterpart `LazyFrame`:
 
 ```python
 import polars as pl
@@ -157,7 +161,7 @@ lazy_df = pl.LazyFrame({
 })
 ```
  
-The syntax is remarkably similar! In fact, the only major difference between the eager API and the lazy API is in dataframe creation, reading, and writing:
+The syntax is remarkably similar! In fact, the only major difference between the eager API and the lazy API is in dataframe creation, reading, and writing, making it quite easy to switch between the two:
 
 |                        | **Eager API**   | **Lazy API**   |
 |------------------------|-----------------|----------------|
@@ -172,15 +176,17 @@ And that brings us to `.scan_parquet()` and `.sink_parquet()`.
 [By using `.scan_parquet()` as your data input function, `LazyFrame` as your dataframe, and `.sink_parquet()` as your data output function, you can process larger than memory datasets!](https://pola-rs.github.io/polars-book/user-guide/lazy-api/streaming.html) Now that's cool, especially when you compare it with what the creator of `Pandas` himself, Wes McKinney, has said about `Pandas`'s memory footprint:
 > _["my rule of thumb for pandas is that you should have 5 to 10 times as much RAM as the size of your dataset"](https://wesmckinney.com/blog/apache-arrow-pandas-internals/)._
 
+![Anaking Padme large dataframe meme](/images/anakin-padme-pandas-large-dataframe-meme.jpg)
+
 ### 3. Data-Oriented Programming
 
 `Pandas` treats dataframes like objects, enabling Object-Oriented Programming; but `Polars` treats dataframes as data tables, enabling Data-Oriented Programming.
 
 Let me explain.
 
-With dataframes, most of what we want to do is run queries or transformations; we want to add columns, pivot along two variables, aggregate, group by, you name it. Even when we want to randomly subset a dataset into train and test for training and evaluating a machine learning model, those are query expressions in their nature.
+With dataframes, most of what we want to do is run queries or transformations; we want to add columns, pivot along two variables, aggregate, group by, you name it. Even when we want to randomly subset a dataset into train and test for training and evaluating a machine learning model, those are SQL-like query expressions in nature.
 
-And it's true -- with `Pandas`, you can do most of what you want to do to transform, manipulate, and query your data. However, frustratingly, some transformations and queries simply cannot be done in one line of code, or one query, if you will. They require multiple lines, and this can make things messy. Consider the following code snippet, where we have a dataframe of people and their ages, and we want to see how many people there are in each decade:
+And it's true -- with `Pandas`, you can do most of the transformations, manipulations, and queries on your data that you would want. However, frustratingly, some transformations and queries simply cannot be done in one expression, or one query if you will. Unlike other query and data-processing languages like SQL or Spark, many queries in `Pandas` require multiple successive, distinct assignment operations, and this can make things messy. Consider the following code snippet, where we have a dataframe of people and their ages, and we want to see how many people there are in each decade:
 ```python
 import pandas as pd
 df = (
@@ -202,9 +208,9 @@ print(decade_counts)
      10    1
      40    1
 ```
-There's no way around it -- we have to do our query in three lines of code. We could have used the rarely seen [`.assign()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.assign.html) operator to get it to two lines of code, but no less!
+There's no way around it -- we have to do our query in three lines of code. To get it down to two operations, we could have used the rarely seen [`.assign()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.assign.html) operator in place of the `df["decade"] = ...` operation, but that's it! It might not seem like a big problem here, but when you find yourself needing seven, eight, nine successive assignment operations to get the job done, things can start to get a bit unreadable and hard to maintain.
 
-In `Polars`, this whole thing is just one line of code:
+In `Polars`, though, this query can be cleanly written as one expression:
 
 ```python
 import polars as pl
@@ -235,20 +241,25 @@ print(decade_counts)
 
 So smooth.
 
-You might read that and think to yourself "why do I want to do everything in one line of code though?". It's true, maybe you don't. After all, many data pipelines use intermediate queries, save intermediate results to tables, and query those intermediate tables to get to the final result.
+You might read that and think to yourself "why do I want to do everything in one expression though?". It's true, maybe you don't. After all, many data pipelines use intermediate queries, save intermediate results to tables, and query those intermediate tables to get to the final result, or even to monitor data quality.
 
-But, like SQL, Spark, or other non-`Pandas` data-processing tools, `Polars` gives you 100% flexibility to break your query where you want to in order to maximize readability, while `Pandas` forces you to break your query according to its API's limitations. This is a huge boon not only for code-readability, but also for ease of development!
+But, like SQL, Spark, or other non-`Pandas` data-processing languages, `Polars` gives you 100% flexibility to break up your query where you want to in order to maximize readability, while `Pandas` forces you to break up your query according to its API's limitations. This is a huge boon not only for code-readability, but also for ease of development!
 
-And if you use the lazy API with `Polars`, then you can break your query wherever you want, into as many parts as you want, and the whole thing will be optimized into one query under the hood anyway.
+Further still, as an added bonus, if you use the lazy API with `Polars`, then you can break your query wherever you want, into as many parts as you want, and the whole thing will be optimized into one query under the hood anyway.
 
 ## Conclusion
 
-What I've discussed in this article is just a glimpse into the superiority of the `Polars` API; there remain still many functions in `Polars` that harken to SQL, Spark, and other cross-platform data-centric tools (e.g. [`pipe()`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.pipe.html#polars.DataFrame.pipe), [`when()`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.when.html#polars.when), and [`filter()`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.filter.html#polars.DataFrame.filter), to name a few).
+![Polars WWE Meme](/images/wwe-polars-meme.jpg)
 
-And while `Polars` is now my go-to library for data processing and analysis in Python, I do still use `Pandas` on the rare occasion. However, it's for only very narrow use-cases, like [styling dataframes for display in reports and presentations](https://pandas.pydata.org/pandas-docs/stable/user_guide/style.html). I fully expect `Polars` to subsume `Pandas` bit by bit as time goes on.
+What I've discussed in this article is just a glimpse into the superiority of `Polars` over `Pandas`; there remain still many functions in `Polars` that harken to SQL, Spark, and other data-processing languages (e.g. [`pipe()`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.pipe.html#polars.DataFrame.pipe), [`when()`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.when.html#polars.when), and [`filter()`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.filter.html#polars.DataFrame.filter), to name a few).
+
+And while `Polars` is now my go-to library for data processing and analysis in Python, I do still use `Pandas` for narrow use-cases like [styling dataframes for display in reports and presentations](https://pandas.pydata.org/pandas-docs/stable/user_guide/style.html) or communication with spreadsheets. That said, I fully expect `Polars` to subsume `Pandas` bit by bit as time goes on.
 
 ### What Next?
-So, where to next? Getting started with a new tool is hard; especially if it's a new dataframe library, something which is so pivotal to our work as data scientists! I took [Liam Brannigan](https://www.linkedin.com/in/liam-brannigan-9080b214a/)'s Udemy course ["Data Analysis with Polars"](https://www.udemy.com/course/data-analysis-with-polars/), and I can highly recommend it -- it covers all the basics of `Polars`, and helped make the transition quite easy for me (I receive no referral bonus from suggesting this course; I simply liked it that much!). And that brings me to my final point...
+So, where to next? Getting started with a new tool is hard; especially if it's a new dataframe library, something which is so pivotal to our work as data scientists! I got started by taking [Liam Brannigan](https://www.linkedin.com/in/liam-brannigan-9080b214a/)'s Udemy course ["Data Analysis with Polars"](https://www.udemy.com/course/data-analysis-with-polars/), and I can highly recommend it -- it covers all the basics of `Polars`, and helped make the transition quite easy for me (I receive no referral bonus from suggesting this course; I simply liked it that much!). And that brings me to my final point...
 
 ### Acknowlegments
 A special thank you to [Liam Brannigan](https://www.linkedin.com/in/liam-brannigan-9080b214a/) for your `Polars` course, without which I'm not sure I would have made the transition from `Pandas` to `Polars`. And, of course, a huge thank you to [Ritchie Vink](https://www.linkedin.com/in/ritchievink/), the creator of `Polars`! Not only have you created an awesome library, but you promptly responded to my questions and comments about `Polars` on both LinkedIn and Github -- you've not only created an amazing tool, but also a beautiful community around it. And to you, the reader -- thank you for reading; I wish you happy data-crunching :)
+
+## Refs
+- Image by author, as combination of two public domain images ([image 1](https://publicdomainvectors.org/en/free-clipart/Polar-bear-vector-image/72578.html), [image 2](https://publicdomainvectors.org/en/free-clipart/Sad-panda-drawing/80468.html))
