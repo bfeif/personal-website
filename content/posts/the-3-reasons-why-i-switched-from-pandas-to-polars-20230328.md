@@ -1,20 +1,22 @@
 ---
 title: "The 3 Reasons Why I Have Permanently Switched From Pandas To Polars"
-date: 2023-02-04
+date: 2023-03-28
 draft: false
 tags:
-    - language
-    - language-learning
+    - polars
+    - pandas
     - data-science
-    - portuguese
-    - statistics
+    - data-engineering
+    - data-analysis
+    - python
 keywords:
-    - language
-    - language-learning
+    - polars
+    - pandas
     - data-science
-    - portuguese
-    - statistics
-plotly: true
+    - data-engineering
+    - data-analysis
+    - python
+plotly: false
 # comments: true
 ---
 
