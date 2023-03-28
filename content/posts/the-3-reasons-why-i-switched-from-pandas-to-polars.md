@@ -20,7 +20,7 @@ plotly: true
 
 ***I came for the speed, but I stayed for the syntax.***
 
-At the time of writing this post, it's been six years since I landed my first job in data science. And, for those entire six years spent doing data science, `Pandas` has been the foundation of all my work: impact-analyses, exploratory data analyses, data validations, model experimentation, you name it. My career was built on top of `Pandas`!
+At the time of writing this post, it's been six years since I landed my first job in data science. And, for those entire six years spent doing data science, `Pandas` has been the foundation of all my work: exploratory data analyses, impact analyses, data validations, model experimentation, you name it. My career was built on top of `Pandas`!
 
 Needless to say, I had some serious `Pandas` [lock-in](https://en.wikipedia.org/wiki/Vendor_lock-in).
 
@@ -37,7 +37,7 @@ In this article, I'll explain:
 
 ## Introducing Polars: The Fastest Python Dataframe Library That You've (Maybe) Never Heard Of.
 
-Maybe you've heard of `Polars`, maybe you haven't! Either way it's slowly taking over Python's data-processing landscape, starting right here on Towards Data Science...
+Maybe you've heard of `Polars`, maybe you haven't! Either way it's slowly taking over Python's data-processing landscape:
 - [Leonie Monigatti](https://medium.com/@iamleonie) recently wrote [a comprehensive timing comparison of `Pandas` to `Polars`](https://towardsdatascience.com/Pandas-vs-polars-a-syntax-and-speed-comparison-5aa54e27497e).
 - [Wei-Meng Lee](https://weimenglee.medium.com/) already published a [Getting Started guide](https://towardsdatascience.com/getting-started-with-the-polars-dataframe-library-6f9e1c014c5c) last summer.
 - [Carl M. Kadie](https://medium.com/@carlmkadie) wrote a few months ago on [one of the biggest surface-level differences between `Pandas` and `Polars` -- `Polars`'s lack of an index](https://medium.com/towards-data-science/understand-polars-lack-of-indexes-526ea75e413).
@@ -45,9 +45,9 @@ Maybe you've heard of `Polars`, maybe you haven't! Either way it's slowly taking
 So what makes `Polars` so fast? From the [`Polars` User Guide](https://pola-rs.github.io/polars-book/user-guide/#introduction):
 > _`Polars` is completely written in [`Rust`](https://www.rust-lang.org/) (no runtime overhead!) and uses [`Arrow`](https://arrow.apache.org/) -- the [native arrow2 `Rust` implementation](https://github.com/jorgecarleitao/arrow2) -- as its foundation..._  
 > _`Polars` is written in Rust which gives it C/C++ performance and allows it to fully control performance critical parts in a query engine..._  
-> _...Unlike tools such as dask -- which tries to parallelize existing single-threaded libraries like NumPy and Pandas --Polars is written from the ground up, designed for parallelization of queries on DataFrames..._
+> _...Unlike tools such as dask -- which tries to parallelize existing single-threaded libraries like NumPy and Pandas -- Polars is written from the ground up, designed for parallelization of queries on DataFrames..._
 
-And there you have it. `Polars` is not just a framework for alleviating the single-threaded nature of `Pandas`, like `dask` or `ray`; rather, it is a full makeover of the Python dataframe, including the highly optimal Apache Arrow columnar memory format as its foundation, and its own query optimization engine to boot. And the results on speed are mind-blowing (as per [h2oai's data benchmark](https://h2oai.github.io/db-benchmark/)):
+And there you have it. `Polars` is not just a framework for alleviating the single-threaded nature of `Pandas`, like [`dask`](https://docs.dask.org/en/stable/) or [`modin`](https://modin.readthedocs.io/en/latest/#); rather, it is a full makeover of the Python dataframe, including the highly optimal Apache Arrow columnar memory format as its foundation, and its own query optimization engine to boot. And the results on speed are mind-blowing (as per [h2oai's data benchmark](https://h2oai.github.io/db-benchmark/)):
 
 ![Database Timing Comparison](/images/h2oai_data_table_benchmark.png)
 
@@ -116,7 +116,7 @@ print(df)
 
 That's right: `Polars` is so explicit about data-types, that it even tells you the data-type of each column in your dataframe every time you print it!
 
-It doesn't stop here though. Not only does the `Pandas` API require use of one data-type's namespace for handling of another data-type, but the API has become so bloated that there are often many ways to do the same thing. Consider the following code snippet:
+It doesn't stop here though. Not only does the `Pandas` API require use of one data-type's namespace for handling of another data-type, but the API has become so bloated that there are often many ways to do the same thing. This can be confusing, especially for newcomers. Consider the following code snippet:
 
 ```python
 import pandas as pd
@@ -184,7 +184,7 @@ And that brings us to `.scan_parquet()` and `.sink_parquet()`.
 
 Let me explain.
 
-With dataframes, most of what we want to do is run queries or transformations; we want to add columns, pivot along two variables, aggregate, group by, you name it. Even when we want to randomly subset a dataset into train and test for training and evaluating a machine learning model, those are SQL-like query expressions in nature.
+With dataframes, most of what we want to do is run queries or transformations; we want to add columns, pivot along two variables, aggregate, group by, you name it. Even when we want to subset a dataset into train and test for training and evaluating a machine learning model, those are SQL-like query expressions in nature.
 
 And it's true -- with `Pandas`, you can do most of the transformations, manipulations, and queries on your data that you would want. However, frustratingly, some transformations and queries simply cannot be done in one expression, or one query if you will. Unlike other query and data-processing languages like SQL or Spark, many queries in `Pandas` require multiple successive, distinct assignment operations, and this can make things messy. Consider the following code snippet, where we have a dataframe of people and their ages, and we want to see how many people there are in each decade:
 ```python
@@ -208,7 +208,7 @@ print(decade_counts)
      10    1
      40    1
 ```
-There's no way around it -- we have to do our query in three lines of code. To get it down to two operations, we could have used the rarely seen [`.assign()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.assign.html) operator in place of the `df["decade"] = ...` operation, but that's it! It might not seem like a big problem here, but when you find yourself needing seven, eight, nine successive assignment operations to get the job done, things can start to get a bit unreadable and hard to maintain.
+There's no way around it -- we have to do our query in three assignment operations. To get it down to two operations, we could have used the rarely seen [`.assign()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.assign.html) operator in place of the `df["decade"] = ...` operation, but that's it! It might not seem like a big problem here, but when you find yourself needing seven, eight, nine successive assignment operations to get the job done, things can start to get a bit unreadable and hard to maintain.
 
 In `Polars`, though, this query can be cleanly written as one expression:
 
@@ -256,10 +256,7 @@ What I've discussed in this article is just a glimpse into the superiority of `P
 And while `Polars` is now my go-to library for data processing and analysis in Python, I do still use `Pandas` for narrow use-cases like [styling dataframes for display in reports and presentations](https://pandas.pydata.org/pandas-docs/stable/user_guide/style.html) or communication with spreadsheets. That said, I fully expect `Polars` to subsume `Pandas` bit by bit as time goes on.
 
 ### What Next?
-So, where to next? Getting started with a new tool is hard; especially if it's a new dataframe library, something which is so pivotal to our work as data scientists! I got started by taking [Liam Brannigan](https://www.linkedin.com/in/liam-brannigan-9080b214a/)'s Udemy course ["Data Analysis with Polars"](https://www.udemy.com/course/data-analysis-with-polars/), and I can highly recommend it -- it covers all the basics of `Polars`, and helped make the transition quite easy for me (I receive no referral bonus from suggesting this course; I simply liked it that much!). And that brings me to my final point...
+Getting started with a new tool is hard; especially if it's a new dataframe library, something which is so pivotal to our work as data scientists! I got started by taking [Liam Brannigan](https://www.linkedin.com/in/liam-brannigan-9080b214a/)'s Udemy course ["Data Analysis with Polars"](https://www.udemy.com/course/data-analysis-with-polars/), and I can highly recommend it -- it covers all the basics of `Polars`, and helped make the transition quite easy for me (I receive no referral bonus from suggesting this course; I simply liked it that much!). And that brings me to my final point...
 
 ### Acknowlegments
 A special thank you to [Liam Brannigan](https://www.linkedin.com/in/liam-brannigan-9080b214a/) for your `Polars` course, without which I'm not sure I would have made the transition from `Pandas` to `Polars`. And, of course, a huge thank you to [Ritchie Vink](https://www.linkedin.com/in/ritchievink/), the creator of `Polars`! Not only have you created an awesome library, but you promptly responded to my questions and comments about `Polars` on both LinkedIn and Github -- you've not only created an amazing tool, but also a beautiful community around it. And to you, the reader -- thank you for reading; I wish you happy data-crunching :)
-
-## Refs
-- Image by author, as combination of two public domain images ([image 1](https://publicdomainvectors.org/en/free-clipart/Polar-bear-vector-image/72578.html), [image 2](https://publicdomainvectors.org/en/free-clipart/Sad-panda-drawing/80468.html))
