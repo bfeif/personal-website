@@ -11,6 +11,11 @@
          "desc": "An anki-like terminal app for learning German preposition declensions."
       },
       {
+         "name": "AdHocBoost",
+         "url": "https://pypi.org/project/adhocboost/",
+         "desc": "A machine learning model specialized for imbalanced-class learning."
+      },
+      {
          "name": "Ben Feifke Music",
          "url": "https://soundcloud.com/benjaminfeifke/a-lonely-breeze",
          "desc": "Some sweet sounds that you didn't know you needed."
