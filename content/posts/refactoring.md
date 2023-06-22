@@ -32,6 +32,8 @@ A day in the life of a data scientist involves equations and models flying throu
 
 Things rarely work so smoothly, though--if the engineers can even read our poorly styled code (e.g. with variables like `df_original`, `df_final`, and `df_final_2`), they quickly find out that it doesn't scale, that they don't know how to conform the code to existing architecture, or that it's so brittle that it breaks when they so much as touch it.
 
+<!-- Expectation vs reality, expectation is iron man shooting a model at a tank -->
+
 Don't be the data scientist that engineers dread working with. We must be empathetic to our engineering compatriots. We must write clean code. And to do so, we must refactor.
 
 But how?
@@ -40,7 +42,13 @@ But how?
 
 In "Refactoring", Martin Fowler describes the two hats that all programmers must wear: the "add features" hat, and the "refactor" hat. When we are wearing the "add features" hat, we are writing code, adding new functionality; and when we are wearing the "refactoring" hat, we are seeking "bad code smells" and snuffing them out.
 
-Bad code smells include things like: duplicated code, nested loops or conditionals, mysterious names.
+Bad code smells include things like duplicated code, nested loops or conditionals, or mysterious names, and they all serve to obfuscate the readability (smellability?) of our code to the next reader.
+
+As data scientists, we look really good in the "add features" hat, whipping up exploratory charts and rolling out models... but most of us don't even own the "refactor" hat! These next few sections give examples of bad code smells and the refactoring motifs that alleviate them:
+
+## Fixing Duplicated Code by ____
+
+## Fixing
 
 # Conclusion
 
