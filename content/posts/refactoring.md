@@ -1,7 +1,7 @@
 ---
-title: "Everything a Data Scientist Needs to Know About Refactoring"
+title: "Refactoring for Data Scientists: How to 10x Your Productivity Overnight"
 date: 2023-07-18T09:47:45+02:00
-draft: true
+draft: false
 tags:
     - math
     - language
@@ -17,14 +17,14 @@ keywords:
 
 # A Tale of Two Programmers
 
-In "Refactoring", Martin Fowler discusses two software developers' experiences developing a code base:
+In "Refactoring", Martin Fowler discusses two programmers' experiences developing some code base:
 > _"When I talk to software developers who have been working on a system for a while, I often hear that they were able to make progress rapidly at first, but now it takes much longer to add new features. Every new feature requires more and more time to understand how to fit it into the existing code base, and once it's added, bugs often crop up that take even longer to fix. The code base starts looking like a series of patches covering patches, and it takes an exercise in archaeology to figure out how things work. This burden slows down adding new features, to the point that developers wish they could start again from a blank slate. <br><br>But some report a different experience. They find they can add new features **faster** because they can leverage the existing things by quickly building on what's already there."_
 
 What's the difference between these two programmers? Why does the first one experience logarithmic returns on investment, while the second one experiences exponential returns on investment?
 
 ![Logarithmic vs Exponential Returns](/images/log_vs_exponential_returns.png)
 
-The answer is that, while the first programmer only ever adds new features, the second programmer, before every time they want to add a new feature, takes a moment to improve the design of their code to be more amenable to the introduction of the new feature. While the first programmer is faster at the beginning, their paradise doesn't last long.
+The answer is that, while the first programmer only ever adds new features, the second programmer, before every time they want to add a new feature, takes a moment to improve the design of their code to be more amenable to the introduction of the new feature. While the first programmer is faster at the beginning, they are quickly overtaken by the second programmer.
 
 This process of improving the design of code such that it's more amenable to new feature-additions, while retaining the code's observable behavior, is called "refactoring", and learning how to refactor can 10x any software developer's productivity.
 
@@ -36,11 +36,9 @@ A day in the life of a data scientist involves equations and models flying throu
 
 Once we have gotten our analysis or our model just right, we hand over our code to the engineers to scale it and productionize it, say "voila", and wash our hands clean. We whistle our way on to the next experiment, with full confidence that the engineers will take care of everything.
 
-![Logarithmic vs Exponential Returns, Expectation](/images/log_vs_exponential_returns_expectation.png)
+![Logarithmic vs Exponential Returns, Expectation](/images/log_vs_exponential_returns_expectation_vs_reality_w_emojis.png)
 
-Things rarely work so smoothly, though. If the engineers can even read our poorly written code (how could they read it, with variables like `df_original`, `df_final`, and `df_final_2`), they quickly find out that the code doesn't scale, that they don't know how to conform the code to existing architecture, or that it's so brittle that it breaks when they so much as touch it. Sometimes, if there's enough value in the project, the data scientist gets brought back in to the picture, and more time is budgeted for the project; other times, however, the project just fizzles and dies.
-
-![Logarithmic vs Exponential Returns, Reality](/images/log_vs_exponential_returns_reality.png)
+Things rarely work so smoothly, though. If the engineers can even read our poorly written code (how could they read it, with variables like `df_original`, `df_final`, and `df_final_2`), they quickly find out that the code doesn't scale, that they don't know how to conform the code to existing architecture, or that it's so brittle that it breaks when they so much as touch it. Sometimes, if there's enough value in the project, the data scientist gets brought back in, and more time is budgeted; other times, however, the project just fizzles and dies.
 
 Don't be that data scientist that engineers dread working with. We must be empathetic to our engineering compatriots. We must write clean, future-proof code. And to do so, we must refactor.
 
@@ -106,7 +104,9 @@ accuracy_random_forest = evaluate_random_forest_model(df)
 print(f"Random Forest Accuracy: {accuracy_random_forest:.3f}")
 ```
 
-And now, you want to add an additional comparison for `XGBoost` before handing it off to some engineers to run it on a much larger dataset. But first, you smell something is amiss... are you really going to create a new function, `evaluate_xgboost_model()`? `evaluate_adaboost_model()` and `evaluate_random_forest_model()` already appear to have a lot of repeated code that you'd have to copy and paste. Well, if you find yourself needing to copy and paste code, it's usually a hint to refactor--let's rather pull up the function `evaluate_model`, which will take in the model of interest as an argument:
+And now, you want to add an additional comparison for `XGBoost` before handing it off to some engineers to run it on a much larger dataset. But first, you smell something is amiss... are you really going to create a new function, `evaluate_xgboost_model()`? `evaluate_adaboost_model()` and `evaluate_random_forest_model()` already appear to have a lot of repeated code that you'd have to copy and paste.
+
+Well, if you find yourself needing to copy and paste code, it's usually a hint to refactor--let's rather pull up the function `evaluate_model`, which will take in the model of interest as an argument:
 
 ```python
 import pandas as pd
@@ -255,7 +255,7 @@ In summary, we:
 
 Adding that extra evaluation for `XGBoost` was not only easier, but our code has become more readable to all audiences who are likely to interact with it.
 
-There's still plenty more refactoring that can be done to this code, but for now, it's enough. Once it's time to add the next piece of new functionality to the code, then the next most important refactoring will manifest itself.
+There's still plenty more refactoring that can be done to this code, but for now, it's enough. Once it's time to add the next piece of new functionality to the code, then the next most important refactoring will reveal itself.
 
 # Conclusion
 
@@ -263,7 +263,7 @@ Learning to refactor is an integral step on any software developer's journey. An
 
 At the beginning of this post, I started with the anecdote of a programmer lamenting to themselves that their code "takes an exercise in archaeology to figure out how things work, to the point that they wish they could start again from a blank slate." And this raises a curious question -- when do you know whether to start over, or to refactor?
 
-This is always a tough question, and it rarely has a clear-cut answer. In writing software, as in nurturing human relationships, healing and rebuilding can often be more difficult than starting over, but is usually more robust and is almost always far more rewarding. Refactoring enables us to discover higher levels of internal design in the things we have already created, rendering us both more respectful of the past and more robust to the future.
+This is always a tough question, and it rarely has a clear-cut answer. In writing software, as in nurturing human relationships, healing and rebuilding can often be more difficult than starting over -- but it is usually more robust and is almost always far more rewarding. Refactoring enables us to discover higher levels of internal design in the things we have already created, rendering us both more respectful of the past and more robust to the future.
 
 ---
 
