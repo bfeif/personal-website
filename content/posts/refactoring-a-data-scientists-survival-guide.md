@@ -1,6 +1,6 @@
 ---
 title: "Refactoring: A Data Scientist's Survival Guide"
-date: 2023-07-18T09:47:45+02:00
+date: 2023-07-25T09:47:45+02:00
 draft: false
 tags:
     - refactoring
