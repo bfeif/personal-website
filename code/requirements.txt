@@ -6,3 +6,5 @@ pandas
 seaborn
 ipython
 polars
+scikit-learn
+xgboost
