@@ -1,6 +1,6 @@
 ---
 title: "Refactoring: A Data Scientist's Survival Guide"
-date: 2023-07-25T09:47:45+02:00
+date: 2023-07-28T09:47:45+02:00
 draft: false
 tags:
     - refactoring
@@ -19,18 +19,18 @@ keywords:
 
 ## A Tale of Two Programmers
 
-Joe and Jane are university students taking the same "Introduction to Programming" course, and they've just been given the final project: build a Tetris clone! Both nervous that they will complete such a big project in time, they both go home and get started right away.
+Joe and Jane are university students taking the same "Introduction to Programming" course, and they've just been given the final project: build a Tetris clone! Nervous that they will complete such a big project in time, they both go home and get started right away.
 
 <img src="/images/tetris.jpg" alt="drawing" width="200"/>
 <!-- https://publicdomainvectors.org/en/free-clipart/3D-Tetris-blocks-vector-illustration/6089.html -->
 
 Joe starts writing code, and he quickly completes the code for the game initiation, and even implements the "L" piece! Things are going well, but as he goes to implement more of the Tetris pieces, he finds that each one takes longer and longer to write. Every time he tries to write the code for a new Tetris piece, he finds that it's harder and harder to fit it in to the already-existing code. What's more, every time he adds new code, bugs pop up in unexpected places that take increasingly long to fix, to the point that he wishes he could start over. With just three days until the deadline, he goes to his friend Jane for help.
 
-Jane, also anxious about the big project, got started immediately by writing the code for the game initiation and the "L" piece just like Joe. Unlike Joe, however, she quickly realized that, before writing the code for the other pieces, she should generalize the "L" piece to [subclass](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)#Subclasses_and_superclasses) a more general "Piece" class. Like this, she works; though she's slow to start, she finds that as time goes on, the code gets easier and easier to write. Things build nicely off each other, and she is due to finish her project with a few days to spare!
+Jane, also anxious about the big project, got started immediately by writing the code for the game initiation and the "L" piece, just like Joe. Unlike Joe, however, she quickly realized that, before writing the code for the other pieces, she should generalize the "L" piece to [subclass](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)#Subclasses_and_superclasses) a more general "Piece" class. With this rhythm of writing, then reflecting, then writing, then reflecting, she works; and though she's slow to start, she finds that as time goes on, the code gets easier and easier to write. Things build nicely off each other, and she is due to finish her project with a few days to spare!
 
 Luckily, Jane is already done with her project by the time that Joe comes to her for help; she's able to help him untangle some of his code and finish everything, just in time for the deadline, and they programmed happily ever after 🌈
 
-# Not All Programmers Are Created Equally
+## Slow and Steady Wins the Race
 
 What's the difference between Joe and Jane? Why does Joe experience logarithmic returns on time invested, while Jane experiences exponential returns on time invested?
 
@@ -48,11 +48,11 @@ Not unlike Joe, a day in the life of a data scientist involves equations and mod
 
 Once we have gotten our analysis or our model just right, we hand over our code to the engineers to scale it and productionize it, say "voila", and wash our hands clean. We whistle our way on to the next experiment, with full confidence that the engineers will take care of everything.
 
-![Logarithmic vs Exponential Returns, Expectation](/images/log_vs_exponential_returns_expectation_vs_reality_w_emojis.png)
-
 Things rarely work so smoothly, though. If the engineers can even read our poorly written code (how could they read it, with variables like `df_original`, `df_final`, and `df_final_2`), they quickly find out that the code doesn't scale, that they don't know how to conform the code to existing architecture, or that it's so brittle that it breaks when they so much as touch it. Sometimes, if there's enough value in the project, the data scientist gets brought back in, and more time is budgeted; other times, however, the project just fizzles and dies.
 
-Don't be the data scientist that engineers dread working with. We must be empathetic to our engineering compatriots. We must write clean, future-proof code. And to do so, we must refactor.
+<img src="/images/df_name_meme.jpeg" alt="drawing" width="400"/>
+
+We might think that we're not software developers, but insofar as we write code, we _are_ in fact software developers! And with this, we must be empathetic to our engineering compatriots, so that we can all deliver products together in a timely and forward-compatible manner. We must write clean, well designed, future-proof code. And to do so, we must refactor.
 
 But how?
 
@@ -64,9 +64,9 @@ When we are wearing the "add features" hat, we are writing new code; and when we
 
 So, how can you know what bad code looks like? And more importantly, how can you know how to refactor it when you find it? In these next three sections, we'll start with a piece of data science code that compares the performance of two models; then, we'll sequentially improve that code, one refactoring at a time:
 
-### 1. Fixing Duplicated Code by Pulling Up a Method
+### 1. Fixing Duplicated Code by Pulling Up a Function
 **Bad Code Smell**: Duplicated Code  
-**Refactoring Motif**: Pull Up Method
+**Refactoring Motif**: Pull Up Function
 
 Imagine you are trying to compare the performance of `Adaboost` versus `RandomForest` on the famous [Kaggle Titanic Competition](https://www.kaggle.com/competitions/titanic):
 
@@ -118,7 +118,7 @@ print(f"Random Forest Accuracy: {accuracy_random_forest:.3f}")
 
 And now, you want to add an additional comparison for `XGBoost` before handing it off to some engineers to run it on a much larger dataset. But first, you smell something is amiss... are you really going to create a new function, `evaluate_xgboost_model()`? `evaluate_adaboost_model()` and `evaluate_random_forest_model()` already appear to have a lot of repeated code that you'd have to copy and paste.
 
-Well, if you find yourself needing to copy and paste code, it's usually a hint to refactor--let's rather pull up the function `evaluate_model`, which will take in the model of interest as an argument:
+Well, if you find yourself needing to copy and paste code, it's usually a hint to refactor. To fix this case of duplicated code, we'll use the "pull up function" refactoring, in which we extract a generalized version of two nearly identical functions<sup>\*</sup>. More specifically, we'll pull up a function `evaluate_model()`, which will take in the model of interest as an argument, thus deprecating `evaluate_adaboost_model()` and `evaluate_random_forest_model()`:
 
 ```python
 import pandas as pd
@@ -211,7 +211,7 @@ accuracy_xgboost = evaluate_model(df, XGBClassifier)
 print(f"XGBoost Accuracy: {accuracy_xgboost:.3f}")
 ```
 
-After renaming `df` to `titanic_passengers_df` and `load_df` to `load_titanic_passengers_df`, there's no doubt at all -- every row in the newly named `titanic_passengers_df` represents a distinct passenger from the Titanic. Nice!
+After renaming `df` to `titanic_passengers_df` and `load_df()` to `load_titanic_passengers_df()`, there's no doubt at all -- every row in the newly named `titanic_passengers_df` represents a distinct passenger from the Titanic. Nice!
 
 ### 3. Fix Magic Values by Extracting Variables
 **Bad Code Smell**: Magic Values  
@@ -286,6 +286,9 @@ This is always a tough question, and it rarely has a clear-cut answer. In writin
 ## References
 
 \[1\] [Refactoring: Improving the Design of Existing Code](https://martinfowler.com/books/refactoring.html), by Martin Fowler (with Kent Beck)
+
+
+<sup>\*</sup> Normally, the refactoring is not "pull-up function", but rather "pull-up method", in which one pulls up two nearly identical methods from two child classes into one common method in the parent class. This post discusses the analogous "pull-up function" refactoring for the sake of simplicity.
 
 
 ---
