@@ -17,7 +17,7 @@ keywords:
 ---
 ***"Healing takes courage, and we all have courage, even if we have to dig a little to find it." - Tori Amos***
 
-# A Tale of Two Programmers
+## A Tale of Two Programmers
 
 Joe and Jane are university students taking the same "Introduction to Programming" course, and they've just been given the final project: build a Tetris clone! Both nervous that they will complete such a big project in time, they both go home and get started right away.
 
@@ -42,7 +42,7 @@ This process of improving the design of code such that it's more amenable to the
 
 But enough story-time; what does this mean for data scientists? After all, we're not software developers, right? Right??
 
-# Here's My Model, Thank You Very Much
+## Here's My Model, Thank You Very Much
 
 Not unlike Joe, a day in the life of a data scientist involves equations and models whizzing through our heads, pouring from our mathematical minds into our keyboards, leaving trails of messy code and messier whiteboards scattered in our wakes. But programming is a means to an end for us; there's no need to write code cleanly! The job will be short anyway; we just need to run one experiment, write just one query!
 
@@ -56,7 +56,7 @@ Don't be the data scientist that engineers dread working with. We must be empath
 
 But how?
 
-# How to Refactor
+## How to Refactor
 
 In his book "Refactoring", Martin Fowler describes the two hats that all software developers must alternatingly wear: the "add features" hat, and the "refactor" hat \[1\].
 
@@ -64,7 +64,7 @@ When we are wearing the "add features" hat, we are writing new code; and when we
 
 So, how can you know what bad code looks like? And more importantly, how can you know how to refactor it when you find it? In these next three sections, we'll start with a piece of data science code that compares the performance of two models; then, we'll sequentially improve that code, one refactoring at a time:
 
-## 1. Fixing Duplicated Code by Pulling Up a Method
+### 1. Fixing Duplicated Code by Pulling Up a Method
 **Bad Code Smell**: Duplicated Code  
 **Refactoring Motif**: Pull Up Method
 
@@ -164,7 +164,7 @@ accuracy_xgboost = evaluate_model(df, XGBClassifier)
 print(f"XGBoost Accuracy: {accuracy_xgboost:.3f}")
 ```
 
-## 2. Fixing a Mysterious Name by Renaming a Variable
+### 2. Fixing a Mysterious Name by Renaming a Variable
 **Bad Code Smell**: Mysterious Name  
 **Refactoring Motif**: Rename Variable
 
@@ -213,7 +213,7 @@ print(f"XGBoost Accuracy: {accuracy_xgboost:.3f}")
 
 After renaming `df` to `titanic_passengers_df` and `load_df` to `load_titanic_passengers_df`, there's no doubt at all -- every row in the newly named `titanic_passengers_df` represents a distinct passenger from the Titanic. Nice!
 
-## 3. Fix Magic Values by Extracting Variables
+### 3. Fix Magic Values by Extracting Variables
 **Bad Code Smell**: Magic Values  
 **Refactoring Motif**: Extract Variable
 
@@ -275,7 +275,7 @@ Adding that extra evaluation for `XGBoost` was not only easier, but our code has
 
 There's still plenty more refactoring that can be done to this code, but for now, it's enough. Once it's time to add the next piece of new functionality to the code, then the next most important refactoring will reveal itself.
 
-# Conclusion
+## Conclusion
 
 Learning to refactor is an integral step on any software developer's journey. And insofar as we as data scientists write code, we too are software developers; and with that, learning to refactor is an integral step on our journeys too. For a deeper dive into a practiced methodology for refactoring (and many more refactoring motifs than what's mentioned in this article), I recommend the book "Refactoring" by Martin Fowler \[1\].
 
@@ -283,7 +283,7 @@ At the beginning of this post, we saw Joe lamenting to himself that "every time 
 
 This is always a tough question, and it rarely has a clear-cut answer. In writing software, as in nurturing human relationships, healing and rebuilding is usually more difficult than starting over -- but it is also usually more robust and is almost always far more rewarding. Refactoring enables us to discover higher levels of internal design in the things we have already created, rendering us both more respectful of the past and more robust to the future.
 
-# References
+## References
 
 \[1\] [Refactoring: Improving the Design of Existing Code](https://martinfowler.com/books/refactoring.html), by Martin Fowler (with Kent Beck)
 
