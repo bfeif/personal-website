@@ -31,7 +31,7 @@ That is, until I discovered [`Polars`](https://github.com/pola-rs/polars), the n
 In this article, I'll explain:
 1. What `Polars` is, and what makes it so fast;
 2. The 3 reasons why I have permanently switched from `Pandas` to `Polars`:
-    1. The `.arr` namespace;
+    1. The `.list` namespace;
     2. `.scan_parquet()` and `.sink_parquet()`;
     3. Data-oriented programming.
 
@@ -59,7 +59,7 @@ This speed alone is enough to get anyone interested. But as you'll see in the re
 
 ## The 3 Reasons Why I Have Permanently Switched from Pandas to Polars
 
-### 1. The `.arr` Namespace
+### 1. The `.list` Namespace
 Imagine the following scenario in `Pandas`: you have a dataset of families and some information about them, including a list of all the members of the family...
 
 ```python
@@ -103,7 +103,7 @@ df = pl.DataFrame({
     "city_of_residence": ["Boston", "New York City", "Dallas"]
 })
 df = df.with_columns([
-    pl.col("members").arr.get(0).alias("family_leader")])
+    pl.col("members").list.get(0).alias("family_leader")])
 print(df)
 >>>> ┌───────────┬─────────────────────────────┬───────────────────┬───────────────┐
      │ last_name ┆ members                     ┆ city_of_residence ┆ family_leader │
