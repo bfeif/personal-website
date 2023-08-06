@@ -5,6 +5,6 @@ scipy
 pandas
 seaborn
 ipython
-polars
+polars==0.18.12
 scikit-learn
 xgboost
