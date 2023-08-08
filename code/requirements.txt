@@ -4,3 +4,7 @@ numpy
 scipy
 pandas
 seaborn
+ipython
+polars==0.18.12
+scikit-learn
+xgboost
