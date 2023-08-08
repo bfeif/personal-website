@@ -1,5 +1,5 @@
 ---
-title: "Refactoring: A Data Scientist's Survival Guide"
+title: "Refactoring For Data Scientists: A Beginner's Guide"
 date: 2023-07-27T09:47:45+02:00
 draft: false
 tags:
@@ -15,7 +15,7 @@ keywords:
     - software
     - python
 ---
-***"Healing takes courage, and we all have courage, even if we have to dig a little to find it." - Tori Amos***
+***"The only way to go fast is to go well." - Martin Fowler***
 
 ## A Tale of Two Programmers
 
