@@ -1,7 +1,7 @@
 jupyter
 matplotlib
 numpy
-scipy
+scipy==1.11.1
 pandas
 seaborn
 ipython
@@ -10,3 +10,4 @@ scikit-learn
 xgboost
 geohash2
 lightgbm
+graphviz
