@@ -52,6 +52,8 @@ This post will explore three of today's most popular geographical segmentation t
 - Compared to the square techniques, it loses the strict spatial hierarchy, due to edge-effects when subdividing the hexagon into 7 smaller hexagons
 - supports 16 levels of resolution.
 - no space filling curve; rather, hierarchical subdivision: https://github.com/uber/h3/discussions/416#discussioncomment-1509642
+- hexagons are equidistant, making it easy to compute gradients
 
 Refs:
 https://www.uber.com/en-DE/blog/h3/
+https://docs.google.com/spreadsheets/d/1YQGOqNeI0zItS4MZYY_OASLfFMIJUOFer2OwQhVapX8/edit#gid=0
