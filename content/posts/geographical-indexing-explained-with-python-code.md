@@ -52,18 +52,18 @@ This algorithm can be repeated iteratively arbitrarily many times, all the way d
 <img src="/images/geohash-level-1-level-2.png" alt="drawing"/>
 <!-- source: https://www.geospatialworld.net/blogs/polygeohasher-an-optimized-way-to-create-geohashes/ -->
 
-What's particularly elegant about this algorithm is that, by following this pattern of "left is `0`, right is `1`; bottom is `0`, right is `1`", the alphabetically ordered geohashes trace out a Z-order curve:
+What's particularly elegant about this algorithm is that, by following this pattern of "left is `0`, right is `1`; bottom is `0`, top is `1`", the alphabetically ordered geohashes trace out a Z-order curve:
 
 <img src="/images/geohash-z-order-curve.jpeg" alt="drawing"/>
 <!-- source: https://ceur-ws.org/Vol-1671/paper4.pdf -->
 
-Z-order curves are a type of space-filling curves, which are designed just for this purpose of mapping multidimensional objects (such as latitude-longitude pairs) to one dimensional representations (such as a string).
+[Z-order curves](https://en.wikipedia.org/wiki/Z-order_curve) are a type of space-filling curves, which are designed just for this purpose of mapping multidimensional values (such as latitude-longitude pairs) to one dimensional representations (such as a string).
 
 Geohash is quite powerful: it's simple, fast, and importantly, the geohash strings preserve spatial hierarchy (i.e. if your house is in the level 3 geohash `"t1a"`, then it is also in the level 2 geohash `"t1"`, and in the level 1 geohash `"t"`). However, you might have noticed a few issues with it by now.
 
 First, while the Z-order curve is convenient, it does not preserve guaranteed proximity between latitude-longitude pairs. Due to edge effects, two locations that are close in physical distance are not guaranteed to be close in their computed geohash strings; furthermore, due to the nature of the Z-order curve, two locations that are close in their geohash string might not be close in physical distance.
 
-Second, while the Mercator projection of the map that is used by Geohash is convenient in its simplicity, it leads to high variability in the size of the geohash squares.
+Second, while the [Mercator projection](https://en.wikipedia.org/wiki/Mercator_projection) of the map that is used by Geohash is convenient in its simplicity, it leads to high variability in the size of the geohash squares; furthermore, the Mercator projection has a discontinuity at both the North and South Poles (i.e. if you have a house in Antarctica at (-90°, 0°), it will not have a geohash -- sorry to disappoint!).
 
 The geographical indexing techniques that follow seek to rectify these two issues.
 
