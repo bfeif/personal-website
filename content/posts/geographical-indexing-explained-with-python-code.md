@@ -31,7 +31,10 @@ This post will explore three of today's most popular geographical indexing techn
 
 ## Three Geographical Indexing Techniques
 ### 1. Geohash
-Geohash, invented in 2008 by Gustavo Niemeyer, is the earliest created geographical indexing technique (apparently a similar technique to Niemeyer's was created in 1966 by Guy Macdonald Morton, but Niemeyer claims to have not known about it until after developing Geohash). It enables its users to map latitude longitude pairs to squares of arbitrarily user-defined resolution. In Geohash, these squares are uniquely identified by a signature string, such as `"___"` (this is the level-6 geohash in which I currently live!).
+Geohash, invented in 2008 by Gustavo Niemeyer, is the earliest created geographical indexing technique (apparently a similar technique to Niemeyer's was created in 1966 by Guy Macdonald Morton, but Niemeyer claims to have not known about it until after developing Geohash). It enables its users to map latitude longitude pairs to squares of arbitrarily user-defined resolution. In Geohash, these squares are uniquely identified by a signature string, such as `"drt3"` (this is the level-4 geohash in which I grew up!).
+
+<img src="/images/my-home-geohash-drt3.png" alt="drawing" width=400/>
+<!-- source: https://www.movable-type.co.uk/scripts/geohash.html -->
 
 But how are these strings generated?
 
@@ -63,11 +66,26 @@ Geohash is quite powerful: it's simple, fast, and importantly, the geohash strin
 
 First, while the Z-order curve is convenient, it does not preserve guaranteed proximity between latitude-longitude pairs. Due to edge effects, two locations that are close in physical distance are not guaranteed to be close in their computed geohash strings; furthermore, due to the nature of the Z-order curve, two locations that are close in their geohash string might not be close in physical distance.
 
-Second, while the [Mercator projection](https://en.wikipedia.org/wiki/Mercator_projection) of the map that is used by Geohash is convenient in its simplicity, it leads to high variability in the size of the geohash squares; furthermore, the Mercator projection has a discontinuity at both the North and South Poles (i.e. if you have a house in Antarctica at (-90°, 0°), it will not have a geohash -- sorry to disappoint!).
+--> insert image of edge effects
+
+Second, while the [Mercator projection](https://en.wikipedia.org/wiki/Mercator_projection) of the map that is used by Geohash is convenient in its simplicity, it leads to high variability in the size of the geohash squares; furthermore, the Mercator projection has a discontinuity at both the North and South Poles (i.e. if you have a vacation house in Antarctica at (-90°, 0°), it will not have a geohash -- sorry to disappoint!).
 
 The geographical indexing techniques that follow came after Geohash, and seek to rectify these two issues.
 
 ### 2. S2
+
+First announced on [December 5, 2017](https://opensource.googleblog.com/2017/12/announcing-s2-library-geometry-on-sphere.html), Google's S2 was created primarily by [Eric Veach](https://en.wikipedia.org/wiki/Eric_Veach), and, among many other things, it alleviates the two issues with Geohash.
+
+S2 does this by way of two innovations: (1) it uses a Hilbert curve instead of a Z-order curve, and (2) it uses a cube projection instead of the Mercator projection.
+
+<img src="/images/s2curve-globe.gif" alt="drawing" width=300/>
+
+The [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve), another type of space-filling curve, yields the same unfortunate edge effects as the Z-order curve, resulting in the fact that latitude-longitude pairs close in physical distance are not guaranteed to be close in their S2 Cell ID string distance; however, the opposite is now true! Because the Hilbert curve does not have the same "zig-zag pattern" as the Z-order curve, latitude-longitude pairs that are close in their S2 Cell ID string distance are in fact guaranteed to be close in physical distance.
+
+For 
+
+The S2 library also offers a lot of other functionality, beyond just geographical indexing: polygon intersection
+
 
 
 - public geographical indexing technique which maps latitude longitude pairs to squares with arbitrarily user-defined resolution.
@@ -76,6 +94,7 @@ The geographical indexing techniques that follow came after Geohash, and seek to
 - with the Hilbert curve, we have that points that are close in space aren't necessarily close in their string, but points that are close in their string are necessarily close in space.
 - https://s2geometry.io/about/overview
 - https://s2geometry.io/devguide/s2cell_hierarchy
+- eric@rainforesttrust.org
 
 ### H3
 - public geographical indexing technique which maps latitude longitude pairs to squares with arbitrarily user-defined resolution.
