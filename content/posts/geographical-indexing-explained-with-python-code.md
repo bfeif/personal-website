@@ -25,12 +25,12 @@ We data scientists also want to index latitude-longitude pairs to smaller subdiv
 Geographical indexing is a richly studied topic, and the tools that do it can bring a lot of power and richness to our models and analyses. What makes geographical indexing techniques further exciting, is that a look under their proverbial hoods reveals eclectic amalgams of other mathematical tools, such as space-filling curves, map projections, tesselations, and more!
 
 This post will explore three of today's most popular geographical indexing techniques -- where they come from, how they work, what makes them different from one another, and some basic Python code to use them:
-- Geohash
-- S2
-- H3
+1. Geohash
+2. S2
+3. H3
 
-## Geographical Indexing Techniques, Explained
-### Geohash
+## Three Geographical Indexing Techniques
+### 1. Geohash
 Geohash, invented in 2008 by Gustavo Niemeyer, is the earliest created geographical indexing technique (apparently a similar technique to Niemeyer's was created in 1966 by Guy Macdonald Morton, but Niemeyer claims to have not known about it until after developing Geohash). It enables its users to map latitude longitude pairs to squares of arbitrarily user-defined resolution. In Geohash, these squares are uniquely identified by a signature string, such as `"___"` (this is the level-6 geohash in which I currently live!).
 
 But how are these strings generated?
@@ -42,7 +42,7 @@ To map a latitude-longitude pair to a geohash is an elegantly simple algorithm:
 3. For each geohash level, ask the question `5` times...
     1. Is our point in the left half of the map? If so, append `0` to `S` and reset the map to be just the left half of the map; if our point is in the right half of the map, append `1` to `S` and reset the map to be just the right-half of the map.
     2. Is our point in the bottom half of the map? If so, append `0` to `S` and reset the map to be just the bottom half of the map; if it's in the top half of the map, append `1` to `S` and reset the map to be just the top half of the map.
-4. Convert every 5 booleans from `S` into a Geohash 32-bit alphanumeric character, and return.
+4. Convert every 5 bits from `S` into a Geohash 32-bit alphanumeric character, and return.
 
 <img src="/images/geohash-algorithm-explained.png" alt="drawing"/>
 <!-- source: https://map-projections.net/img/flat-ocean/mercator-84.jpg?ft=59de1425 -->
@@ -59,15 +59,15 @@ What's particularly elegant about this algorithm is that, by following this patt
 
 [Z-order curves](https://en.wikipedia.org/wiki/Z-order_curve) are a type of space-filling curves, which are designed just for this purpose of mapping multidimensional values (such as latitude-longitude pairs) to one dimensional representations (such as a string).
 
-Geohash is quite powerful: it's simple, fast, and importantly, the geohash strings preserve spatial hierarchy (i.e. if your house is in the level 3 geohash `"t1a"`, then it is also in the level 2 geohash `"t1"`, and in the level 1 geohash `"t"`). However, you might have noticed a few issues with it by now.
+Geohash is quite powerful: it's simple, fast, and importantly, the geohash strings preserve spatial hierarchy (i.e. if your house is in the level 3 geohash `"t1a"`, then it is also in the level 2 geohash `"t1"`, and in the level 1 geohash `"t"`). However, you might have noticed a few issues with it by now...
 
 First, while the Z-order curve is convenient, it does not preserve guaranteed proximity between latitude-longitude pairs. Due to edge effects, two locations that are close in physical distance are not guaranteed to be close in their computed geohash strings; furthermore, due to the nature of the Z-order curve, two locations that are close in their geohash string might not be close in physical distance.
 
 Second, while the [Mercator projection](https://en.wikipedia.org/wiki/Mercator_projection) of the map that is used by Geohash is convenient in its simplicity, it leads to high variability in the size of the geohash squares; furthermore, the Mercator projection has a discontinuity at both the North and South Poles (i.e. if you have a house in Antarctica at (-90°, 0°), it will not have a geohash -- sorry to disappoint!).
 
-The geographical indexing techniques that follow seek to rectify these two issues.
+The geographical indexing techniques that follow came after Geohash, and seek to rectify these two issues.
 
-### S2
+### 2. S2
 
 
 - public geographical indexing technique which maps latitude longitude pairs to squares with arbitrarily user-defined resolution.
@@ -75,6 +75,7 @@ The geographical indexing techniques that follow seek to rectify these two issue
 - by projecting a cube onto the earth, some of the pain of variable sized squares is relieved.
 - with the Hilbert curve, we have that points that are close in space aren't necessarily close in their string, but points that are close in their string are necessarily close in space.
 - https://s2geometry.io/about/overview
+- https://s2geometry.io/devguide/s2cell_hierarchy
 
 ### H3
 - public geographical indexing technique which maps latitude longitude pairs to squares with arbitrarily user-defined resolution.
