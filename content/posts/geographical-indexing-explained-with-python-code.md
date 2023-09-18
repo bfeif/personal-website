@@ -29,6 +29,8 @@ This post will explore three of today's most popular geographical indexing techn
 2. S2
 3. H3
 
+Please note that these libraries include much functionality beyond basic geographical indexing: polygon intersection, polygon containment checks, line containment checks, generating cell-coverings of geographical spaces, and much more. This post focuses strictly on geographical indexing.
+
 ## Three Geographical Indexing Techniques
 ### 1. Geohash
 Geohash, invented in 2008 by Gustavo Niemeyer, is the earliest created geographical indexing technique (apparently a similar technique to Niemeyer's was created in 1966 by Guy Macdonald Morton, but Niemeyer claims to have not known about it until after developing Geohash). It enables its users to map latitude longitude pairs to squares of arbitrarily user-defined resolution. In Geohash, these squares are uniquely identified by a signature string, such as `"drt3"` (this is the level-4 geohash in which I grew up!).
@@ -74,17 +76,22 @@ The geographical indexing techniques that follow came after Geohash, and seek to
 
 ### 2. S2
 
-First announced on [December 5, 2017](https://opensource.googleblog.com/2017/12/announcing-s2-library-geometry-on-sphere.html), Google's S2 was created primarily by [Eric Veach](https://en.wikipedia.org/wiki/Eric_Veach), and, among many other things, it alleviates the two issues with Geohash.
+First announced on [December 5, 2017](https://opensource.googleblog.com/2017/12/announcing-s2-library-geometry-on-sphere.html), Google's S2 was created primarily by [Eric Veach](https://en.wikipedia.org/wiki/Eric_Veach), and, among many other things, it alleviates the two aforementioned issues with Geohash.
 
-S2 does this by way of two innovations: (1) it uses a Hilbert curve instead of a Z-order curve, and (2) it uses a cube projection instead of the Mercator projection.
+S2 does this by way of two innovations: (1) it uses a [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) instead of a Z-order curve to alleviate the problem that string-distance is not representative of physical distance, and (2) it uses a cube projection instead of the Mercator projection to reduce size differences between squares.
 
 <img src="/images/s2curve-globe.gif" alt="drawing" width=300/>
 
-The [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve), another type of space-filling curve, yields the same unfortunate edge effects as the Z-order curve, resulting in the fact that latitude-longitude pairs close in physical distance are not guaranteed to be close in their S2 Cell ID string distance; however, the opposite is now true! Because the Hilbert curve does not have the same "zig-zag pattern" as the Z-order curve, latitude-longitude pairs that are close in their S2 Cell ID string distance are in fact guaranteed to be close in physical distance.
+The [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) is another type of space-filling curve that, rather than using a "zig-zag pattern" like the Z-order curve, uses a gentler "u-shaped pattern".
 
-For 
+<img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs11042-017-4744-4/MediaObjects/11042_2017_4744_Fig4_HTML.gif" alt="drawing"/>
 
-The S2 library also offers a lot of other functionality, beyond just geographical indexing: polygon intersection
+By using the Hilbert curve, S2 facilitates that latitude-longitude pairs that are close in their S2 Cell ID string distance are much more likely to be close in physical distance!
+
+That said, this is only an alleviation -- the Hilbert curve still possesses the same unfortunate edge effects as the Z-order curve, resulting in the fact that latitude-longitude pairs close in physical distance are not guaranteed to be close in their S2 Cell ID string distance.
+
+The second key innovation from S2 is the use of an unfolded-cube projection rather than the Mercator projection.
+<img src="https://s2geometry.io/devguide/img/s2cell_global.jpg" alt="drawing"/>
 
 
 
