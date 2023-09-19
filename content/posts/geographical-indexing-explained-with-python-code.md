@@ -66,7 +66,7 @@ What's particularly elegant about this algorithm is that, by following this patt
 
 Geohash is quite powerful: it's simple, fast, and importantly, the geohash strings preserve spatial hierarchy (i.e. if your house is in the level 3 geohash `"t1a"`, then it is also in the level 2 geohash `"t1"`, and in the level 1 geohash `"t"`). However, you might have noticed a few issues with it by now...
 
-First, while the Z-order curve is convenient, it does not preserve guaranteed proximity between latitude-longitude pairs. Due to edge effects, two locations that are close in physical distance are not guaranteed to be close in their computed geohash strings; furthermore, due to the nature of the Z-order curve, two locations that are close in their geohash string might not be close in physical distance.
+First, while the Z-order curve is convenient, it does not guarantee proximity between latitude-longitude pairs; particularly, due to edge effects, two locations that are close in physical distance are not guaranteed to be close in their computed geohash strings. Furthermore, due to the "zig-zag" nature of the Z-order curve, two locations that are close in their geohash string might not be close in physical distance.
 
 --> insert image of edge effects
 
@@ -86,9 +86,7 @@ The [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) is another type
 
 <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs11042-017-4744-4/MediaObjects/11042_2017_4744_Fig4_HTML.gif" alt="drawing"/>
 
-By using the Hilbert curve, S2 facilitates that latitude-longitude pairs that are close in their S2 Cell ID string distance are much more likely to be close in physical distance!
-
-That said, this is only an alleviation -- the Hilbert curve still possesses the same unfortunate edge effects as the Z-order curve, resulting in the fact that latitude-longitude pairs close in physical distance are not guaranteed to be close in their S2 Cell ID string distance.
+By using the Hilbert curve, S2 facilitates that latitude-longitude pairs that are close in their S2 Cell ID string distance are much more likely to be close in physical distance. That said, this is only an alleviation -- the Hilbert curve still possesses the same unfortunate edge effects as the Z-order curve, resulting in the fact that latitude-longitude pairs close in physical distance are not guaranteed to be close in their S2 Cell ID string distance.
 
 The second key innovation from S2 is the use of an unfolded-cube projection rather than the Mercator projection.
 <img src="https://s2geometry.io/devguide/img/s2cell_global.jpg" alt="drawing"/>
