@@ -91,7 +91,11 @@ By using the Hilbert curve, S2 facilitates that latitude-longitude pairs that ar
 The second key innovation from S2 is the use of an unfolded-cube projection rather than the Mercator projection.
 <img src="https://s2geometry.io/devguide/img/s2cell_global.jpg" alt="drawing"/>
 
+Using such a projection significantly reduces variation between cell sizes because, as you move away from the equator, the distance between two longitude lines increases sinusoidally as a function of latitude.
 
+(geohash doesn't truly use mercator. just a flat/square projection)
+
+https://stackoverflow.com/a/39540339/7195218
 
 - public geographical indexing technique which maps latitude longitude pairs to squares with arbitrarily user-defined resolution.
 - two critical updates on the Geohash algorithm: uses Hilbert curve instead of Z-order curve, and projects a cube onto the earth rather than a rectangle onto the earth.
