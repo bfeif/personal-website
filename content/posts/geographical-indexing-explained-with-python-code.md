@@ -74,11 +74,13 @@ Second, while the [Mercator projection](https://en.wikipedia.org/wiki/Mercator_p
 
 The geographical indexing techniques that follow came after Geohash, and seek to rectify these two issues.
 
+***(geohash doesn't truly use mercator. just a flat/square projection)***
+
 ### 2. S2
 
-First announced on [December 5, 2017](https://opensource.googleblog.com/2017/12/announcing-s2-library-geometry-on-sphere.html), Google's S2 was created primarily by [Eric Veach](https://en.wikipedia.org/wiki/Eric_Veach), and, among many other things, it alleviates the two aforementioned issues with Geohash.
+First announced on [December 5, 2017](https://opensource.googleblog.com/2017/12/announcing-s2-library-geometry-on-sphere.html), S2 was created at Google primarily by [Eric Veach](https://en.wikipedia.org/wiki/Eric_Veach).
 
-S2 does this by way of two innovations: (1) it uses a [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) instead of a Z-order curve to alleviate the problem that string-distance is not representative of physical distance, and (2) it uses a cube projection instead of the Mercator projection to reduce size differences between squares.
+S2, among many other things, alleviates the two aforementioned issues with Geohash, and it does so by way of two innovations: (1) it uses a [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) instead of a Z-order curve to alleviate the problem that string-distance is not representative of physical distance, and (2) it uses a cube projection instead of the Mercator projection to reduce size differences between squares.
 
 <img src="/images/s2curve-globe.gif" alt="drawing" width=300/>
 
@@ -93,7 +95,7 @@ The second key innovation from S2 is the use of an unfolded-cube projection rath
 
 Using such a projection significantly reduces variation between cell sizes because, as you move away from the equator, the distance between two longitude lines increases sinusoidally as a function of latitude.
 
-(geohash doesn't truly use mercator. just a flat/square projection)
+<img src="/images/longitude-distortion-of-geohash-s2.png" alt="drawing">
 
 https://stackoverflow.com/a/39540339/7195218
 
@@ -114,6 +116,7 @@ https://stackoverflow.com/a/39540339/7195218
 - supports 16 levels of resolution.
 - no space filling curve; rather, hierarchical subdivision: https://github.com/uber/h3/discussions/416#discussioncomment-1509642
 - hexagons are equidistant, making it easy to compute gradients
+- h3 makes some sacrifices to achieve their complexity: pentagons and no space-filling curve.
 
 Refs:
 https://www.uber.com/en-DE/blog/h3/
