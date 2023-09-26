@@ -1,18 +1,17 @@
 ---
 title: "Learn a Language by Conquering 8 Social Situations"
-date: 2022-12-23T09:47:45+02:00
-draft: true
+date: 2023-09-27T09:47:45+02:00
+draft: false
 tags:
-    - math
     - language
-    - chaos-theory
-    - data-science
+    - language-learning
+    - hebrew
+    - german
 keywords:
-    - math
     - language
-    - chaos-theory
-    - data-science
-# comments: true
+    - language-learning
+    - hebrew
+    - german
 ---
 
 ***"What is language for? It's not just the naming of things, is it? It's the lifeblood of a culture, a people." JRR Tolkien, in the film [Tolkien](https://en.wikiquote.org/wiki/Tolkien_(film)).***
