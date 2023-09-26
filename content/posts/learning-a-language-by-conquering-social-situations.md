@@ -1,5 +1,5 @@
 ---
-title: "Learn a Language by Conquering These 7 Social Situations"
+title: "Learn a Language by Conquering 8 Social Situations"
 date: 2022-12-23T09:47:45+02:00
 draft: true
 tags:
@@ -21,7 +21,7 @@ We all have different reasons for learning a language: for some, a job or an opp
 
 Regardless of how we approach it - with books, courses, teachers, online, language partners, grammar resources, etc - learning a language is inextricably tied with a journey of understanding, getting to know, or even becoming one with a culture. Insofar as these two journeys are linked, it follows that as your language skills advance, the social and cultural situations that you are exposed to advance as well.
 
-These 7 social situations, ranked by difficulty, will most certainly be encountered along your language-learning journey. For me, they provide stepping stones for that journey, and in my opinion, they must be overcome in order to truly master a language:
+These 8 social situations, ranked by difficulty, will most certainly be encountered along your language-learning journey. For me, they provide stepping stones for that journey, and in my opinion, they must be overcome in order to truly master a language:
 
 1. Buy a coffee at a coffee shop.
 2. Order food at a restaurant.
