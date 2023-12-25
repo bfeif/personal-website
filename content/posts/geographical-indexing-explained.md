@@ -22,7 +22,7 @@ We data scientists also want to index latitude-longitude pairs to small subdivis
 
 Geographical indexing is a richly studied topic, and the tools that do it can bring a lot of power and richness to our models and analyses. What makes geographical indexing techniques further exciting, is that a look under their proverbial hoods reveals eclectic amalgams of other mathematical tools, such as space-filling curves, map projections, tesselations, and more!
 
-This post will explore three of today's most popular geographical indexing techniques -- where they come from, how they work, and what makes them different from one another:
+This post will explore three of today's most popular geographical indexing techniques -- where they come from, how they work, what makes them different from one another, and how you can use them. In chronological order, and from least to most complexity, we'll look at:
 1. Geohash
 2. S2
 3. H3
@@ -60,7 +60,7 @@ This algorithm can be repeated iteratively arbitrarily many times, all the way d
 
 What's particularly elegant about this algorithm is that, by following this pattern of "left is `0`, right is `1`; bottom is `0`, top is `1`", the alphabetically ordered geohashes trace out a Z-order curve.
 
-#### What's a Z-order curve?
+#### What's a Z-order Curve?
 
 <img src="/images/geohash-z-order-curve.jpeg" alt="drawing"/>
 <!-- source: https://ceur-ws.org/Vol-1671/paper4.pdf -->
@@ -73,7 +73,9 @@ First, while the Z-order curve is convenient, it only weakly preserves latitude-
 
 Second, while the flat projection of the map that is used by Geohash is convenient in its simplicity, it leads to high variability in the size of the geohash squares; furthermore, this projection has a discontinuity at both the North and South Poles (i.e. if you live in Antarctica at (-90°, 0°), it will not have a geohash -- sorry to disappoint!).
 
-The geographical indexing techniques that follow came after Geohash, and seek to rectify these two issues.
+#### Getting Started with Geohash
+
+Being the oldest and most technically straightforward of the three techniques discussed in this post, Geohash is also the most ubiquitous. Implementations of Geohash can be found scattered throughout PyPi (e.g. [geohashr](https://pypi.org/project/geohashr/), [geohash-tools](https://pypi.org/project/geohash-tools/), [pygeohash-fast](https://pypi.org/project/pygeohash-fast/), in a Rust crate [Rust-Geohash](https://docs.rs/crate/geohash/latest), in a NodeJS library [node-geohash](https://github.com/sunng87/node-geohash), and more. It can also be found as a built-in function in database and data warehouse tools such as [PostGIS](https://postgis.net/docs/ST_GeoHash.html), [AWS Redshift](https://docs.aws.amazon.com/redshift/latest/dg/ST_GeoHash-function.html), and [GCP Bigquery](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geohash). I leave the assimilation to these tools as an exercise for the reader ;)
 
 ### 2. S2
 
@@ -99,6 +101,9 @@ The second key innovation from S2 is the use of an unfolded-cube projection of t
 Using such a projection significantly reduces variation between cell sizes because, as you move away from the equator, the distance between two longitude lines increases sinusoidally as a function of latitude.
 
 <!-- <img src="/images/longitude-distortion-of-geohash-s2.png" alt="drawing"> -->
+
+#### Getting Started with S2
+
 
 - https://s2geometry.io/about/overview
 - https://s2geometry.io/devguide/s2cell_hierarchy
@@ -133,9 +138,12 @@ H3 then covers each triangle face of the icosahedron with hexagons, and subdivid
 
 <img src="/images/h3-icosahedron-face.png" alt="drawing">
 
+Further note that, the more faces a projection of the sphere has, the closer it approximates the sphere, and thus, the less spatial distortions it has. With this, H3's hexagons have more consistent sizes than S2's squares, and still more than Geohash's squares.
+
 #### H3's Sacrifices
 At this point, you might be wondering -- what about a space-filling curve? What about subdividing hexagons into smaller hexagons? Well, there is no such thing as the perfect software architecture; only the right one. And in order to achieve such hexagonal elegance, Uber had to make a few sacrifices.
-First, one drawback of hexagons in comparison with squares, is that hexagons don't quite as cleanly subdivide into other hexagons.
+
+First: one drawback of hexagons in comparison with squares, is that hexagons don't quite as cleanly subdivide into other hexagons.
 <img src="/images/h3-hexagon-subdivisions.png" alt="drawing">
 
 In H3, one hexagon divides into seven other hexagons, in which the resultant subdivided hexagons sit at a slight angle with respect to the larger containing hexagon. The result of this is that the strict spatial hierarchy discussed above regarding Geohash -- that if a latitude-longitude point is contained in a cell then it is guaranteed to be contained in that cell's parent -- is not maintained in H3.
@@ -144,12 +152,32 @@ Furthermore, by its method of subdividing, while H3 does follow a space-filling 
 
 Being the bestagon comes at one final price -- while hexagons might tessalate perfectly with themselves on a flat surface, this doesn't hold on a sphere. To this end, H3's mapping necessitates that a few pentagons -- twelve, to be exact -- be placed at the vertices of the icosahedron. This isn't too bad, however; the H3 team took care to ensure that all twelve pentagons lay over the oceans!
 
-## When to Use Which Technique
+## When to Use Which Technique?
 
-One charming thing about these three different geographical indexing techniques is the historical trend that they trace from innovation to innovation, from Geohash to S2 to H3. As our need for richer features from our systems increase, design complexity increases, and with it, so increase t sacrifices we must make regarding the system's properties. This varying complexity and feature-richess also shapes our approach when it comes time to decide which of these three techniques to use for any given task: Geohash, S2, or H3?
+The following table summarizes the comparison of Geohash, S2, and H3 across all axes discussed throughout this post:
 
-The following table shows a summarized comparison of the three:
+|                                                                                                  | **Geohash**   | **S2**        | **H3**           |
+| ------------------------------------------------------------------------------------------------ | ------------- | ------------- | ---------------- |
+| Release Year                                                                                     | 2008          | 2017          | 2018             |
+| Shape of Cells                                                                                   | Square        | Square        | Hexagon          |
+| Cells are equidistant from all their neighbors                                                   | No            | No            | Yes              |
+| Earth Projection                                                                                 | Flat          | Unfolded Cube | Icosahedron      |
+| Size discrepancy between the biggest cell and smallest cell                                      | Large         | Medium        | Small            |
+| Space Filling Curve                                                                              | Z-Order Curve | Hilbert Curve | (Not Applicable) |
+| Guarantees that cells close in cell-id are close in lat-lon                                      | No            | Yes           | (Not Applicable) |
+| Guarantees that cells close in lat-lon are close in cell-id                                      | No            | No            | (Not Applicable) |
+| Guarantees that if a latitude longitude pair is in a cell, then it is also in that cell's parent | Yes           | Yes           | No               |
+| Cells ids serve as prefixes to the ids of their child cells                                      | Yes           | No            | No               |
 
+Rather than answer the question of "when to use which" directly, it might be better to explore a few hypothetical scenarios...
+
+### Feature Engineering
+Imagine you have a dataset with latitude-longitude pairs as predictors, and some other variable as a target... Would you like to use geographical indexing for feature-engineering? Geohash, S2, and H3 could all work, depending on the context. Are you simply trying to generate a sort of "neighborhood ID" by indexing each pair to some geospatial cell? Then yes, any of thes approaches work. Or, are you interested 
+
+### Data Visualization
+
+## Conclusion
+One charming thing about these three geographical indexing techniques is the historical trend that they trace from innovation to innovation, from Geohash to S2 to H3. As our need for richer features from our systems increase, design complexity increases, and with it, so increase the sacrifices we must make regarding the system's properties. 
 
 ## References
 - supports 16 levels of resolution.

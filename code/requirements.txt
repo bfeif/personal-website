@@ -2,7 +2,6 @@ geohash2
 graphviz
 ipython
 jupyter
-lightgbm
 matplotlib
 numpy
 pandas
