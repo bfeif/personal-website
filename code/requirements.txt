@@ -1,5 +1,6 @@
 geohash2
 graphviz
+hilbertcurve
 ipython
 jupyter
 matplotlib
@@ -11,3 +12,4 @@ scikit-learn
 scipy==1.11.1
 seaborn
 xgboost
+zCurve

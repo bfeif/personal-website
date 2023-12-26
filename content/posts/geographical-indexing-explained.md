@@ -57,21 +57,29 @@ To map a latitude-longitude pair to a geohash is an elegantly simple algorithm:
 <figure class="image" align="center">
     <img src="/images/geohash-algorithm-explained.png" alt="drawing"/>
     <figcaption style="font-style: italic">
-        Computing a level-1 geohash | Image by Author (base map-image from <a href="https://map-projections.net/single-view/mercator-84">map-projections.net</a>.
+        Computing a level-1 geohash | Image by Author (base map-image from <a href="https://map-projections.net/single-view/mercator-84">map-projections.net</a>).
     </figcaption>
 </figure>
 
-This algorithm can be repeated iteratively arbitrarily many times, all the way down to geohashes that are less than a meter on each side!
+This algorithm can be iteratively repeated arbitrarily many times, all the way down to geohashes that are less than a meter on each side!
 
-<img src="/images/geohash-level-1-level-2.png" alt="drawing"/>
-<!-- source: https://www.geospatialworld.net/blogs/polygeohasher-an-optimized-way-to-create-geohashes/ -->
+<figure class="image" align="center">
+    <img src="/images/geohash-level-1-level-2.png" alt="drawing"/>
+    <figcaption style="font-style: italic">
+        Example Geohash Subdivision | Image from <a href="https://www.geospatialworld.net/blogs/polygeohasher-an-optimized-way-to-create-geohashes/">geospatialworld.net</a>.
+    </figcaption>
+</figure>
 
 What's particularly elegant about this algorithm is that, by following this pattern of "left is `0`, right is `1`; bottom is `0`, top is `1`", the alphabetically ordered geohashes trace out a Z-order curve.
 
 #### What's a Z-order Curve?
 
-<img src="/images/geohash-z-order-curve.jpeg" alt="drawing"/>
-<!-- source: https://ceur-ws.org/Vol-1671/paper4.pdf -->
+<figure class="image" align="center">
+    <img src="/images/geohash-z-order-curve.jpeg" alt="drawing"/>
+    <figcaption style="font-style: italic">
+        Z-Order Curve of Level 1 Geohashes | Image from paper <a href="https://ceur-ws.org/Vol-1671/paper4.pdf">"Distributed Moving Objects Database Based on Key-Value Stores", by Hong Van Le</a>.
+    </figcaption>
+</figure>
 
 [The Z-order curve](https://en.wikipedia.org/wiki/Z-order_curve) is a type of space-filling curve, which is designed just for this purpose of mapping multidimensional values (such as latitude-longitude pairs) to one dimensional representations (such as a string).
 
@@ -89,7 +97,12 @@ Being the oldest and most technically straightforward of the three tools discuss
 
 First announced on [December 5, 2017](https://opensource.googleblog.com/2017/12/announcing-s2-library-geometry-on-sphere.html), S2 was created at Google primarily by [Eric Veach](https://en.wikipedia.org/wiki/Eric_Veach).
 
-<img src="/images/s2curve-globe.gif" alt="drawing" width=300/>
+<figure class="image" align="center">
+    <img src="/images/s2curve-globe.gif" alt="drawing" width=300/>
+    <figcaption style="font-style: italic">
+        S2 on the Globe | Image from <a href="https://s2geometry.io/">S2 Geometry Website</a>.
+    </figcaption>
+</figure>
 
 S2, among many other things, alleviates the two aforementioned issues with Geohash, and it does so by way of two innovations: (1) it uses a [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) instead of a Z-order curve to alleviate the problem that string-distance is not representative of physical distance, and (2) it uses an unfolded cube projection instead of a flat projection, reducing size differences between squares.
 
