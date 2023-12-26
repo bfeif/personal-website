@@ -1,5 +1,5 @@
 ---
-title: "Geographical Indexing Explained"
+title: "Geographical Indexing Explained: A Comparison of Geohash, S2, and H3"
 date: 2023-07-27T09:47:45+02:00
 draft: false
 tags:
@@ -18,25 +18,29 @@ keywords:
 
 What's a postal-code? A postal-code is nothing but a government's attempt to index latitude-longitude pairs to small, more easily governable areas.
 
-We data scientists also want to index latitude-longitude pairs to small subdivisions of space, but for all sorts of purposes other than governing -- analytics, feature-engineering, granular AB testing by geographic subdivision, and more.
+Otherwise known as geographical indexing, indexing latitude-longitude pairs to small subdivisions of space is something that we data scientists often find ourselves doing, but for all sorts of purposes other than governing: analytics, feature-engineering, granular AB testing by geographic subdivision, and more.
 
 Geographical indexing is a richly studied topic, and the tools that do it can bring a lot of power and richness to our models and analyses. What makes geographical indexing techniques further exciting, is that a look under their proverbial hoods reveals eclectic amalgams of other mathematical tools, such as space-filling curves, map projections, tesselations, and more!
 
-This post will explore three of today's most popular geographical indexing techniques -- where they come from, how they work, what makes them different from one another, and how you can use them. In chronological order, and from least to most complexity, we'll look at:
+This post will explore three of today's most popular geographical indexing tools -- where they come from, how they work, what makes them different from one another, and how you can get started using them. In chronological order, and from least to greatest complexity, we'll look at:
 1. Geohash
 2. S2
 3. H3
 
-It will conclude by comparing these techniques, and recommending when you might want to use one over another.
+It will conclude by comparing these tools, and recommending when you might want to use one over another.
 
-Please note that these tools include much functionality beyond basic geographical indexing: polygon intersection, polygon containment checks, line containment checks, generating cell-coverings of geographical spaces, and more. This post, however, focuses strictly on geographical indexing.
+Please note that these tools include much functionality beyond basic geographical indexing: polygon intersection, polygon containment checks, line containment checks, generating cell-coverings of geographical spaces, retrieval of geographic indexed cells' neighbors, and more. This post, however, focuses strictly on geographical indexing.
 
-## Three Geographical Indexing Techniques
+## Three Geographical Indexing Tools
 ### 1. Geohash
-[Geohash, invented in 2008 by Gustavo Niemeyer](https://en.wikipedia.org/wiki/Geohash), is the earliest created geographical indexing technique. It enables its users to map latitude-longitude pairs to Geohash squares of arbitrary user-defined resolution. In Geohash, these squares are uniquely identified by a signature string, such as `"drt3"` (this is the level-4 geohash in which I grew up!).
+[Geohash, invented in 2008 by Gustavo Niemeyer](https://en.wikipedia.org/wiki/Geohash), is the earliest created geographical indexing tool. It enables its users to map latitude-longitude pairs to Geohash squares of arbitrary user-defined resolution. In Geohash, these squares are uniquely identified by a signature string, such as `"drt3"` (this is the level-4 geohash in which I grew up!).
 
-<img src="/images/my-home-geohash-drt3.png" alt="drawing" width=400/>
-<!-- source: https://www.movable-type.co.uk/scripts/geohash.html -->
+<figure class="image" align="center">
+    <img src="/images/my-home-geohash-drt3.png" alt="drawing" width=400/>
+    <figcaption style="font-style: italic">
+        Geohash generated from online UI offered at <a href="https://www.movable-type.co.uk/scripts/geohash.html">movable-type.co.uk</a>.
+    </figcaption>
+</figure>
 
 But how are these strings generated?
 
@@ -50,8 +54,12 @@ To map a latitude-longitude pair to a geohash is an elegantly simple algorithm:
     2. Is our point in the bottom half of the map? If so, append `0` to `S` and reset the map to be just the bottom half of the map; if it's in the top half of the map, append `1` to `S` and reset the map to be just the top half of the map.
 4. Convert every `5` bits from `S` into a Geohash 32-bit alphanumeric character, and return.
 
-<img src="/images/geohash-algorithm-explained.png" alt="drawing"/>
-<!-- source: https://map-projections.net/img/flat-ocean/mercator-84.jpg?ft=59de1425 -->
+<figure class="image" align="center">
+    <img src="/images/geohash-algorithm-explained.png" alt="drawing"/>
+    <figcaption style="font-style: italic">
+        Computing a level-1 geohash | Image by Author (base map-image from <a href="https://map-projections.net/single-view/mercator-84">map-projections.net</a>.
+    </figcaption>
+</figure>
 
 This algorithm can be repeated iteratively arbitrarily many times, all the way down to geohashes that are less than a meter on each side!
 
@@ -75,7 +83,7 @@ Second, while the flat projection of the map that is used by Geohash is convenie
 
 #### Getting Started with Geohash
 
-Being the oldest and most technically straightforward of the three techniques discussed in this post, Geohash is also the most ubiquitous. Implementations of Geohash can be found scattered throughout PyPi (e.g. [geohashr](https://pypi.org/project/geohashr/), [geohash-tools](https://pypi.org/project/geohash-tools/), [pygeohash-fast](https://pypi.org/project/pygeohash-fast/), in a Rust crate [Rust-Geohash](https://docs.rs/crate/geohash/latest), in a NodeJS library [node-geohash](https://github.com/sunng87/node-geohash), and more. It can also be found as a built-in function in database and data warehouse tools such as [PostGIS](https://postgis.net/docs/ST_GeoHash.html), [AWS Redshift](https://docs.aws.amazon.com/redshift/latest/dg/ST_GeoHash-function.html), and [GCP Bigquery](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geohash). I leave the assimilation to these tools as an exercise for the reader ;)
+Being the oldest and most technically straightforward of the three tools discussed in this post, Geohash is also the most ubiquitous. Implementations of Geohash can be found scattered throughout PyPi (e.g. [geohashr](https://pypi.org/project/geohashr/), [geohash-tools](https://pypi.org/project/geohash-tools/), [pygeohash-fast](https://pypi.org/project/pygeohash-fast/), in a Rust crate [Rust-Geohash](https://docs.rs/crate/geohash/latest), in a NodeJS library [node-geohash](https://github.com/sunng87/node-geohash), and more. It can also be found as a built-in function in database and data warehouse tools such as [PostGIS](https://postgis.net/docs/ST_GeoHash.html), [AWS Redshift](https://docs.aws.amazon.com/redshift/latest/dg/ST_GeoHash-function.html), and [GCP Bigquery](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geohash). I leave experimentation with these tools as an exercise for the reader 😉
 
 ### 2. S2
 
@@ -104,6 +112,7 @@ Using such a projection significantly reduces variation between cell sizes becau
 
 #### Getting Started with S2
 
+Google's S2 is written in C++, and can be found as [a repository in Google's Github](https://github.com/google/s2geometry?tab=readme-ov-file). Enabling the Python interface for this package is possible, but requires some non-trivial setup. Alternatively, S2 also has ports to [Kotlin](https://github.com/Enovea/s2-geometry-kotlin), [Java](https://github.com/google/s2-geometry-library-java), and [Golang](https://github.com/golang/geo). There also exists an [open-source Python implementation of S2 on Github not written by Google](https://github.com/aaliddell/s2cell).
 
 - https://s2geometry.io/about/overview
 - https://s2geometry.io/devguide/s2cell_hierarchy
@@ -111,7 +120,7 @@ Using such a projection significantly reduces variation between cell sizes becau
 
 ### H3
 
-Last, and certainly not least, [Uber's H3](https://www.uber.com/en-DE/blog/h3/). The most recently published geographical indexing technique of these three (published in 2018), H3 has two further key innovations that have made it a very popular tool in data science: (1) the use of hexagons in place of squares, and (2) the use of an icosahedron projection onto Earth.
+Last, and certainly not least, [Uber's H3](https://www.uber.com/en-DE/blog/h3/). The most recently published geographical indexing tool of these three (published in 2018), H3 has two further key innovations that have made it a very popular tool in data science: (1) the use of hexagons in place of squares, and (2) the use of an icosahedron projection onto Earth.
 
 <img src="https://blog.uber-cdn.com/cdn-cgi/image/width=2160,quality=80,onerror=redirect,format=auto/wp-content/uploads/2018/06/Twitter-H3.png" alt="drawing">
 
@@ -152,7 +161,11 @@ Furthermore, by its method of subdividing, while H3 does follow a space-filling 
 
 Being the bestagon comes at one final price -- while hexagons might tessalate perfectly with themselves on a flat surface, this doesn't hold on a sphere. To this end, H3's mapping necessitates that a few pentagons -- twelve, to be exact -- be placed at the vertices of the icosahedron. This isn't too bad, however; the H3 team took care to ensure that all twelve pentagons lay over the oceans!
 
-## When to Use Which Technique?
+#### Getting Started with H3
+
+H3 is actively maintained by Uber. It can be found [on Uber's Github in its primary C implementation](https://github.com/uber/h3?tab=readme-ov-file); there also exist bindings for [Python](https://github.com/uber/h3-py), [R](https://github.com/scottmmjackson/h3r), and [many other languages](https://h3geo.org/docs/community/bindings/).
+
+## When to Use Which Tool?
 
 The following table summarizes the comparison of Geohash, S2, and H3 across all axes discussed throughout this post:
 
@@ -168,25 +181,28 @@ The following table summarizes the comparison of Geohash, S2, and H3 across all 
 | Guarantees that cells close in lat-lon are close in cell-id                                      | No            | No            | (Not Applicable) |
 | Guarantees that if a latitude longitude pair is in a cell, then it is also in that cell's parent | Yes           | Yes           | No               |
 | Cells ids serve as prefixes to the ids of their child cells                                      | Yes           | No            | No               |
+| Open-source usability                                                                            | High          | Low           | High             |
 
 Rather than answer the question of "when to use which" directly, it might be better to explore a few hypothetical scenarios...
 
 ### Feature Engineering
-Imagine you have a dataset with latitude-longitude pairs as predictors, and some other variable as a target... Would you like to use geographical indexing for feature-engineering? Geohash, S2, and H3 could all work, depending on the context. Are you simply trying to generate a sort of "neighborhood ID" by indexing each pair to some geospatial cell? Then yes, any of thes approaches work. Or, are you interested 
+Imagine you have a dataset with latitude-longitude pairs as predictors, and some other variable as a target... Geohash, S2, and H3 could all help you, depending on the context!
 
-### Data Visualization
+Are you simply trying to generate a sort of "neighborhood ID" categorical variable by indexing each pair to some geospatial cell? Then yes, any of these tools work.
+
+Or, are you interested in creating some aggregations as features? For example, if you're trying to predict the lifespan of people and all you have in the training dataset is the people's latitude-longitude and their lifespan, then it might be useful to compute for the test dataset "what's the average lifespan of the people who live in this person's neighborhood?". Here, "neighorhood" could be Geohash, S2, or H3. However, if you want to compute a feature for "how many people live in this person's neighborhood?" as a sort of heuristic for population-density of the neighborhood, then it'd be nice for the cells to be the same size, and H3 might be the best choice. If, however, you notice that the latitude-longitude span of the entire dataset is just the island of Manhattan, then in this small area, you can probably use Geohash so that you can enjoy its simplicity without suffering its distortion effects.
+
+Imagine now, however, that you've created your features, and you notice that some neighborhoods contain just one or two people (i.e. data points) over your dataset. If that's the case, then maybe you want to simultaneously use geographic cells of different sizes, in which case, if you use H3, then you might have one person landing up in multiple cells! That wouldn't be good, so you'd want to choose between Geohash and S2.
+
+And of course, if you happen to be performing some work with ocean-related data, then you might not want to use H3 in order to avoid any pentagon-induced stress 😛
 
 ## Conclusion
-One charming thing about these three geographical indexing techniques is the historical trend that they trace from innovation to innovation, from Geohash to S2 to H3. As our need for richer features from our systems increase, design complexity increases, and with it, so increase the sacrifices we must make regarding the system's properties. 
+One charming thing about these three geographical indexing tools is the historical trend that they trace from innovation to innovation, from Geohash to S2 to H3. As our need for richer features from our systems increase, design complexity increases, and with it, so increase the sacrifices we must make regarding the system's properties. With this, in the same way that most people today probably prefer using digital calendars for all their integrations and cross-device usage, many people likely still opt instead for the analog control and ownership the only paper and pen to-do lists and calendars offer.
+
+Anytime we make a choice, whether it's what to eat for lunch or which geographical indexing tool to use, we inflect our personalities. And as with any such choice, there is hardly ever a 100% correct answer. What's your geographical data problem, and which of these tools might you use to help solve it? Let me know in the comments!
 
 ## References
-- supports 16 levels of resolution.
-- no space filling curve; rather, hierarchical subdivision: https://github.com/uber/h3/discussions/416#discussioncomment-1509642
-- H3 makes some sacrifices to achieve their complexity: pentagons and no space-filling curve.
-- Compared to the square techniques, it loses the strict spatial hierarchy, due to edge-effects when subdividing the hexagon into 7 smaller hexagons
-- Builds hexagonal grids on the icosahedron (with touches of pentagons, in the water)
-
-Refs:
-https://www.uber.com/en-DE/blog/h3/
-https://docs.google.com/spreadsheets/d/1YQGOqNeI0zItS4MZYY_OASLfFMIJUOFer2OwQhVapX8/edit#gid=0
-https://www.youtube.com/watch?v=vGKs-c1nQYU
+- https://github.com/uber/h3/discussions/416#discussioncomment-1509642
+- https://www.uber.com/en-DE/blog/h3/
+- https://docs.google.com/spreadsheets/d/1YQGOqNeI0zItS4MZYY_OASLfFMIJUOFer2OwQhVapX8/edit#gid=0
+- https://www.youtube.com/watch?v=vGKs-c1nQYU
