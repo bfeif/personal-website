@@ -110,7 +110,12 @@ S2, among many other things, alleviates the two aforementioned issues with Geoha
 
 The [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) is another type of space-filling curve that, rather than using a "zig-zag pattern" like the Z-order curve, uses a gentler "u-shaped pattern".
 
-<img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs11042-017-4744-4/MediaObjects/11042_2017_4744_Fig4_HTML.gif" alt="drawing"/>
+<figure class="image" align="center">
+    <img src="/images/z-order-curve-vs-hilbert-curve.svg" alt="drawing" width=1500/>
+    <figcaption style="font-style: italic">
+        The Z-Order Curve is longer than the Hilbert Curve to index the same space, at all levels | Image by Author.
+    </figcaption>
+</figure>
 
 By using the Hilbert curve, S2 facilitates that latitude-longitude pairs that are close in their S2 Cell ID string distance are much more likely to be close in physical distance. That said, this is only an alleviation -- the Hilbert curve still possesses the same unfortunate edge effects as the Z-order curve, resulting in the fact that latitude-longitude pairs close in physical distance are not guaranteed to be close in their S2 Cell ID string distance.
 
