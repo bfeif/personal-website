@@ -3,9 +3,11 @@ graphviz
 hilbertcurve
 ipython
 jupyter
+kaleido
 matplotlib
 numpy
 pandas
+plotly
 polars==0.18.12
 s2cell
 scikit-learn

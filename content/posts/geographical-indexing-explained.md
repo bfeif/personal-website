@@ -33,12 +33,12 @@ Please note that these tools include much functionality beyond basic geographica
 
 ## Three Geographical Indexing Tools
 ### 1. Geohash
-[Geohash, invented in 2008 by Gustavo Niemeyer](https://en.wikipedia.org/wiki/Geohash), is the earliest created geographical indexing tool. It enables its users to map latitude-longitude pairs to Geohash squares of arbitrary user-defined resolution. In Geohash, these squares are uniquely identified by a signature string, such as `"drt3"` (this is the level-4 geohash in which I grew up!).
+[Geohash, invented in 2008 by Gustavo Niemeyer](https://en.wikipedia.org/wiki/Geohash), is the earliest created geographical indexing tool. It enables its users to map latitude-longitude pairs to Geohash squares of arbitrary user-defined resolution. In Geohash, these squares are uniquely identified by a signature string, such as `"drt"`.
 
 <figure class="image" align="center">
-    <img src="/images/my-home-geohash-drt3.png" alt="drawing" width=400/>
+    <img src="/images/my-home-geohash-drt.png" alt="drawing" width=400/>
     <figcaption style="font-style: italic">
-        Geohash generated from online UI offered at <a href="https://www.movable-type.co.uk/scripts/geohash.html">movable-type.co.uk</a>.
+        The level-3 geohash in which I grew up! | Image by Author
     </figcaption>
 </figure>
 
@@ -55,9 +55,9 @@ To map a latitude-longitude pair to a geohash is an elegantly simple algorithm:
 4. Convert every `5` bits from `S` into a Geohash 32-bit alphanumeric character, and return.
 
 <figure class="image" align="center">
-    <img src="/images/geohash-algorithm-explained.png" alt="drawing"/>
+    <img src="/images/geohash-bit-by-bit-computation.png" alt="drawing"/>
     <figcaption style="font-style: italic">
-        Computing a level-1 geohash | Image by Author (base map-image from <a href="https://map-projections.net/single-view/mercator-84">map-projections.net</a>).
+        Computing a level-1 geohash. | Image by Author
     </figcaption>
 </figure>
 
@@ -66,7 +66,7 @@ This algorithm can be iteratively repeated arbitrarily many times, all the way d
 <figure class="image" align="center">
     <img src="/images/geohash-level-1-level-2.png" alt="drawing"/>
     <figcaption style="font-style: italic">
-        Example Geohash Subdivision | Image from <a href="https://www.geospatialworld.net/blogs/polygeohasher-an-optimized-way-to-create-geohashes/">geospatialworld.net</a>.
+        Example geohash subdivision. | Image by Author
     </figcaption>
 </figure>
 
@@ -75,9 +75,9 @@ What's particularly elegant about this algorithm is that, by following this patt
 #### What's a Z-order Curve?
 
 <figure class="image" align="center">
-    <img src="/images/geohash-z-order-curve.jpeg" alt="drawing"/>
+    <img src="/images/geohash-z-order-curve.png" alt="drawing"/>
     <figcaption style="font-style: italic">
-        Z-Order Curve of Level 1 Geohashes | Image from paper <a href="https://ceur-ws.org/Vol-1671/paper4.pdf">"Distributed Moving Objects Database Based on Key-Value Stores", by Hong Van Le</a>.
+        Z-Order curve of level 1 geohashes. | Image by Author
     </figcaption>
 </figure>
 
@@ -111,9 +111,9 @@ S2, among many other things, alleviates the two aforementioned issues with Geoha
 The [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) is another type of space-filling curve that, rather than using a "zig-zag pattern" like the Z-order curve, uses a gentler "u-shaped pattern".
 
 <figure class="image" align="center">
-    <img src="/images/z-order-curve-vs-hilbert-curve.svg" alt="drawing" width=1500/>
+    <img src="/images/z-order-curve-vs-hilbert-curve.svg" alt="drawing"/>
     <figcaption style="font-style: italic">
-        The Z-Order Curve is longer than the Hilbert Curve to index the same space, at all levels | Image by Author.
+        The Z-Order Curve is longer than the Hilbert Curve to index the same space, at all levels. | Image by Author.
     </figcaption>
 </figure>
 
@@ -122,25 +122,29 @@ By using the Hilbert curve, S2 facilitates that latitude-longitude pairs that ar
 #### The S2 Map Projection
 The second key innovation from S2 is the use of an unfolded-cube projection of the earth rather than Geohash's flat [Mercator](https://en.wikipedia.org/wiki/Mercator_projection)-like projection.
 
-<img src="/images/s2-unfolded-cube-projection.jpg" alt="drawing"/>
+<figure class="image" align="center">
+    <img src="/images/s2-unfolded-cube-projection.jpg" alt="drawing"/>
+    <figcaption style="font-style: italic">
+        S2's cube globe, unfolded. | Image from <a href="https://s2geometry.io/">S2 Geometry Website</a>
+    </figcaption>
+</figure>
 
 Using such a projection significantly reduces variation between cell sizes because, as you move away from the equator, the distance between two longitude lines increases sinusoidally as a function of latitude.
-
-<!-- <img src="/images/longitude-distortion-of-geohash-s2.png" alt="drawing"> -->
 
 #### Getting Started with S2
 
 Google's S2 is written in C++, and can be found as [a repository in Google's Github](https://github.com/google/s2geometry?tab=readme-ov-file). Enabling the Python interface for this package is possible, but requires some non-trivial setup. Alternatively, S2 also has ports to [Kotlin](https://github.com/Enovea/s2-geometry-kotlin), [Java](https://github.com/google/s2-geometry-library-java), and [Golang](https://github.com/golang/geo). There also exists an [open-source Python implementation of S2 on Github not written by Google](https://github.com/aaliddell/s2cell).
 
-- https://s2geometry.io/about/overview
-- https://s2geometry.io/devguide/s2cell_hierarchy
-- eric@rainforesttrust.org
-
 ### H3
 
 Last, and certainly not least, [Uber's H3](https://www.uber.com/en-DE/blog/h3/). The most recently published geographical indexing tool of these three (published in 2018), H3 has two further key innovations that have made it a very popular tool in data science: (1) the use of hexagons in place of squares, and (2) the use of an icosahedron projection onto Earth.
 
-<img src="https://blog.uber-cdn.com/cdn-cgi/image/width=2160,quality=80,onerror=redirect,format=auto/wp-content/uploads/2018/06/Twitter-H3.png" alt="drawing">
+<figure class="image" align="center">
+    <img src="https://blog.uber-cdn.com/cdn-cgi/image/width=2160,quality=80,onerror=redirect,format=auto/wp-content/uploads/2018/06/Twitter-H3.png" alt="drawing"/>
+    <figcaption style="font-style: italic">
+        How Uber sees the world | Image from <a href="https://www.uber.com/en-DE/blog/h3/">Uber Engineering Blog</a>
+    </figcaption>
+</figure>
 
 #### Why Hexagons?
 
@@ -148,8 +152,12 @@ After seeing the elegance of Geohash and S2, you might find yourself asking, "Wh
 
 The hexagon is the [regular polygon](https://en.wikipedia.org/wiki/Regular_polygon) with the most sides that still tessalates with itself. And, if you take such a tessalation of only hexagons, the unique property arises that, for any given hexagon in the tessalation, all of its neighbors are equidistant from its center. This property is critically not the same for triangles or squares (the only other two regular polygons that tessalate with themselves), for whom every element of the tesslation has three and two distinct possible distances from its neighbors, respectively.
 
-<img src="/images/triangles-vs-squares-vs-hexagons.png" alt="drawing">
-<!-- source: https://www.uber.com/en-DE/blog/h3/ -->
+<figure class="image" align="center">
+    <img src="/images/triangles-vs-squares-vs-hexagons.png"/>
+    <figcaption style="font-style: italic">
+        Only the hexagon is equidistant from its neighbors when tesselated with itself. | Image from <a href="https://www.uber.com/en-DE/blog/h3/">Uber Engineering Blog</a>
+    </figcaption>
+</figure>
 
 Having this property that all neighbors are equidistant greatly simplifies any calculus or gradient related operations that Uber or H3's other users might want to perform.
 
@@ -158,30 +166,45 @@ As a brief aside, hexagons are also mother nature's choice of shape -- bees buil
 #### The Icosahedron Projection
 H3's second innovation is the use of an icosahedron projection (as opposed to Geohash's Mercator-like projection and S2's unfolded cube).
 
-<img src="/images/h3-icosahedron.png" alt="drawing">
-<!-- source: https://www.uber.com/en-DE/blog/h3/ -->
+<figure class="image" align="center">
+    <img src="/images/h3-icosahedron.png"/>
+    <figcaption style="font-style: italic">
+        H3's icosahedron, projected onto the globe. | Image from <a href="https://www.uber.com/en-DE/blog/h3/">Uber Engineering Blog</a>
+    </figcaption>
+</figure>
 
 H3 then covers each triangle face of the icosahedron with hexagons, and subdivides hexagons into smaller hexagons from there.
 
-<img src="/images/h3-icosahedron-face.png" alt="drawing">
+<figure class="image" align="center">
+    <img src="/images/h3-icosahedron-face.png" width=300/>
+    <figcaption style="font-style: italic">
+        One face of H3's icosahedron, divided into hexagons. | Image from <a href="https://www.uber.com/en-DE/blog/h3/">Uber Engineering Blog</a>
+    </figcaption>
+</figure>
 
-Further note that, the more faces a projection of the sphere has, the closer it approximates the sphere, and thus, the less spatial distortions it has. With this, H3's hexagons have more consistent sizes than S2's squares, and still more than Geohash's squares.
+Further note that, the more faces a [polyhedron](https://en.wikipedia.org/wiki/Polyhedron) has, the closer it approximates the sphere, and thus, the less spatial distortions its projection onto a sphere has. With this, H3's hexagons have more consistent sizes than S2's squares, and still more than Geohash's squares.
 
 #### H3's Sacrifices
 At this point, you might be wondering -- what about a space-filling curve? What about subdividing hexagons into smaller hexagons? Well, there is no such thing as the perfect software architecture; only the right one. And in order to achieve such hexagonal elegance, Uber had to make a few sacrifices.
 
 First: one drawback of hexagons in comparison with squares, is that hexagons don't quite as cleanly subdivide into other hexagons.
-<img src="/images/h3-hexagon-subdivisions.png" alt="drawing">
+
+<figure class="image" align="center">
+    <img src="/images/h3-hexagon-subdivisions.png" alt="drawing">
+    <figcaption style="font-style: italic">
+        Subdividing hexagons in H3 leaves a little bit to be desired. | Image from <a href="https://www.uber.com/en-DE/blog/h3/">Uber Engineering Blog</a>
+    </figcaption>
+</figure>
 
 In H3, one hexagon divides into seven other hexagons, in which the resultant subdivided hexagons sit at a slight angle with respect to the larger containing hexagon. The result of this is that the strict spatial hierarchy discussed above regarding Geohash -- that if a latitude-longitude point is contained in a cell then it is guaranteed to be contained in that cell's parent -- is not maintained in H3.
 
-Furthermore, by its method of subdividing, while H3 does follow a space-filling curve within each face of the icosahedron, it is not followed globally; furthermore, [h3 hexagons' string identifiers use a bitmap that doesn't retain the same parent-child containment like Geohash](https://h3geo.org/docs/core-library/h3Indexing/). For example, while in Geohash `"h356"` is the child of `"h35"`, in H3 `"862830807ffffff"` is the child of `"85283083fffffff"` (https://observablehq.com/@nrabinowitz/h3-indexing-order).
+Furthermore, by its method of subdividing, while H3 does follow a space-filling curve within each face of the icosahedron, it is not followed globally; furthermore, [h3 hexagons' string identifiers use a bitmap that doesn't retain the same parent-child containment like Geohash](https://h3geo.org/docs/core-library/h3Indexing/). For example, while in Geohash `"h356"` is the child of `"h35"`, in H3 `"862830807ffffff"` is the child of `"85283083fffffff"`.
 
 Being the bestagon comes at one final price -- while hexagons might tessalate perfectly with themselves on a flat surface, this doesn't hold on a sphere. To this end, H3's mapping necessitates that a few pentagons -- twelve, to be exact -- be placed at the vertices of the icosahedron. This isn't too bad, however; the H3 team took care to ensure that all twelve pentagons lay over the oceans!
 
 #### Getting Started with H3
 
-H3 is actively maintained by Uber. It can be found [on Uber's Github in its primary C implementation](https://github.com/uber/h3?tab=readme-ov-file); there also exist bindings for [Python](https://github.com/uber/h3-py), [R](https://github.com/scottmmjackson/h3r), and [many other languages](https://h3geo.org/docs/community/bindings/).
+H3 is actively maintained by Uber. It can be found [on Uber's Github in its primary C implementation](https://github.com/uber/h3?tab=readme-ov-file); there also exist bindings for [Python](https://github.com/uber/h3-py), [R](https://github.com/scottmmjackson/h3r), and [many other languages](https://h3geo.org/docs/community/bindings/). It's far more available than S2, but lacks the cross-platform availability of Geohash; if you want to use H3, it's quite easy -- but you'll have to stay in Uber's libraries.
 
 ## When to Use Which Tool?
 
@@ -199,11 +222,11 @@ The following table summarizes the comparison of Geohash, S2, and H3 across all 
 | Guarantees that cells close in lat-lon are close in cell-id                                      | No            | No            | (Not Applicable) |
 | Guarantees that if a latitude longitude pair is in a cell, then it is also in that cell's parent | Yes           | Yes           | No               |
 | Cells ids serve as prefixes to the ids of their child cells                                      | Yes           | No            | No               |
-| Open-source usability                                                                            | High          | Low           | High             |
+| Open-source usability                                                                            | High          | Low           | Medium-High      |
 
-Rather than answer the question of "when to use which" directly, it might be better to explore a few hypothetical scenarios...
+Rather than answer the question of "when to use which" directly, it might be better to explore a scenario...
 
-### Feature Engineering
+### Feature Engineering with Latitude and Longitude
 Imagine you have a dataset with latitude-longitude pairs as predictors, and some other variable as a target... Geohash, S2, and H3 could all help you, depending on the context!
 
 Are you simply trying to generate a sort of "neighborhood ID" categorical variable by indexing each pair to some geospatial cell? Then yes, any of these tools work.
@@ -220,7 +243,11 @@ One charming thing about these three geographical indexing tools is the historic
 Anytime we make a choice, whether it's what to eat for lunch or which geographical indexing tool to use, we inflect our personalities. And as with any such choice, there is hardly ever a 100% correct answer. What's your geographical data problem, and which of these tools might you use to help solve it? Let me know in the comments!
 
 ## References
+- https://s2geometry.io/about/overview
+- https://s2geometry.io/devguide/s2cell_hierarchy
+- eric@rainforesttrust.org
 - https://github.com/uber/h3/discussions/416#discussioncomment-1509642
 - https://www.uber.com/en-DE/blog/h3/
 - https://docs.google.com/spreadsheets/d/1YQGOqNeI0zItS4MZYY_OASLfFMIJUOFer2OwQhVapX8/edit#gid=0
 - https://www.youtube.com/watch?v=vGKs-c1nQYU
+- https://observablehq.com/@nrabinowitz/h3-indexing-order
