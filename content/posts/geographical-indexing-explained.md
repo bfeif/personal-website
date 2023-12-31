@@ -18,7 +18,7 @@ keywords:
 
 Geospatial indexing, or Geocoding, is the process of indexing latitude-longitude pairs to small subdivisions of geographical space, and it is a technique that we data scientists often find ourselves using when faced with geospatial data.
 
-Though the first popular geospatial indexing technique [Geohash](https://en.wikipedia.org/wiki/Geohash) was invented as recently as 2008, indexing latitude-longitude pairs to manageable subdidivisions of space is hardly a new concept. Governments have been breaking up their land into states, provinces, counties, and postal codes for centuries for all sorts of applications, such as taking censuses and aggregating votes for elections.
+Though the first popular geospatial indexing technique "Geohash" was invented as recently as 2008, indexing latitude-longitude pairs to manageable subdidivisions of space is hardly a new concept. Governments have been breaking up their land into states, provinces, counties, and postal codes for centuries for all sorts of applications, such as taking censuses and aggregating votes for elections.
 
 Rather than using the manual techniques used by governments, we data scientists use modern computational techniques to execute such spatial subdividing, and we do so for our own purposes: analytics, feature-engineering, granular AB testing by geographic subdivision, indexing geospatial databases, and more.
 
@@ -35,7 +35,7 @@ Before getting started, note that these tools include much functionality beyond 
 
 ## Three Geospatial Indexing Tools
 ### 1. Geohash
-[Geohash, invented in 2008 by Gustavo Niemeyer](https://en.wikipedia.org/wiki/Geohash), is the earliest created geospatial indexing tool. It enables its users to map latitude-longitude pairs to Geohash squares of arbitrary user-defined resolution. In Geohash, these squares are uniquely identified by a signature string, such as `"drt"`.
+[Geohash, invented in 2008 by Gustavo Niemeyer](https://en.wikipedia.org/wiki/Geohash), is the earliest created geospatial indexing tool \[1\]. It enables its users to map latitude-longitude pairs to Geohash squares of arbitrary user-defined resolution. In Geohash, these squares are uniquely identified by a signature string, such as `"drt"`.
 
 <figure class="image" align="center">
     <img src="/images/my-home-geohash-drt.png" alt="drawing" width=400/>
@@ -76,7 +76,7 @@ What's particularly elegant about this algorithm is that, by following this patt
 
 #### What's a Z-order Curve?
 
-[The Z-order curve](https://en.wikipedia.org/wiki/Z-order_curve) is a type of space-filling curve, which is designed just for this purpose of mapping multidimensional values (such as latitude-longitude pairs) to one dimensional representations (such as a string).
+[The Z-order curve](https://en.wikipedia.org/wiki/Z-order_curve) is a type of space-filling curve, which is designed just for this purpose of mapping multidimensional values (such as latitude-longitude pairs) to one dimensional representations (such as a string) \[2\].
 
 <figure class="image" align="center">
     <img src="/images/geohash-z-order-curve.png" alt="drawing"/>
@@ -89,7 +89,14 @@ Geohash is quite powerful: it's simple, fast, and importantly, the geohash strin
 
 First, while the Z-order curve is convenient, it only weakly preserves latitude-longitude proximity in computed strings; particularly, due to edge effects of the Z-order curve, two locations that are close in physical distance are not guaranteed to be close in their computed geohash strings. Furthermore, due to the "zig-zag" nature of the Z-order curve, the opposite is also true -- two locations that are close in their geohash string might not be close in physical distance.
 
-Second, while the flat projection of the map that is used by Geohash is convenient in its simplicity, it leads to high variability in the size of the geohash squares. Furthermore, this map projection has a discontinuity at both the North and South Poles, so if you live in Antarctica at (-90°, 0°), you will not have a geohash -- sorry to disappoint!
+Second, while the [equirectangular projection](https://en.wikipedia.org/wiki/Equirectangular_projection) of the globe that is used by Geohash is convenient in its simplicity, it leads to high variability in the size of the geohash squares. Furthermore, this map projection has a discontinuity at both the North and South Poles, so if you live in Antarctica at (-90°, 0°), you will not have a geohash -- sorry to disappoint \[3\]!
+
+<figure class="image" align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Plate_Carr%C3%A9e_with_Tissot%27s_Indicatrices_of_Distortion.svg/2880px-Plate_Carr%C3%A9e_with_Tissot%27s_Indicatrices_of_Distortion.svg.png" alt="drawing"/>
+    <figcaption style="font-style: italic">
+        Geohashes get smaller as you approach the poles. | <a href="https://en.wikipedia.org/wiki/Equirectangular_projection#/media/File:Plate_Carr%C3%A9e_with_Tissot's_Indicatrices_of_Distortion.svg">Image from Wikipedia</a>, by <a href="https://commons.wikimedia.org/wiki/User:Justinkunimune">Justin Kunimune</a>
+    </figcaption>
+</figure>
 
 #### Getting Started with Geohash
 
@@ -97,7 +104,7 @@ Being the oldest and most technically straightforward of the three tools discuss
 
 ### 2. S2
 
-First announced on [December 5, 2017](https://opensource.googleblog.com/2017/12/announcing-s2-library-geometry-on-sphere.html), S2 was created at Google primarily by [Eric Veach](https://en.wikipedia.org/wiki/Eric_Veach).
+First released as open-source on December 5, 2017, S2 was created at Google primarily by Eric Veach \[4\].
 
 <figure class="image" align="center">
     <img src="/images/s2curve-globe.gif" alt="drawing" width=300/>
@@ -106,11 +113,11 @@ First announced on [December 5, 2017](https://opensource.googleblog.com/2017/12/
     </figcaption>
 </figure>
 
-S2, among many other things, alleviates the two aforementioned issues with Geohash, and it does so by way of two innovations: (1) it uses a [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) instead of a Z-order curve to alleviate the problem that string-distance is not representative of physical distance, and (2) it uses an unfolded cube projection instead of Geohash's [equirectangular projection](https://en.wikipedia.org/wiki/Equirectangular_projection), reducing size differences between cells.
+S2, among many other things, alleviates the two aforementioned issues with Geohash, and it does so by way of two innovations: (1) it uses a [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) instead of a Z-order curve to alleviate the problem that string-distance is not representative of physical distance, and (2) it uses an unfolded cube projection instead of Geohash's equirectangular projection, reducing size differences between cells \[5\].
 
 #### The Hilbert Curve
 
-The [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) is another type of space-filling curve that, rather than using a Z-shaped pattern like the Z-order curve, uses a gentler U-shaped pattern.
+The Hilbert curve is another type of space-filling curve that, rather than using a Z-shaped pattern like the Z-order curve, uses a gentler U-shaped pattern.
 
 <figure class="image" align="center">
     <img src="/images/z-order-curve-vs-hilbert-curve.svg" alt="drawing"/>
@@ -119,7 +126,7 @@ The [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) is another type
     </figcaption>
 </figure>
 
-By using the Hilbert curve, S2 upholds the promise of [locality-sensitive hashing](https://en.wikipedia.org/wiki/Locality-sensitive_hashing#Locality-preserving_hashing) much better than the Z-order curve: though the Hilbert curve possesses the same unfortunate edge effects as the Z-order curve, causing latitude-longitude pairs close in physical distance to not necessarily be close in their S2 Cell ID string distance, latitude-longitude pairs that are close in their S2 Cell ID string distance are much more likely to be close in physical distance.
+By using the Hilbert curve, S2 upholds the promise of [locality-sensitive hashing](https://en.wikipedia.org/wiki/Locality-sensitive_hashing) much better than the Z-order curve: though the Hilbert curve possesses the same unfortunate edge effects as the Z-order curve, causing latitude-longitude pairs close in physical distance to not necessarily be close in their S2 Cell ID string distance, latitude-longitude pairs that are close in their S2 Cell ID string distance are much more likely to be close in physical distance.
 
 #### The S2 Map Projection
 The second key innovation from S2 is the use of an unfolded-cube projection of the earth rather than Geohash's equirectangular projection.
@@ -131,7 +138,7 @@ The second key innovation from S2 is the use of an unfolded-cube projection of t
     </figcaption>
 </figure>
 
-Using such a projection significantly reduces variation between cell sizes because, as you move away from the equator, the distance between two longitude lines increases sinusoidally.
+Using such a projection significantly reduces variation between cell sizes because, as you move away from the equator, the distance between two longitude lines increases sinusoidally \[5\].
 
 #### Getting Started with S2
 
@@ -139,7 +146,7 @@ Google's S2 is written in C++, and can be found as [a repository in Google's Git
 
 ### H3
 
-Last, and certainly not least, [Uber's H3](https://www.uber.com/en-DE/blog/h3/). The most recently published geospatial indexing tool of these three (published in 2018), H3 has two further key innovations that have made it a very popular tool in data science: (1) the use of hexagons in place of squares, and (2) the use of an icosahedron projection onto Earth.
+Last, and certainly not least, Uber's H3. The most recently published geospatial indexing tool of these three (published in 2018), H3 has two further key innovations that have made it a very popular tool in data science: (1) the use of hexagons in place of squares, and (2) the use of an icosahedron projection onto Earth \[6\].
 
 <figure class="image" align="center">
     <img src="https://blog.uber-cdn.com/cdn-cgi/image/width=2160,quality=80,onerror=redirect,format=auto/wp-content/uploads/2018/06/Twitter-H3.png" alt="drawing"/>
@@ -152,7 +159,7 @@ Last, and certainly not least, [Uber's H3](https://www.uber.com/en-DE/blog/h3/).
 
 After seeing the elegance of Geohash and S2, you might find yourself asking, "What's wrong with squares?". Well, it's less about what's wrong with squares, and more about what's right with hexagons.
 
-The hexagon is the [regular polygon](https://en.wikipedia.org/wiki/Regular_polygon) with the most sides that still tessalates with itself. And, if you take such a tessalation of only hexagons, the unique property arises that, for any given hexagon in the tessalation, all of its neighbors are equidistant from its center. This property is critically not the same for triangles or squares (the only other two regular polygons that tessalate with themselves), for whom every element of the tesslation has three and two distinct possible distances from its neighbors, respectively.
+The hexagon is the [regular polygon](https://en.wikipedia.org/wiki/Regular_polygon) with the most sides that still tessalates with itself. And, if you take such a tessalation of only hexagons, the unique property arises that, for any given hexagon in the tessalation, all of its neighbors are equidistant from its center. This property is critically not the same for triangles or squares (the only other two regular polygons that tessalate with themselves), for whom every element of the tesslation has three and two distinct possible distances from its neighbors, respectively \[6\].
 
 <figure class="image" align="center">
     <img src="/images/triangles-vs-squares-vs-hexagons.png"/>
@@ -163,7 +170,7 @@ The hexagon is the [regular polygon](https://en.wikipedia.org/wiki/Regular_polyg
 
 Having this property that all neighbors are equidistant greatly simplifies any calculus or gradient related operations that Uber or H3's other users might want to perform.
 
-As a brief aside, hexagons are also mother nature's choice of shape -- bees build their hives in hexagons, water crystallizes in hexagons that scale fractally up to beautiful snowflakes, and Saturn has a giant hexagon-shaped storm at its North pole. Put simply, [hexagons are the bestagons](https://www.youtube.com/watch?v=thOifuHs6eY)!
+As a brief aside, hexagons are also mother nature's choice of shape -- bees build their hives in hexagons, water crystallizes in hexagons that scale fractally up to beautiful snowflakes, and Saturn has a giant hexagon-shaped storm at its North pole. Put simply, hexagons are the bestagons \[7\]!
 
 #### The Icosahedron Projection
 H3's second innovation is the use of an icosahedron projection (as opposed to Geohash's equirectangular projection and S2's unfolded cube).
@@ -184,7 +191,7 @@ H3 then covers each triangle face of the icosahedron with hexagons, and subdivid
     </figcaption>
 </figure>
 
-Further note that, the more faces a [polyhedron](https://en.wikipedia.org/wiki/Polyhedron) has, the closer it approximates a sphere, and thus, the less spatial distortions its projection onto a sphere has. With this, H3's hexagons have more consistent sizes than S2's squares, and still more than Geohash's squares.
+Further note that, the more faces a [polyhedron](https://en.wikipedia.org/wiki/Polyhedron) such as the icosahedron has, the closer it approximates a sphere, and thus, the less spatial distortions its projection onto a sphere has. With this, H3's hexagons have more consistent sizes than S2's squares, and still more than Geohash's squares.
 
 #### H3's Sacrifices
 At this point, you might be wondering -- what about a space-filling curve? What about subdividing hexagons into smaller hexagons? Well, there is no such thing as the perfect software architecture -- only the right one. And in order to achieve such hexagonal elegance, Uber had to make a few sacrifices.
@@ -200,9 +207,9 @@ First: one drawback of hexagons in comparison with squares, is that hexagons don
 
 In H3, one hexagon divides into seven other hexagons, in which the resultant subdivided hexagons sit at a slight angle with respect to the larger containing hexagon. The result of this is that the strict spatial hierarchy discussed above regarding Geohash -- that if a latitude-longitude point is contained in a cell then it is guaranteed to be contained in that cell's parent -- is not maintained in H3.
 
-Furthermore, by its method of subdividing, while H3 does follow a space-filling curve within each face of the icosahedron, it is not followed globally; furthermore, [h3 hexagons' string identifiers use a bitmap that doesn't retain the same string-prefix behavior like Geohash](https://h3geo.org/docs/core-library/h3Indexing/). For example, while in Geohash `"h356"` is the child of `"h35"`, in H3 `"862830807ffffff"` is the child of `"85283083fffffff"`.
+Furthermore, by its method of subdividing, while H3 does follow a space-filling curve within each face of the icosahedron, it is not followed globally; furthermore, h3 hexagons' string identifiers use a bitmap that doesn't retain the same string-prefix behavior like Geohash \[8\]. For example, while in Geohash `"h356"` is the child of `"h35"`, in H3 `"862830807ffffff"` is the child of `"85283083fffffff"`.
 
-Being the bestagon comes at one final price -- while hexagons might tessalate perfectly with themselves on a flat surface, this doesn't hold on a sphere. To this end, H3's mapping necessitates that a few pentagons -- twelve, to be exact -- be placed at the vertices of the icosahedron, just like a football (or a soccer ball, depending on where you're reading this). This isn't too bad, however; the H3 team took care to ensure that all twelve pentagons lay over the oceans!
+Being the bestagon comes at one final price -- while hexagons might tessalate perfectly with themselves on a flat surface, this doesn't hold on a sphere. To this end, H3's mapping necessitates that a few pentagons -- twelve, to be exact -- be placed at the vertices of the icosahedron, just like a football/soccerball. This isn't too bad, however; the H3 team took care to ensure that all twelve pentagons lay over the oceans \[6\]!
 
 <figure class="image" align="center">
     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Soccerball.svg" alt="drawing" width=300>
@@ -253,11 +260,19 @@ One charming thing about these three geospatial indexing tools is the historical
 Anytime we make a choice, whether it's what to eat for lunch or which geospatial indexing tool to use, we inflect our personalities. And as with any such choice, there is hardly ever a 100% correct answer. What's your geospatial data problem, and which of these tools might you use to help solve it? Let me know in the comments!
 
 ## References
-- https://s2geometry.io/about/overview
-- https://s2geometry.io/devguide/s2cell_hierarchy
-- eric@rainforesttrust.org
-- https://github.com/uber/h3/discussions/416#discussioncomment-1509642
-- https://www.uber.com/en-DE/blog/h3/
-- https://docs.google.com/spreadsheets/d/1YQGOqNeI0zItS4MZYY_OASLfFMIJUOFer2OwQhVapX8/edit#gid=0
-- https://www.youtube.com/watch?v=vGKs-c1nQYU
-- https://observablehq.com/@nrabinowitz/h3-indexing-order
+\[1\]: https://en.wikipedia.org/wiki/Geohash  
+\[2\]: https://en.wikipedia.org/wiki/Z-order_curve  
+\[3\]: https://en.wikipedia.org/wiki/Equirectangular_projection  
+\[4\]: https://opensource.googleblog.com/2017/12/announcing-s2-library-geometry-on-sphere.html  
+\[5\]: https://s2geometry.io/  
+\[6\]: https://www.uber.com/en-DE/blog/h3/  
+\[7\]: https://www.youtube.com/watch?v=thOifuHs6eY  
+\[8\]: https://h3geo.org/docs/core-library/h3Indexing/  
+
+<!-- - https://docs.google.com/spreadsheets/d/1YQGOqNeI0zItS4MZYY_OASLfFMIJUOFer2OwQhVapX8/edit#gid=0 -->
+<!-- - https://www.youtube.com/watch?v=vGKs-c1nQYU -->
+<!-- - https://observablehq.com/@nrabinowitz/h3-indexing-order -->
+<!-- - https://s2geometry.io/about/overview -->
+<!-- - https://s2geometry.io/devguide/s2cell_hierarchy -->
+<!-- - eric@rainforesttrust.org -->
+<!-- - https://github.com/uber/h3/discussions/416#discussioncomment-1509642 -->
