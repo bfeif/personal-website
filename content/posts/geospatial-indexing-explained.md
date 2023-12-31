@@ -3,13 +3,13 @@ title: "Geospatial Indexing Explained: A Comparison of Geohash, S2, and H3"
 date: 2023-07-27T09:47:45+02:00
 draft: false
 tags:
-    - refactoring
+    - geospatial
     - programming
     - data-science
     - software
     - python
 keywords:
-    - refactoring
+    - geospatial
     - programming
     - data-science
     - software
@@ -255,7 +255,7 @@ Imagine now, however, that you've created your features, and you notice that som
 And of course, if you happen to be performing some work with ocean-related data, then you might not want to use H3 in order to avoid any pentagon-induced stress.
 
 ## Conclusion
-One charming thing about these three geospatial indexing tools is the historical trend that they trace from innovation to innovation, from Geohash to S2 to H3. As our need for richer features from our systems increase, design complexity increases, and with it, so increase the sacrifices we must make regarding the system's properties. With this, in the same way that most people today probably prefer using digital calendars for all the multi-device availability and cross-application integration they offer, many people likely still opt instead for the analog control and ownership that paper and pen to-do lists and calendars offer.
+One charming thing about these three geospatial indexing tools is the historical trend that they trace from innovation to innovation, from Geohash to S2 to H3. As our need for richer features from our systems increase, design complexity increases, and with it, so increase the sacrifices we must make regarding the system's properties. With this, in the same way that most people today probably prefer using digital calendars for all the multi-device availability and cross-application integrations that they offer, many people likely still opt instead for the analog control and ownership that paper and pen to-do lists and calendars offer.
 
 Anytime we make a choice, whether it's what to eat for lunch or which geospatial indexing tool to use, we inflect our personalities. And as with any such choice, there is hardly ever a 100% correct answer. What's your geospatial data problem, and which of these tools might you use to help solve it? Let me know in the comments!
 
