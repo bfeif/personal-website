@@ -100,7 +100,7 @@ Second, while the [equirectangular projection](https://en.wikipedia.org/wiki/Equ
 
 #### Getting Started with Geohash
 
-Being the oldest and most technically straightforward of the three tools discussed in this post, Geohash is also the most ubiquitous. Implementations of Geohash can be found scattered throughout PyPi (e.g. [geohashr](https://pypi.org/project/geohashr/), [geohash-tools](https://pypi.org/project/geohash-tools/), [pygeohash-fast](https://pypi.org/project/pygeohash-fast/)), in a Rust crate [Rust-Geohash](https://docs.rs/crate/geohash/latest), in a NodeJS library [node-geohash](https://github.com/sunng87/node-geohash), and more. It can also be found as a built-in function in database and data warehouse tools such as [PostGIS](https://postgis.net/docs/ST_GeoHash.html), [AWS Redshift](https://docs.aws.amazon.com/redshift/latest/dg/ST_GeoHash-function.html), and [GCP Bigquery](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geohash). I leave experimentation with these tools as an exercise for the reader 😉
+Being the oldest and most technically straightforward of the three tools discussed in this post, Geohash is also the most ubiquitous. Implementations of Geohash can be found scattered throughout PyPi (e.g. [geohashr](https://pypi.org/project/geohashr/), [geohash-tools](https://pypi.org/project/geohash-tools/), [pygeohash-fast](https://pypi.org/project/pygeohash-fast/)), in a Rust crate [Rust-Geohash](https://docs.rs/crate/geohash/latest), in a NodeJS library [node-geohash](https://github.com/sunng87/node-geohash), and more. It can also be found as a built-in function in database and data warehouse tools such as [PostGIS](https://postgis.net/docs/ST_GeoHash.html), [AWS Redshift](https://docs.aws.amazon.com/redshift/latest/dg/ST_GeoHash-function.html), and [GCP Bigquery](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geohash). I leave experimentation with these tools as an exercise for the reader.
 
 ### 2. S2
 
@@ -113,7 +113,7 @@ First released as open-source on December 5, 2017, S2 was created at Google prim
     </figcaption>
 </figure>
 
-S2, among many other things, alleviates the two aforementioned issues with Geohash, and it does so by way of two innovations: (1) it uses a [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) instead of a Z-order curve to alleviate the problem that string-distance is not representative of physical distance, and (2) it uses an unfolded cube projection instead of Geohash's equirectangular projection, reducing size differences between cells \[5\].
+S2, among other things, alleviates the two aforementioned issues with Geohash, and it does so by way of two innovations: (1) it uses a [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) instead of a Z-order curve to alleviate the problem that string-distance is not representative of physical distance, and (2) it uses an unfolded cube projection instead of Geohash's equirectangular projection, reducing size differences between cells \[5\].
 
 #### The Hilbert Curve
 
@@ -142,9 +142,9 @@ Using such a projection significantly reduces variation between cell sizes becau
 
 #### Getting Started with S2
 
-Google's S2 is written in C++, and can be found as [a repository in Google's Github](https://github.com/google/s2geometry?tab=readme-ov-file). Enabling the Python interface for this package is possible, but requires some non-trivial setup. Alternatively, S2 also has ports to [Kotlin](https://github.com/Enovea/s2-geometry-kotlin), [Java](https://github.com/google/s2-geometry-library-java), and [Golang](https://github.com/golang/geo), and there also exists an [open-source Python implementation of S2 on Github not written by Google](https://github.com/aaliddell/s2cell).
+Google's S2 is written in C++, and can be found as [a repository in Google's Github](https://github.com/google/s2geometry?tab=readme-ov-file). Enabling the Python interface for this package is possible, however it requires some non-trivial setup. Alternatively, S2 also has ports to [Kotlin](https://github.com/Enovea/s2-geometry-kotlin), [Java](https://github.com/google/s2-geometry-library-java), and [Golang](https://github.com/golang/geo), and there also exists an [open-source Python implementation of S2 on Github not written by Google](https://github.com/aaliddell/s2cell).
 
-### H3
+### 3. H3
 
 Last, and certainly not least, Uber's H3. The most recently published geospatial indexing tool of these three (published in 2018), H3 has two further key innovations that have made it a very popular tool in data science: (1) the use of hexagons in place of squares, and (2) the use of an icosahedron projection onto Earth \[6\].
 
@@ -164,7 +164,7 @@ The hexagon is the [regular polygon](https://en.wikipedia.org/wiki/Regular_polyg
 <figure class="image" align="center">
     <img src="/images/triangles-vs-squares-vs-hexagons.png"/>
     <figcaption style="font-style: italic">
-        Only the hexagon is equidistant from its neighbors when tesselated with itself. | Image from <a href="https://www.uber.com/en-DE/blog/h3/">Uber Engineering Blog</a>
+        Only the hexagon is equidistant from all of its neighbors when tesselated with itself. | Image from <a href="https://www.uber.com/en-DE/blog/h3/">Uber Engineering Blog</a>
     </figcaption>
 </figure>
 
@@ -214,7 +214,7 @@ Being the bestagon comes at one final price -- while hexagons might tessalate pe
 <figure class="image" align="center">
     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Soccerball.svg" alt="drawing" width=300>
     <figcaption style="font-style: italic">
-        Who projected an icosahedron on a sphere first: Uber, or Adidas? Spoiler alert -- it was Adidas. | Image from <a href="https://commons.wikimedia.org/w/index.php?curid=342296">Wikimedia Commons</a>
+        Who projected an icosahedron onto a sphere first: Uber, or Adidas? Spoiler alert -- it was Adidas. | Image from <a href="https://commons.wikimedia.org/w/index.php?curid=342296">Wikimedia Commons</a>
     </figcaption>
 </figure>
 
