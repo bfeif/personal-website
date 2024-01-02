@@ -15,11 +15,10 @@ keywords:
     - software
     - python
 ---
-***Quote***
 
 ## Look at All That Space!
 
-Many of today's most competitive tech markets involve points moving around on a map: ride-hailing services (Uber, Lyft, Grab), micromobility services (Lime, Lyft, Bird), food delivery services (Delivery Hero, Postsmates, Doordash), and more. Moreover, many services that don't place customers' locations at the center of their product use-cases still want to know their customers' locations so that they can better personalize their experiences based on where they are and what's going on around them.
+Many of today's most competitive tech markets involve points moving around on a map: ride-hailing services (Uber, Lyft, Grab), micromobility services (Lime, Bird), food delivery services (Delivery Hero, Postsmates, Doordash), and more. Moreover, many services that don't place customers' locations at the center of their product use-cases still want to know their customers' locations so that they can better personalize their experiences based on where they are and what's going on around them.
 
 What this all means for data scientists is that there's a lot of latitudes and longitudes floating around our data warehouses and databases; and buried deep inside these two variables alone is a wealth of information!
 
@@ -36,11 +35,13 @@ The goal of this article is to give a demontration of a few feature engineering 
     5. Combination of all features
 3. Extensions, Next Steps
 
-Let's go 😎
+As a final preliminary note, this post will use Polars as a data manipulation library, as opposed to Pandas; if you, dear reader, are unfamiliar with Polars or otherwise still stuck in Panda-land, feel free to first check out my earlier post, ["The 3 Reasons Why I Have Permanently Switched From Pandas To Polars"](https://benfeifke.com/posts/the-3-reasons-why-i-switched-from-pandas-to-polars-20230328/). 
+
+And now, let's go 🚀
 
 ## 1. Airbnb Price Prediction; Problem Setup
 
-The problem that these different feature engineering techniques will be tested on throughout this post is Airbnb price prediction. The only raw features used are `"latitude"` and `"longitude"`; the target is `"price"`; and the feature engineering techniques are compared to one another by way of two different machine learning models: Ridge Regression and XGBoost.
+The problem that these different feature engineering techniques will be tested on throughout this post is Airbnb price prediction, coming from a publicly available dataset "U.S. Airbnb Open Data" \[1\]. The only raw features used are `"latitude"` and `"longitude"`; the target is `"price"`; and the feature engineering techniques are compared to one another by way of two different machine learning models: Ridge Regression and XGBoost.
 
 ```python
 import polars as pl
@@ -56,30 +57,48 @@ df = (
 )
 ```
 
-We'll furthermore focus on just data from New York City in order to limit the scope of the problem. In fact, this is already an operationally assimilated treatment of latitude and longitude: for example, in Delivery Hero, our ML products typically train and serve a different model for each of 20+ countries in which we operate, and often even a different model for each city.
+We'll furthermore focus on just data from New York City in order to limit the scope of the problem.
+
+<!-- In fact, this is already an operationally assimilated treatment of geospatial data problems: for example, in Delivery Hero, our ML products typically train and serve a different model for each of 20+ countries in which we operate, and often even a different model for each city. -->
 
 ```python
 df = df.filter(pl.col("city") == "New York City")
 ```
---> Insert map of prices.
 
 Before getting started with any ML prediction, though, we need to inspect the target variable; after all, monetary variables like "price" and "income" are often log-normally distributed or at least heavily right-skewed, and so it might behoove us to first transform the target variable to log-space:
 
 ```python
-df = df.with_columns(pl.col("price").log1p().suffix("_log1p"))
+df = df.with_columns((pl.col("price") + 1).log10().suffix("_log10"))
 ```
 
-![Distribution of Airbnb Price](/images/distribution-of-airbnb-price.png)
+<figure class="image" align="center">
+    <img src="/images/distribution-of-airbnb-price.png" alt="drawing"/>
+    <figcaption style="font-style: italic">
+        <a href="https://benfeifke.com/posts/ecdf-the-only-plotting-tool-a-data-scientist-needs/">ECDF</a> and histogram of Airbnb prices. The most expensive is $100,000 a night! | Image by Author
+    </figcaption>
+</figure>
 
-Even after a [`log_1p` transformation](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.log1p.html#polars.Expr.log1p), the target is still slightly right-skewed. Nonetheless, it looks sufficient for our use-case.
+Even after a `log` transformation, the target is still slightly right-skewed. Nonetheless, it looks sufficient for our use-case.
 
-Now, we just need to separate `train` and `test` data, and everything should be good to go:
+<figure class="image" align="center">
+    <img src="/images/nyc-airbnb-prices.png" alt="drawing"/>
+    <figcaption style="font-style: italic">
+        Airbnb prices in New York City; rentals near the south end of Manhattan appear to be the most expensive. PS: sorry, Staten Island. | Image by Author
+    </figcaption>
+</figure>
+
+Now, we just need to add a column to distinguish `train` and `test` data, and everything should be good to go:
 
 ```python
 TRAIN_TEST_SPLIT_FRACTION = 0.8
 
 df = (
     df
+
+    # Shuffle the data to avoid any issues from the data already being ordered...
+    .sample(fraction=1, shuffle=True)
+    
+    # ...then use row numbers as an index for separating train and test.
     .with_row_count(name="row_number")
     .with_columns([
         (pl.col("row_number") < TRAIN_TEST_SPLIT_FRACTION * len(df)).alias("is_train")
@@ -116,19 +135,29 @@ for model_name, model_class in zip(
         "model_name": model_name,
         "model_performance": model_performance
     })
-
-raw_lat_lon_results_df = (
-    pd.DataFrame
-    .from_records(model_performance_list)
-    .pivot_table(
-        index="feature_list_name",
-        columns="model_name",
-        values="model_performance",
-        aggfunc="first"
-    )
-)
 ```
-<style type="text/css">#T_db72b_row0_col0 {  background-color: #0f76b3;  color: #f1f1f1;}#T_db72b_row0_col1 {  background-color: #589ec8;  color: #f1f1f1;}</style><table id="T_db72b">  <thead>    <tr>      <th class="index_name level0" >model_name</th>      <th id="T_db72b_level0_col0" class="col_heading level0 col0" >ridge regression</th>      <th id="T_db72b_level0_col1" class="col_heading level0 col1" >xgboost</th>    </tr>    <tr>      <th class="index_name level0" >feature_list_name</th>      <th class="blank col0" >&nbsp;</th>      <th class="blank col1" >&nbsp;</th>    </tr>  </thead>  <tbody>    <tr>      <th id="T_db72b_level0_row0" class="row_heading level0 row0" >raw_lat_lon</th>      <td id="T_db72b_row0_col0" class="data row0 col0" >0.724</td>      <td id="T_db72b_row0_col1" class="data row0 col1" >0.558</td>    </tr>  </tbody></table>
+<style type="text/css">
+#T_09dff_row0_col0, #T_09dff_row0_col1 {
+  background-color: #023858;
+  color: #f1f1f1;
+}
+</style>
+<table id="T_09dff">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_09dff_level0_col0" class="col_heading level0 col0" >ridge regression</th>
+      <th id="T_09dff_level0_col1" class="col_heading level0 col1" >xgboost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_09dff_level0_row0" class="row_heading level0 row0" >raw_lat_lon</th>
+      <td id="T_09dff_row0_col0" class="data row0 col0" >$2.13</td>
+      <td id="T_09dff_row0_col1" class="data row0 col1" >$1.98</td>
+    </tr>
+  </tbody>
+</table>
 
 The intuition was correct: `XGBoost` has a lower `mean_squared_error` than `RidgeRegression`.
 
@@ -188,7 +217,33 @@ spatial_density_results_df = (
 )
 ```
 
-<style type="text/css">#T_6356a_row0_col0 {  background-color: #0f76b3;  color: #f1f1f1;}#T_6356a_row0_col1 {  background-color: #589ec8;  color: #f1f1f1;}#T_6356a_row1_col0 {  background-color: #1c7fb8;  color: #f1f1f1;}#T_6356a_row1_col1 {  background-color: #2081b9;  color: #f1f1f1;}</style><table id="T_6356a">  <thead>    <tr>      <th class="index_name level0" >model_name</th>      <th id="T_6356a_level0_col0" class="col_heading level0 col0" >ridge regression</th>      <th id="T_6356a_level0_col1" class="col_heading level0 col1" >xgboost</th>    </tr>    <tr>      <th class="index_name level0" >feature_list_name</th>      <th class="blank col0" >&nbsp;</th>      <th class="blank col1" >&nbsp;</th>    </tr>  </thead>  <tbody>    <tr>      <th id="T_6356a_level0_row0" class="row_heading level0 row0" >raw_lat_lon</th>      <td id="T_6356a_row0_col0" class="data row0 col0" >0.724</td>      <td id="T_6356a_row0_col1" class="data row0 col1" >0.558</td>    </tr>    <tr>      <th id="T_6356a_level0_row1" class="row_heading level0 row1" >spatial_density</th>      <td id="T_6356a_row1_col0" class="data row1 col0" >0.688</td>      <td id="T_6356a_row1_col1" class="data row1 col1" >0.681</td>    </tr>  </tbody></table>
+<style type="text/css">
+#T_55b6c_row0_col0, #T_55b6c_row0_col1, #T_55b6c_row1_col0, #T_55b6c_row1_col1 {
+  background-color: #023858;
+  color: #f1f1f1;
+}
+</style>
+<table id="T_55b6c">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_55b6c_level0_col0" class="col_heading level0 col0" >ridge regression</th>
+      <th id="T_55b6c_level0_col1" class="col_heading level0 col1" >xgboost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_55b6c_level0_row0" class="row_heading level0 row0" >raw_lat_lon</th>
+      <td id="T_55b6c_row0_col0" class="data row0 col0" >2.130</td>
+      <td id="T_55b6c_row0_col1" class="data row0 col1" >1.977</td>
+    </tr>
+    <tr>
+      <th id="T_55b6c_level0_row1" class="row_heading level0 row1" >spatial_density</th>
+      <td id="T_55b6c_row1_col0" class="data row1 col0" >1.280</td>
+      <td id="T_55b6c_row1_col1" class="data row1 col1" >1.273</td>
+    </tr>
+  </tbody>
+</table>
 
 And the results make sense: spatial density outperforms raw latitude and longitude for the regression model, but underperforms raw latitude and longitude for XGBoost.
 
@@ -199,6 +254,10 @@ Different neighborhoods are more expensive than others, so some sort of neighbor
 There are many ways of creating such a feature -- with spatial clustering (e.g. k-means, hierarchical), with spatial segmentation (e.g. geohash, quad-trees, s2-cells), or even using government-created zipcodes.
 
 Here, we'll use geohash, due to its simplicity
+
+## References
+
+\[1\]: https://www.kaggle.com/datasets/kritikseth/us-airbnb-open-data
 
 ---
 
