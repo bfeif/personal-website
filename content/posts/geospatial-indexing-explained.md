@@ -1,6 +1,6 @@
 ---
 title: "Geospatial Indexing Explained: A Comparison of Geohash, S2, and H3"
-date: 2023-07-27T09:47:45+02:00
+date: 2024-01-01T09:47:45+02:00
 draft: false
 tags:
     - geospatial
