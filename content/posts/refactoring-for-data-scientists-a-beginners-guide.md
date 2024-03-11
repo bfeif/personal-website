@@ -1,5 +1,5 @@
 ---
-title: "Refactoring: A Data Scientist's Survival Guide"
+title: "Refactoring For Data Scientists: A Beginner's Guide"
 date: 2023-07-27T09:47:45+02:00
 draft: false
 tags:
@@ -15,14 +15,13 @@ keywords:
     - software
     - python
 ---
-***"Healing takes courage, and we all have courage, even if we have to dig a little to find it." - Tori Amos***
+***"The only way to go fast is to go well." - Martin Fowler***
 
 ## A Tale of Two Programmers
 
 Joe and Jane are university students taking the same "Introduction to Programming" course, and they've just been given the final project: build a Tetris clone! Nervous that they will complete such a big project in time, they both go home and get started right away.
 
 <img src="/images/tetris.jpg" alt="drawing" width="200"/>
-<!-- https://publicdomainvectors.org/en/free-clipart/3D-Tetris-blocks-vector-illustration/6089.html -->
 
 Joe starts writing code, and he quickly completes the code for the game initiation, and even implements the "L" piece! Things are going well, but as he goes to implement more of the Tetris pieces, he finds that each one takes longer and longer to write. Every time he tries to write the code for a new Tetris piece, he finds that it's harder and harder to fit it in to the already-existing code. What's more, every time he adds new code, bugs pop up in unexpected places that take increasingly long to fix, to the point that he wishes he could start over. With just three days until the deadline, he goes to his friend Jane for help.
 

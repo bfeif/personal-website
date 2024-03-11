@@ -1,6 +1,6 @@
 ---
 title: "Geospatial Indexing Explained: A Comparison of Geohash, S2, and H3"
-date: 2024-01-01T09:47:45+02:00
+date: 2024-01-03T09:47:45+02:00
 draft: false
 tags:
     - geospatial
@@ -22,12 +22,12 @@ Though the first popular geospatial indexing technique "Geohash" was invented as
 
 Rather than using the manual techniques used by governments, we data scientists use modern computational techniques to execute such spatial subdividing, and we do so for our own purposes: analytics, feature-engineering, granular AB testing by geographic subdivision, indexing geospatial databases, and more.
 
-Geospatial indexing is a thoroughly developed area of computer science, and geospatial indexing tools can bring a lot of power and richness to our models and analyses. What makes geospatial indexing techniques further exciting, is that a look under their proverbial hoods reveals eclectic amalgams of other mathematical tools, such as space-filling curves, map projections, tesselations, and more!
+Geospatial indexing is a thoroughly developed area of computer science, and geospatial indexing tools can bring a lot of power and richness to our models and analyses. What makes geospatial indexing techniques further exciting, is that a look under their proverbial hoods reveals eclectic amalgams of other mathematical tools, such as space-filling curves, map projections, tessellations, and more!
 
 This post will explore three of today's most popular geospatial indexing tools -- where they come from, how they work, what makes them different from one another, and how you can get started using them. In chronological order, and from least to greatest complexity, we'll look at:
 1. Geohash
-2. S2
-3. H3
+2. Google S2
+3. Uber H3
 
 It will conclude by comparing these tools, and recommending when you might want to use one over another.
 
@@ -48,12 +48,14 @@ But how are these strings generated?
 ### The Geohash Algorithm
 To map a latitude-longitude pair to a geohash is an elegantly simple algorithm:
 
+```pseudocode
 1. Choose a `geohash-level`, or resolution. For our example, we'll choose `1`.
 2. Create an empty binary array `S` of length `geohash-level * 5` (here, length equals `1` times `5`, so `5`).
 3. For each geohash level, ask the question `5` times...
     1. Is our point in the left half of the map? If so, append `0` to `S` and reset the map to be just the left half of the map; if our point is in the right half of the map, append `1` to `S` and reset the map to be just the right-half of the map.
     2. Is our point in the bottom half of the map? If so, append `0` to `S` and reset the map to be just the bottom half of the map; if it's in the top half of the map, append `1` to `S` and reset the map to be just the top half of the map.
 4. Convert every `5` bits from `S` into a Geohash 32-bit alphanumeric character, and return.
+```
 
 <figure class="image" align="center">
     <img src="/images/geohash-bit-by-bit-computation.png" alt="drawing"/>
@@ -80,11 +82,13 @@ What's particularly elegant about this algorithm is that, by following this patt
 <figure class="image" align="center">
     <img src="/images/geohash-z-order-curve.png" alt="drawing"/>
     <figcaption style="font-style: italic">
-        Z-Order curve of level 1 geohashes. | Image by Author
+        Z-order curve of level 1 geohashes. | Image by Author
     </figcaption>
 </figure>
 
 Geohash is quite powerful: it's simple, fast, and importantly, the geohash strings preserve spatial hierarchy (i.e. if your apartment is in the level 3 geohash `"t1a"`, then it is also in the level 2 geohash `"t1"`, and in the level 1 geohash `"t"`). However, you might have noticed a few issues with it by now...
+
+### Geohash's Shortcomings
 
 First, while the Z-order curve is convenient, it only weakly preserves latitude-longitude proximity in computed strings; particularly, due to edge effects of the Z-order curve, two locations that are close in physical distance are not guaranteed to be close in their computed geohash strings. Furthermore, due to the "zig-zag" nature of the Z-order curve, the opposite is also true -- two locations that are close in their geohash string might not be close in physical distance.
 
@@ -101,7 +105,7 @@ Second, while the [equirectangular projection](https://en.wikipedia.org/wiki/Equ
 
 Being the oldest and most technically straightforward of the three tools discussed in this post, Geohash is also the most ubiquitous. Implementations of Geohash can be found scattered throughout PyPi (e.g. [geohashr](https://pypi.org/project/geohashr/), [geohash-tools](https://pypi.org/project/geohash-tools/), [pygeohash-fast](https://pypi.org/project/pygeohash-fast/)), in a Rust crate [Rust-Geohash](https://docs.rs/crate/geohash/latest), in a NodeJS library [node-geohash](https://github.com/sunng87/node-geohash), and more. It can also be found as a built-in function in database and data warehouse tools such as [PostGIS](https://postgis.net/docs/ST_GeoHash.html), [AWS Redshift](https://docs.aws.amazon.com/redshift/latest/dg/ST_GeoHash-function.html), and [GCP Bigquery](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geohash). I leave experimentation with these tools as an exercise for the reader.
 
-## S2
+## Google S2
 
 First released as open-source on December 5, 2017, S2 was created at Google primarily by Eric Veach \[4\].
 
@@ -121,7 +125,7 @@ The Hilbert curve is another type of space-filling curve that, rather than using
 <figure class="image" align="center">
     <img src="/images/z-order-curve-vs-hilbert-curve.svg" alt="drawing"/>
     <figcaption style="font-style: italic">
-        The Z-Order Curve is longer than the Hilbert Curve to index the same space, at all levels. | Image by Author
+        The Z-order Curve is longer than the Hilbert Curve to index the same space, at all levels. | Image by Author
     </figcaption>
 </figure>
 
@@ -143,7 +147,7 @@ Using such a projection significantly reduces variation between cell sizes becau
 
 Google's S2 is written in C++, and can be found as [a repository in Google's Github](https://github.com/google/s2geometry?tab=readme-ov-file). Enabling the Python interface for this package is possible, however it requires some non-trivial setup. Alternatively, S2 also has ports to [Kotlin](https://github.com/Enovea/s2-geometry-kotlin), [Java](https://github.com/google/s2-geometry-library-java), and [Golang](https://github.com/golang/geo), and there also exists an [open-source Python implementation of S2 on Github not written by Google](https://github.com/aaliddell/s2cell).
 
-## H3
+## Uber H3
 
 Last, and certainly not least, Uber's H3. The most recently published geospatial indexing tool of these three (published in 2018), H3 has two further key innovations that have made it a very popular tool in data science: (1) the use of hexagons in place of squares, and (2) the use of an icosahedron projection onto Earth \[6\].
 
@@ -158,12 +162,12 @@ Last, and certainly not least, Uber's H3. The most recently published geospatial
 
 After seeing the elegance of Geohash and S2, you might find yourself asking, "What's wrong with squares?". Well, it's less about what's wrong with squares, and more about what's right with hexagons.
 
-The hexagon is the [regular polygon](https://en.wikipedia.org/wiki/Regular_polygon) with the most sides that still tessalates with itself. And, if you take such a tessalation of only hexagons, the unique property arises that, for any given hexagon in the tessalation, all of its neighbors are equidistant from its center. This property is critically not the same for triangles or squares (the only other two regular polygons that tessalate with themselves), for whom every element of the tesslation has three and two distinct possible distances from its neighbors, respectively \[6\].
+The hexagon is the [regular polygon](https://en.wikipedia.org/wiki/Regular_polygon) with the most sides that still tessellates with itself. And, if you take such a tessellation of only hexagons, the unique property arises that, for any given hexagon in the tessellation, all of its neighbors are equidistant from its center. This property is critically not the same for triangles or squares (the only other two regular polygons that tessellate with themselves), for whom every element of the tessellation has three and two distinct possible distances from its neighbors, respectively \[6\].
 
 <figure class="image" align="center">
     <img src="/images/triangles-vs-squares-vs-hexagons.png"/>
     <figcaption style="font-style: italic">
-        Only the hexagon is equidistant from all of its neighbors when tesselated with itself. | Image from <a href="https://www.uber.com/en-DE/blog/h3/">Uber Engineering Blog</a>
+        Only the hexagon is equidistant from all of its neighbors when tessellated with itself. | Image from <a href="https://www.uber.com/en-DE/blog/h3/">Uber Engineering Blog</a>
     </figcaption>
 </figure>
 
@@ -208,7 +212,7 @@ In H3, one hexagon divides into seven other hexagons, in which the resultant sub
 
 Furthermore, by its method of subdividing, while H3 does follow a space-filling curve within each face of the icosahedron, it is not followed globally; furthermore, h3 hexagons' string identifiers use a bitmap that doesn't retain the same string-prefix behavior like Geohash \[8\]. For example, while in Geohash `"h356"` is the child of `"h35"`, in H3 `"862830807ffffff"` is the child of `"85283083fffffff"`.
 
-Being the bestagon comes at one final price -- while hexagons might tessalate perfectly with themselves on a flat surface, this doesn't hold on a sphere. To this end, H3's mapping necessitates that a few pentagons -- twelve, to be exact -- be placed at the vertices of the icosahedron, just like a football/soccerball. This isn't too bad, however; the H3 team took care to ensure that all twelve pentagons lay over the oceans \[6\]!
+Being the bestagon comes at one final price -- while hexagons might tessellate perfectly with themselves on a flat surface, this doesn't hold on a sphere. To this end, H3's mapping necessitates that a few pentagons -- twelve, to be exact -- be placed at the vertices of the icosahedron, just like a football/soccerball. This isn't too bad, however; the H3 team took care to ensure that all twelve pentagons lay over the oceans \[6\]!
 
 <figure class="image" align="center">
     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Soccerball.svg" alt="drawing" width=300>
@@ -226,19 +230,19 @@ H3 is actively maintained by Uber. It can be found [on Uber's Github in its prim
 
 The following table summarizes the comparison of Geohash, S2, and H3 across all axes discussed throughout this post:
 
-|                                                                                                  | **Geohash**   | **S2**        | **H3**           |
-| ------------------------------------------------------------------------------------------------ | ------------- | ------------- | ---------------- |
-| Release Year                                                                                     | 2008          | 2017          | 2018             |
-| Shape of Cells                                                                                   | Square        | Square        | Hexagon          |
-| Cells are equidistant from all their neighbors                                                   | No            | No            | Yes              |
-| Earth Projection                                                                                 | Flat          | Unfolded Cube | Icosahedron      |
-| Size discrepancy between the biggest cell and smallest cell                                      | Large         | Medium        | Small            |
-| Space Filling Curve                                                                              | Z-Order Curve | Hilbert Curve | (Not Applicable) |
-| Guarantees that cells close in cell-id are close in lat-lon                                      | No            | Yes           | (Not Applicable) |
-| Guarantees that cells close in lat-lon are close in cell-id                                      | No            | No            | (Not Applicable) |
-| Guarantees that if a latitude longitude pair is in a cell, then it is also in that cell's parent | Yes           | Yes           | No               |
-| Cells ids serve as prefixes to the ids of their child cells                                      | Yes           | No            | No               |
-| Open-source usability                                                                            | High          | Low           | Medium-High      |
+|                                                                                                  | **Geohash**     | **S2**        | **H3**           |
+| ------------------------------------------------------------------------------------------------ | -------------   | ------------- | ---------------- |
+| Release Year                                                                                     | 2008            | 2017          | 2018             |
+| Shape of Cells                                                                                   | Square          | Square        | Hexagon          |
+| Cells are equidistant from all their neighbors                                                   | No              | No            | Yes              |
+| Earth Projection                                                                                 | Equirectangular | Unfolded Cube | Icosahedron      |
+| Size discrepancy between the biggest cell and smallest cell                                      | Large           | Medium        | Small            |
+| Space Filling Curve                                                                              | Z-order Curve   | Hilbert Curve | (Not Applicable) |
+| Guarantees that cells close in cell-id are close in lat-lon                                      | No              | Yes           | (Not Applicable) |
+| Guarantees that cells close in lat-lon are close in cell-id                                      | No              | No            | (Not Applicable) |
+| Guarantees that if a latitude longitude pair is in a cell, then it is also in that cell's parent | Yes             | Yes           | No               |
+| Cells ids serve as prefixes to the ids of their child cells                                      | Yes             | No            | No               |
+| Open-source usability                                                                            | High            | Low           | Medium-High      |
 
 Rather than answer the question of "when to use which" directly, it might be better to explore a scenario...
 
