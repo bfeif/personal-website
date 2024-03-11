@@ -28,10 +28,9 @@ The goal of this article is to give a demontration of a few feature engineering 
 
 1. Airbnb price prediction problem setup
 2. Discussion of feature-engineering techniques
-    1. raw latitude and longitude (i.e. no feature engineering)
-    2. spatial density (could use many things: nearest neighbors, KDE, etc)
-    3. geohash category
-    4. geohash target encoding
+    1. Raw latitude and longitude (i.e. no feature engineering)
+    2. Spatial density (could use many things: nearest neighbors, KDE, etc)
+    4. Geohash target encoding
     5. Combination of all features
 3. Extensions, Next Steps
 
@@ -39,7 +38,7 @@ As a final preliminary note, this post will use Polars as a data manipulation li
 
 And now, let's go 🚀
 
-## 1. Airbnb Price Prediction; Problem Setup
+## 1. Airbnb Price Prediction: Problem Setup
 
 The problem that these different feature engineering techniques will be tested on throughout this post is Airbnb price prediction, coming from a publicly available dataset "U.S. Airbnb Open Data" \[1\]. The only raw features used are `"latitude"` and `"longitude"`; the target is `"price"`; and the feature engineering techniques are compared to one another by way of two different machine learning models: Ridge Regression and XGBoost.
 
@@ -95,7 +94,7 @@ TRAIN_TEST_SPLIT_FRACTION = 0.8
 df = (
     df
 
-    # Shuffle the data to avoid any issues from the data already being ordered...
+    # Shuffle the data to avoid any issues from the data being pre-ordered...
     .sample(fraction=1, shuffle=True)
     
     # ...then use row numbers as an index for separating train and test.
@@ -247,11 +246,11 @@ spatial_density_results_df = (
 
 And the results make sense: spatial density outperforms raw latitude and longitude for the regression model, but underperforms raw latitude and longitude for XGBoost.
 
-### 2.3. Geohash Categorical
+### 2.3. Geohash target encoding
 
-Different neighborhoods are more expensive than others, so some sort of neighborhood-related categorical feature could be a powerful predictor.
+It's a known fact -- some neighborhoods are more expensive than others. So, if we can teach the model to predict .
 
-There are many ways of creating such a feature -- with spatial clustering (e.g. k-means, hierarchical), with spatial segmentation (e.g. geohash, quad-trees, s2-cells), or even using government-created zipcodes.
+There are many ways of creating such a feature -- with spatial clustering (e.g. k-means, hierarchical), with [geospatial indexing (e.g. Geohash, Google S2, Uber H3)](https://towardsdatascience.com/geospatial-indexing-explained-a-comparison-of-geohash-s2-and-h3-68d4ed7e366d), or even using government-created zipcodes.
 
 Here, we'll use geohash, due to its simplicity
 
