@@ -198,22 +198,6 @@ for model_name, model_class in zip(
     model = model_class().fit(X_train, y_train)
     y_predicted = model.predict(X_test)
     model_performance = mean_squared_error(y_test, y_predicted)
-    model_performance_list.append({
-        "feature_list_name": MODEL_FEATURE_LIST_NAME,
-        "model_name": model_name,
-        "model_performance": model_performance
-    })
-
-spatial_density_results_df = (
-    pd.DataFrame
-    .from_records(model_performance_list)
-    .pivot_table(
-        index="feature_list_name",
-        columns="model_name",
-        values="model_performance",
-        aggfunc="first"
-    )
-)
 ```
 
 <style type="text/css">
@@ -248,11 +232,15 @@ And the results make sense: spatial density outperforms raw latitude and longitu
 
 ### 2.3. Geohash target encoding
 
-It's a known fact -- some neighborhoods are more expensive than others. So, if we can teach the model to predict .
+It's a known fact -- some neighborhoods are more expensive than others. So, it's possible that giving information to the model about what neighborhood the Airbnb's are in (or what kind of price is expected in each neighborhood) can add predictive power.
 
-There are many ways of creating such a feature -- with spatial clustering (e.g. k-means, hierarchical), with [geospatial indexing (e.g. Geohash, Google S2, Uber H3)](https://towardsdatascience.com/geospatial-indexing-explained-a-comparison-of-geohash-s2-and-h3-68d4ed7e366d), or even using government-created zipcodes.
+But how to do this? More specifically, what's a neighborhood?
 
-Here, we'll use geohash, due to its simplicity
+A neighborhood can be anything -- a zip-code, a street, or in our case, [Geohash](https://towardsdatascience.com/geospatial-indexing-explained-a-comparison-of-geohash-s2-and-h3-68d4ed7e366d). (I recently wrote an article about Geohash and other geospatial indexing tools — how they work, how to use them, and a comparison of Geohash to the two other most popular geospatial indexing tools. Feel free to check it out!)
+
+In short, Geohash allows us to convert a latitude-longitude point to a fixed neighborhood, thus giving us Airbnbs' neighborhoods as a categorical variable. And now, equipped with this neighborhood categorical variable, we can use target encoding to communicate to the model about the expected price in each neighborhod.
+
+
 
 ## References
 
