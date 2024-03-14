@@ -16,7 +16,7 @@ keywords:
     - python
 ---
 
-## Look at All That Space!
+***Leveraging the power in your geospatial data--with code!***
 
 Many of today's most competitive tech markets involve points moving around on a map: ride-hailing services (Uber, Lyft, Grab), micromobility services (Lime, Bird), food delivery services (Delivery Hero, Postsmates, Doordash), and more. Moreover, many services that don't place customers' locations at the center of their product use-cases still want to know their customers' locations so that they can better personalize their experiences based on where they are and what's going on around them.
 
