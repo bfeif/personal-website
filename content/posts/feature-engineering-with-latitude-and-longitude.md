@@ -81,7 +81,7 @@ Even after a `log` transformation, the target is still slightly right-skewed. No
 <figure class="image" align="center">
     <img src="/images/miami-home-sale-price.png" alt="drawing"/>
     <figcaption style="font-style: italic">
-        Home sale prices in Miami; rentals close to the beach appear to generally be the most expensive. | Image by Author
+        Home sale prices in Miami; houses close to the beach generally sold for more money, with the wealthy neighborhood of Pinecrest also being a hot spot. | Image by Author
     </figcaption>
 </figure>
 
