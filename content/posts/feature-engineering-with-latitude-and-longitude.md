@@ -27,12 +27,13 @@ Creatively and effectively utilizing latitude and longitude can bring immense pr
 The goal of this article is to give a demontration of a few feature engineering techniques that use just latitude and longitude, comparing their predictive power on a Miami Home Sale Price Prediction problem. The structure is as follows:
 
 1. Miami home sale price prediction problem setup
-2. Discussion of feature-engineering techniques
+2. Feature engineering experiments
     1. Raw latitude and longitude
     2. Spatial density
     4. Geohash target encoding
     5. Combination of all features
-3. Extensions, Next Steps
+3. Discussion
+4. Conclusion
 
 Since the focus of this post is on feature-engineering, the model evaluation will be quite straightforward for the sake of brevity and clarity (i.e. no cross validation and no hyperparameter optimization).
 
@@ -106,7 +107,7 @@ df = (
 
 And with that, everything is prepared! So without further ado, it's time to engineer some features 🧑‍💻
 
-## 2. Discussion of Feature Engineering Techniques
+## 2. Feature Engineering Experiments
 
 ### 2.1. Raw Latitude and Longitude
 The first feature engineering technique is... you guessed it -- no feature engineering! Latitude and longitude can be quite powerful features on their own, though their behavior as such depends highly on the model being used. In particular, you wouldn't usually expect latitude or longitude to have a linear relationship with your target variable, unless your target is something earthly in nature, like "temperature" or "humidity"; with this, raw latitude and longitude won't play so well with linear models like `RidgeRegression`; they can however already be quite powerful with models based on decision trees like `XGBoost`:
@@ -498,7 +499,7 @@ Of course, as with any data science problem, the fun is only just beginning; the
 
 And of course, the whole ML approach could be improved to include k-fold cross-validation, or a model or cost function that more richly appreciates the fat-tailed nature of the target variable.
 
-Furthermore, the dataset herein studied was a record of home sales, which is notably distinct from home prices: in the former, one record represents a transaction, whereas in the latter, one record represents an actual home. As such, the spatial density feature herein computed may represent more of a "neighborhood purchasing popularity" than it does urbanness. As such, as with any data science problem, your mileage with these techniques may vary depending on the nature of your data.
+Furthermore, the dataset herein studied was a record of home sales, which is notably distinct from home prices: in the former, one record represents a transaction, whereas in the latter, one record represents an actual home. With that, the spatial density feature herein computed may represent more of a "neighborhood purchasing popularity" than it does urbanness. As with any data science problem, your mileage with these techniques may vary depending on the nature of your data.
 
 ## 4. Conclusion
 These are just a few ideas of what can be done when working on machine learning problems with data that contains latitude and longitude; hopefully it gives you some starting points. You can check out the code on my github ([link](https://github.com/bfeif/personal-website/blob/geospatial-feature-engineering-post/code/notebooks/feature-engineering-with-just-latitude-and-longitude.ipynb)). As always, thank you for reading 🙂 Until next time!
