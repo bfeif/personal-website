@@ -9,9 +9,9 @@ numpy
 pandas
 plotly
 pyarrow>=11.0.0
-polars==0.18.12
+polars==0.20.15
 s2cell
-scikit-learn
+scikit-learn==1.4.0
 scipy==1.11.1
 seaborn
 xgboost
