@@ -3,15 +3,15 @@ title: "Feature Engineering With Latitude and Longitude"
 date: 2024-03-16T09:47:45+02:00
 draft: false
 tags:
-    - refactoring
-    - programming
+    - geospatial
     - data-science
+    - data
     - software
     - python
 keywords:
-    - refactoring
-    - programming
+    - geospatial
     - data-science
+    - data
     - software
     - python
 ---
