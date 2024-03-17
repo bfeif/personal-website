@@ -1,6 +1,6 @@
 ---
-title: "Feature Engineering From Just Latitude and Longitude"
-date: 2023-07-27T09:47:45+02:00
+title: "Feature Engineering With Latitude and Longitude"
+date: 2024-03-16T09:47:45+02:00
 draft: false
 tags:
     - refactoring
@@ -16,7 +16,7 @@ keywords:
     - python
 ---
 
-***Leveraging the power in your geospatial data--with code!***
+***Leveraging the power in your geospatial data -- with code!***
 
 Many of today's most competitive tech markets involve points moving around on a map: ride-hailing services (Uber, Lyft, Grab), micromobility services (Lime, Bird), food delivery services (Delivery Hero, Postsmates, Doordash), and more. Moreover, many services that don't place customers' locations at the center of their product use-cases still want to know their customers' locations so that they can better personalize their experiences based on where they are and what's going on around them.
 
@@ -24,9 +24,9 @@ What this all means for data scientists is that there's a lot of latitudes and l
 
 Creatively and effectively utilizing latitude and longitude can bring immense predictive power to our machine learning applications and added dimensionality to our analytics efforts, helping us data scientists to bring more value to our companies and our customers.
 
-The goal of this article is to give a demontration of a few feature engineering techniques that use just latitude and longitude, comparing their predictive power on an Airbnb Price Prediction problem from Kaggle. The structure is as follows:
+The goal of this article is to give a demontration of a few feature engineering techniques that use just latitude and longitude, comparing their predictive power on a Miami Home Sale Price Prediction problem. The structure is as follows:
 
-1. Airbnb price prediction problem setup
+1. Miami home sale price prediction problem setup
 2. Discussion of feature-engineering techniques
     1. Raw latitude and longitude
     2. Spatial density
@@ -40,9 +40,9 @@ Furthermore, this post will use Polars as a data manipulation library, as oppose
 
 And now, let's go 🚀
 
-## 1. Airbnb Price Prediction: Problem Setup
+## 1. Miami Home Sale Price Prediction: Problem Setup
 
-The problem that these different feature engineering techniques will be tested on throughout this post is Airbnb price prediction, coming from a publicly available dataset "U.S. Airbnb Open Data" \[1\]. The only raw features used are `"latitude"` and `"longitude"`; the target is `"price"`; and the feature engineering techniques are compared to one another by way of two different machine learning models: Ridge Regression and XGBoost (one regression model and one tree-based model).
+The problem that these different feature engineering techniques will be tested on throughout this post is Home Sale Price Prediction in Miami, coming from a publicly available dataset "Miami Housing 2016" \[1\]. The only raw features used are `"latitude"` and `"longitude"`, and they are used to predict the target `"price"`. The feature engineering techniques are compared to one another by way of two different machine learning models: Ridge Regression and XGBoost; here, I use one regression model and one tree-based model to demonstrate the way that these two models respond to the different tecniques considered.
 
 ```python
 import polars as pl
@@ -50,39 +50,38 @@ from xgboost import XGBRegressor
 from sklearn.linear_model import Ridge
 
 
-# Data taken from https://www.kaggle.com/datasets/kritikseth/us-airbnb-open-data
+# Data taken from https://www.openml.org/search?type=data&id=43093
 df = (
-    pl.scan_csv("../data/AB_US_2023.csv")
+    pl.scan_csv("../data/miami-housing.csv")
+    .with_columns([
+        pl.col("SALE_PRC").alias("price"),
+        pl.col(["LATITUDE", "LONGITUDE"]).name.to_lowercase()
+    ])
     .select(pl.col(["latitude", "longitude", "price"]))
-    .collect()
 )
-```
-
-We'll furthermore focus on just data from New York City in order to limit the scope of the problem. In fact, doing so is already an operationally assimilated treatment of geospatial data problems: in industry, it's good practice when developing ML products to train and serve a different model for every region or city of operation, so long as your data volume allows it.
-
-```python
-df = df.filter(pl.col("city") == "New York City")
 ```
 
 Before getting started with any ML prediction, though, it's necessary to inspect the target variable; after all, monetary variables like "price" and "income" are often log-normally distributed or at least heavily right-skewed, and so it might behoove us to first transform the target variable to log-space:
 
 ```python
-df = df.with_columns((pl.col("price") + 1).log10().suffix("_log10"))
+# Normally, it'd be necessary to take the log of price plus one to account for a log(0)
+# error, but there's no way that a house sold for $0 :P
+df = df.with_columns(pl.col("price").log10().suffix("_log10"))
 ```
 
 <figure class="image" align="center">
-    <img src="/images/distribution-of-airbnb-price.png" alt="drawing"/>
+    <img src="/images/distribution-of-home-sale-price.png" alt="drawing"/>
     <figcaption style="font-style: italic">
-        <a href="https://benfeifke.com/posts/ecdf-the-only-plotting-tool-a-data-scientist-needs/">ECDF</a> and histogram of Airbnb prices. The most expensive is $100,000 a night! | Image by Author
+        <a href="https://benfeifke.com/posts/ecdf-the-only-plotting-tool-a-data-scientist-needs/">ECDF</a> and histogram of home sale prices. The most expensive sold for over $2,000,000! | Image by Author
     </figcaption>
 </figure>
 
 Even after a `log` transformation, the target is still slightly right-skewed. Nonetheless, it looks sufficient for our use-case.
 
 <figure class="image" align="center">
-    <img src="/images/nyc-airbnb-prices.png" alt="drawing"/>
+    <img src="/images/miami-home-sale-price.png" alt="drawing"/>
     <figcaption style="font-style: italic">
-        Airbnb prices in New York City; rentals near the south end of Manhattan appear to be the most expensive. PS: sorry, Staten Island. | Image by Author
+        Home sale prices in Miami; rentals close to the beach appear to generally be the most expensive. | Image by Author
     </figcaption>
 </figure>
 
@@ -105,12 +104,12 @@ df = (
 )
 ```
 
-And with that, everything is prepared! So without further ado, let's engineer some features 🧑‍💻
+And with that, everything is prepared! So without further ado, it's time to engineer some features 🧑‍💻
 
 ## 2. Discussion of Feature Engineering Techniques
 
 ### 2.1. Raw Latitude and Longitude
-The first feature engineering technique is... you guessed it -- no feature engineering! Latitude and longitude can be quite powerful features on their own, though their behavior as such depends highly on the model being used. In particular, you wouldn't usually expect latitude or longitude to have a linear relationship with your target variable, unless your target is something earthly in nature, like "temperature" or "humidity"; with this, raw latitude and longitude won't play so well with linear models like `RidgeRegression`; they can however already be quite powerful with e.g. models based on decision trees like `XGBoost`:
+The first feature engineering technique is... you guessed it -- no feature engineering! Latitude and longitude can be quite powerful features on their own, though their behavior as such depends highly on the model being used. In particular, you wouldn't usually expect latitude or longitude to have a linear relationship with your target variable, unless your target is something earthly in nature, like "temperature" or "humidity"; with this, raw latitude and longitude won't play so well with linear models like `RidgeRegression`; they can however already be quite powerful with models based on decision trees like `XGBoost`:
 
 ```python
 MODEL_FEATURE_LIST_NAME = "raw_lat_lon"
@@ -132,28 +131,28 @@ for model_name, model_class in zip(
 ```
 
 <style type="text/css">
-#T_62e3c_row0_col0 {
-  background-color: #1b7eb7;
+#T_a1b4a_row0_col0 {
+  background-color: #056aa6;
   color: #f1f1f1;
 }
-#T_62e3c_row0_col1 {
-  background-color: #d0d1e6;
+#T_a1b4a_row0_col1 {
+  background-color: #b1c2de;
   color: #000000;
 }
 </style>
-<table id="T_62e3c">
+<table id="T_a1b4a">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_62e3c_level0_col0" class="col_heading level0 col0" >ridge regression</th>
-      <th id="T_62e3c_level0_col1" class="col_heading level0 col1" >xgboost</th>
+      <th id="T_a1b4a_level0_col0" class="col_heading level0 col0" >ridge regression</th>
+      <th id="T_a1b4a_level0_col1" class="col_heading level0 col1" >xgboost</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_62e3c_level0_row0" class="row_heading level0 row0" >raw_lat_lon</th>
-      <td id="T_62e3c_row0_col0" class="data row0 col0" >0.3695</td>
-      <td id="T_62e3c_row0_col1" class="data row0 col1" >0.3252</td>
+      <th id="T_a1b4a_level0_row0" class="row_heading level0 row0" >raw_lat_lon</th>
+      <td id="T_a1b4a_row0_col0" class="data row0 col0" >0.17848</td>
+      <td id="T_a1b4a_row0_col1" class="data row0 col1" >0.13420</td>
     </tr>
   </tbody>
 </table>
@@ -162,11 +161,11 @@ The intuition was correct: `XGBoost` has a lower `root_mean_squared_error` than 
 
 
 ### 2.2. Spatial Density
-Do Airbnbs in urban areas have higher prices than those in rural areas?
+Do homes in urban areas sell for higher prices than those in rural areas?
 
-Population density is correlated with many demographic processes, and this is certainly true for rental prices and incomes (e.g. people earn higher salaries in cities than in the countryside). And even though this problem focuses on New York City where there's only urban areas and extremely urban areas, a spatial density feature might still be useful.
+Population density is correlated with many demographic processes, and this is certainly true for rental prices and incomes (e.g. people earn higher salaries in cities than in the countryside). And even though this problem focuses on Miami, where there's only urban areas and slightly less urban areas, a spatial density feature might still be useful.
 
-One could use many methods for measuring the spatial density around an Airbnb: counting the number of other Airbnbs within some radius for each Airbnb; or computing and sampling from a Kernel Density Estimate over Airbnb locations. For this case, I measure spatial density as the number of neighbors within some radius for each Airbnb, using `scipy`'s [cKDtree](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.cKDTree.html):
+One could use many methods for measuring the spatial density around a home: counting the number of other home sales within some radius of each home sale; or computing and sampling from a Kernel Density Estimate over home sale locations; or even pulling third party census data about population density. For this case, I measure spatial density as the number of home sales within some radius of each home, using `scipy`'s [cKDtree](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.cKDTree.html):
 
 ```python
 def add_density_feature_columns_to_dataframe(geo_df: pl.DataFrame) -> pl.DataFrame:
@@ -184,9 +183,9 @@ df_w_density = add_density_feature_columns_to_dataframe(df)
 ```
 
 <figure class="image" align="center">
-    <img src="/images/nyc-airbnb-spatial-density.png" alt="drawing"/>
+    <img src="/images/miami-home-density.png" alt="drawing"/>
     <figcaption style="font-style: italic">
-        Airbnb spatial density; the highest density of Airbnbs is around Times Square, the tourism center of the city. | Image by Author
+        Spatial density of home sales in Miami reflects the urbanness of the larger Miami metropolitan area; the highest density of home sales is surprisingly south of the city, around Homestead. | Image by Author
     </figcaption>
 </figure>
 
@@ -211,58 +210,58 @@ for model_name, model_class in zip(
 ```
 
 <style type="text/css">
-#T_e567a_row0_col0 {
-  background-color: #1b7eb7;
+#T_01114_row0_col0 {
+  background-color: #056aa6;
   color: #f1f1f1;
 }
-#T_e567a_row0_col1 {
-  background-color: #d0d1e6;
+#T_01114_row0_col1 {
+  background-color: #b1c2de;
   color: #000000;
 }
-#T_e567a_row1_col0 {
-  background-color: #2a88bc;
-  color: #f1f1f1;
+#T_01114_row1_col0 {
+  background-color: #d7d6e9;
+  color: #000000;
 }
-#T_e567a_row1_col1 {
-  background-color: #2484ba;
-  color: #f1f1f1;
+#T_01114_row1_col1 {
+  background-color: #bfc9e1;
+  color: #000000;
 }
 </style>
-<table id="T_e567a">
+<table id="T_01114">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_e567a_level0_col0" class="col_heading level0 col0" >ridge regression</th>
-      <th id="T_e567a_level0_col1" class="col_heading level0 col1" >xgboost</th>
+      <th id="T_01114_level0_col0" class="col_heading level0 col0" >ridge regression</th>
+      <th id="T_01114_level0_col1" class="col_heading level0 col1" >xgboost</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_e567a_level0_row0" class="row_heading level0 row0" >raw_lat_lon</th>
-      <td id="T_e567a_row0_col0" class="data row0 col0" >0.3695</td>
-      <td id="T_e567a_row0_col1" class="data row0 col1" >0.3252</td>
+      <th id="T_01114_level0_row0" class="row_heading level0 row0" >raw_lat_lon</th>
+      <td id="T_01114_row0_col0" class="data row0 col0" >0.17848</td>
+      <td id="T_01114_row0_col1" class="data row0 col1" >0.13420</td>
     </tr>
     <tr>
-      <th id="T_e567a_level0_row1" class="row_heading level0 row1" >spatial_density</th>
-      <td id="T_e567a_row1_col0" class="data row1 col0" >0.3656</td>
-      <td id="T_e567a_row1_col1" class="data row1 col1" >0.3671</td>
+      <th id="T_01114_level0_row1" class="row_heading level0 row1" >spatial_density</th>
+      <td id="T_01114_row1_col0" class="data row1 col0" >0.12211</td>
+      <td id="T_01114_row1_col1" class="data row1 col1" >0.13018</td>
     </tr>
   </tbody>
 </table>
 
-And the results make sense: spatial density outperforms raw latitude and longitude for the regression model (the regression model really couldn't make sense of latitude and longitude), but it still underperforms raw latitude and longitude for XGBoost.
+Spatial density outperforms raw latitude and longitude for both the regression model and XGBoost; interestingly, the regression model slightly outperforms XGBoost for this feature.
 
 ### 2.3. Geohash Target Encoding
 
-It's a known fact -- some neighborhoods are more expensive than others. So, it's possible that giving information to the model about each Airbnb's neighborhood (and the price that can be expected in that neighborhood) can add predictive power.
+It's a known fact -- some neighborhoods are more expensive than others. So, it's possible that giving information to the model about each home's neighborhood (and the sale price that can be expected in that neighborhood) can add predictive power.
 
 But how to do this? Or more immediately, what's a neighborhood?
 
-A neighborhood can be anything -- a zip-code, a street, or in our case, [Geohash](https://towardsdatascience.com/geospatial-indexing-explained-a-comparison-of-geohash-s2-and-h3-68d4ed7e366d). (I recently wrote an article about Geohash and other geospatial indexing tools — how they work, how to use them, and a comparison of Geohash to the two other most popular geospatial indexing tools. Feel free to check it out!)
+A neighborhood can be anything -- a zip-code, a street, or in our case, a [Geohash](https://towardsdatascience.com/geospatial-indexing-explained-a-comparison-of-geohash-s2-and-h3-68d4ed7e366d). (I recently wrote an article about Geohash and other geospatial indexing tools — how they work, how to use them, and a comparison of Geohash to the two other most popular geospatial indexing tools. Feel free to check it out!)
 
 -> ["Geospatial Indexing Explained: A Comparison of Geohash, S2, and H3"](https://benfeifke.com/posts/geospatial-indexing-explained/)
 
-In short, Geohash allows us to convert a latitude-longitude point to a fixed neighborhood, thus giving us Airbnbs' neighborhoods as a categorical variable. And now, equipped with this categorical variable that represents the Airbnbs' neighborhoods, I use target encoding to communicate to the model about the expected price in each of those neighborhoods.
+In short, Geohash allows us to convert a latitude-longitude point to a fixed neighborhood, thus giving us homes' neighborhoods as a categorical variable. And now, equipped with this categorical variable that represents the homes' neighborhoods, I use target encoding to communicate to the model about the expected price in each of those neighborhoods.
 
 ```python
 def add_geohash_column_to_df(geo_df: pl.DataFrame) -> pl.DataFrame:
@@ -309,9 +308,9 @@ df_w_geohash_target_encoded = add_target_encoding_to_df(df_w_geohash)
 ```
 
 <figure class="image" align="center">
-    <img src="/images/nyc-airbnb-geohash-price.png" alt="drawing"/>
+    <img src="/images/miami-geohash-median-home-sale-price.png" alt="drawing"/>
     <figcaption style="font-style: italic">
-        Airbnb geohash average prices; the outlines of the geohash squares can clearly be seen, and downtown Manhattan unsurprisingly has the highest prices. | Image by Author
+        Residing-geohash median prices; the outlines of the geohash squares can clearly be seen, and Miami beach unsurprisingly has some of the highest prices. | Image by Author
     </figcaption>
 </figure>
 
@@ -339,59 +338,63 @@ for model_name, model_class in zip(
 ```
 
 <style type="text/css">
-#T_766d0_row0_col0 {
-  background-color: #1b7eb7;
+#T_1c975_row0_col0 {
+  background-color: #056aa6;
   color: #f1f1f1;
 }
-#T_766d0_row0_col1 {
-  background-color: #d0d1e6;
+#T_1c975_row0_col1 {
+  background-color: #b1c2de;
   color: #000000;
 }
-#T_766d0_row1_col0 {
-  background-color: #2a88bc;
-  color: #f1f1f1;
+#T_1c975_row1_col0 {
+  background-color: #d7d6e9;
+  color: #000000;
 }
-#T_766d0_row1_col1 {
-  background-color: #2484ba;
-  color: #f1f1f1;
+#T_1c975_row1_col1 {
+  background-color: #bfc9e1;
+  color: #000000;
 }
-#T_766d0_row2_col0, #T_766d0_row2_col1 {
-  background-color: #b7c5df;
+#T_1c975_row2_col0 {
+  background-color: #d4d4e8;
+  color: #000000;
+}
+#T_1c975_row2_col1 {
+  background-color: #d6d6e9;
   color: #000000;
 }
 </style>
-<table id="T_766d0">
+<table id="T_1c975">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_766d0_level0_col0" class="col_heading level0 col0" >ridge regression</th>
-      <th id="T_766d0_level0_col1" class="col_heading level0 col1" >xgboost</th>
+      <th id="T_1c975_level0_col0" class="col_heading level0 col0" >ridge regression</th>
+      <th id="T_1c975_level0_col1" class="col_heading level0 col1" >xgboost</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_766d0_level0_row0" class="row_heading level0 row0" >raw_lat_lon</th>
-      <td id="T_766d0_row0_col0" class="data row0 col0" >0.3695</td>
-      <td id="T_766d0_row0_col1" class="data row0 col1" >0.3252</td>
+      <th id="T_1c975_level0_row0" class="row_heading level0 row0" >raw_lat_lon</th>
+      <td id="T_1c975_row0_col0" class="data row0 col0" >0.17848</td>
+      <td id="T_1c975_row0_col1" class="data row0 col1" >0.13420</td>
     </tr>
     <tr>
-      <th id="T_766d0_level0_row1" class="row_heading level0 row1" >spatial_density</th>
-      <td id="T_766d0_row1_col0" class="data row1 col0" >0.3656</td>
-      <td id="T_766d0_row1_col1" class="data row1 col1" >0.3671</td>
+      <th id="T_1c975_level0_row1" class="row_heading level0 row1" >spatial_density</th>
+      <td id="T_1c975_row1_col0" class="data row1 col0" >0.12211</td>
+      <td id="T_1c975_row1_col1" class="data row1 col1" >0.13018</td>
     </tr>
     <tr>
-      <th id="T_766d0_level0_row2" class="row_heading level0 row2" >geohash_target_encoding</th>
-      <td id="T_766d0_row2_col0" class="data row2 col0" >0.3325</td>
-      <td id="T_766d0_row2_col1" class="data row2 col1" >0.3325</td>
+      <th id="T_1c975_level0_row2" class="row_heading level0 row2" >geohash_target_encoding</th>
+      <td id="T_1c975_row2_col0" class="data row2 col0" >0.12307</td>
+      <td id="T_1c975_row2_col1" class="data row2 col1" >0.12256</td>
     </tr>
   </tbody>
 </table>
 
-As it turns out, geohash target encoding is more powerful than spatial density; though it still can't outperform raw latitude and longitude with XGBoost!
+Geohash target encoding performs slightly better than spatial density!
 
 ### 2.4: Putting It All Together
 
-Of course, would I really be a data scientist if I didn't throw all the features together just to see what happens? Let's do it:
+Finally, would I really be a data scientist if I didn't throw all the features together just to see what happens? Let's do it:
 
 ```python
 df_w_all_features = add_density_feature_columns_to_dataframe(
@@ -422,70 +425,71 @@ for model_name, model_class in zip(
     model_performance = root_mean_squared_error(y_test, y_predicted)
 ```
 
-And the winner is... XGBoost trained on the combination of all features! With XGBoost trained on raw latitude and longitude coming in close second:
+And the winner is... XGBoost trained on the combination of all features!
 
 <style type="text/css">
-#T_8ee67_row0_col0 {
-  background-color: #1b7eb7;
+#T_d69cb_row0_col0 {
+  background-color: #056aa6;
   color: #f1f1f1;
 }
-#T_8ee67_row0_col1 {
-  background-color: #d0d1e6;
+#T_d69cb_row0_col1 {
+  background-color: #b1c2de;
   color: #000000;
 }
-#T_8ee67_row1_col0 {
-  background-color: #2a88bc;
-  color: #f1f1f1;
-}
-#T_8ee67_row1_col1 {
-  background-color: #2484ba;
-  color: #f1f1f1;
-}
-#T_8ee67_row2_col0, #T_8ee67_row2_col1, #T_8ee67_row3_col0 {
-  background-color: #b7c5df;
+#T_d69cb_row1_col0 {
+  background-color: #d7d6e9;
   color: #000000;
 }
-#T_8ee67_row3_col1 {
-  background-color: #d2d2e7;
+#T_d69cb_row1_col1 {
+  background-color: #bfc9e1;
+  color: #000000;
+}
+#T_d69cb_row2_col0, #T_d69cb_row3_col0 {
+  background-color: #d4d4e8;
+  color: #000000;
+}
+#T_d69cb_row2_col1 {
+  background-color: #d6d6e9;
+  color: #000000;
+}
+#T_d69cb_row3_col1 {
+  background-color: #dad9ea;
   color: #000000;
 }
 </style>
-<table id="T_8ee67">
+<table id="T_d69cb">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_8ee67_level0_col0" class="col_heading level0 col0" >ridge regression</th>
-      <th id="T_8ee67_level0_col1" class="col_heading level0 col1" >xgboost</th>
+      <th id="T_d69cb_level0_col0" class="col_heading level0 col0" >ridge regression</th>
+      <th id="T_d69cb_level0_col1" class="col_heading level0 col1" >xgboost</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_8ee67_level0_row0" class="row_heading level0 row0" >raw_lat_lon</th>
-      <td id="T_8ee67_row0_col0" class="data row0 col0" >0.3695</td>
-      <td id="T_8ee67_row0_col1" class="data row0 col1" >0.3252</td>
+      <th id="T_d69cb_level0_row0" class="row_heading level0 row0" >raw_lat_lon</th>
+      <td id="T_d69cb_row0_col0" class="data row0 col0" >0.17848</td>
+      <td id="T_d69cb_row0_col1" class="data row0 col1" >0.13420</td>
     </tr>
     <tr>
-      <th id="T_8ee67_level0_row1" class="row_heading level0 row1" >spatial_density</th>
-      <td id="T_8ee67_row1_col0" class="data row1 col0" >0.3656</td>
-      <td id="T_8ee67_row1_col1" class="data row1 col1" >0.3671</td>
+      <th id="T_d69cb_level0_row1" class="row_heading level0 row1" >spatial_density</th>
+      <td id="T_d69cb_row1_col0" class="data row1 col0" >0.12211</td>
+      <td id="T_d69cb_row1_col1" class="data row1 col1" >0.13018</td>
     </tr>
     <tr>
-      <th id="T_8ee67_level0_row2" class="row_heading level0 row2" >geohash_target_encoding</th>
-      <td id="T_8ee67_row2_col0" class="data row2 col0" >0.3325</td>
-      <td id="T_8ee67_row2_col1" class="data row2 col1" >0.3325</td>
+      <th id="T_d69cb_level0_row2" class="row_heading level0 row2" >geohash_target_encoding</th>
+      <td id="T_d69cb_row2_col0" class="data row2 col0" >0.12307</td>
+      <td id="T_d69cb_row2_col1" class="data row2 col1" >0.12256</td>
     </tr>
     <tr>
-      <th id="T_8ee67_level0_row3" class="row_heading level0 row3" >all_features</th>
-      <td id="T_8ee67_row3_col0" class="data row3 col0" >0.3328</td>
-      <td id="T_8ee67_row3_col1" class="data row3 col1" >0.3245</td>
+      <th id="T_d69cb_level0_row3" class="row_heading level0 row3" >all_features</th>
+      <td id="T_d69cb_row3_col0" class="data row3 col0" >0.12343</td>
+      <td id="T_d69cb_row3_col1" class="data row3 col1" >0.12037</td>
     </tr>
   </tbody>
 </table>
 
-
 ## 3. Discussion
-
-Even after all the feature engineering, the most performant model was still hardly better than XGBoost with raw latitude and longitude! This tells us two things: (1) XGBoost is as awesome as ever, and (2) don't discredit raw features; they may be more powerful than you realize!
 
 Of course, as with any data science problem, the fun is only just beginning; there are already many possibilities for improvement:
 - **Hyperparameter tuning**: Is there a more performant choice for search-radius for the spatial density computation? Is there a more performant geohash precision for generating the geohash target-encoding?
@@ -494,12 +498,14 @@ Of course, as with any data science problem, the fun is only just beginning; the
 
 And of course, the whole ML approach could be improved to include k-fold cross-validation, or a model or cost function that more richly appreciates the fat-tailed nature of the target variable.
 
+Furthermore, the dataset herein studied was a record of home sales, which is notably distinct from home prices: in the former, one record represents a transaction, whereas in the latter, one record represents an actual home. As such, the spatial density feature herein computed may represent more of a "neighborhood purchasing popularity" than it does urbanness. As such, as with any data science problem, your mileage with these techniques may vary depending on the nature of your data.
+
 ## 4. Conclusion
-These are just a few ideas of what can be done when working on machine learning problems with data that contains latitude and longitude; hopefully it gives you some starting points. As always, thank you for reading 🙂 Until next time!
+These are just a few ideas of what can be done when working on machine learning problems with data that contains latitude and longitude; hopefully it gives you some starting points. You can check out the code on my github ([link](https://github.com/bfeif/personal-website/blob/geospatial-feature-engineering-post/code/notebooks/feature-engineering-with-just-latitude-and-longitude.ipynb)). As always, thank you for reading 🙂 Until next time!
 
 ## References
 
-\[1\]: https://www.kaggle.com/datasets/kritikseth/us-airbnb-open-data
+\[1\]: https://www.openml.org/search?type=data&id=43093
 
 ---
 
