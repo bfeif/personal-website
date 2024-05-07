@@ -1,5 +1,5 @@
 ---
-title: "On Forging One's Own Identity"
+title: "On Forging Identity"
 date: 2024-04-10T09:47:45+02:00
 draft: false
 tags:
