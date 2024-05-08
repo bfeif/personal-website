@@ -24,7 +24,7 @@ weight = 4
 
 [params]
   colortheme = "white"
-  description = "Hi there! I'm Ben, an expert in all things AI, Machine Learning and Data and an entrepreneur, and I'm driven by a curiosity to understand and build the world around me.\n \nI offer free consultations. Feel free to book a time with me on my calendly: https://calendly.com/benfeifke."
+  description = "Hi there! I'm Ben, an expert in all things AI, Machine Learning and Data, and I'm an entrepreneur who's driven by a curiosity to understand and build the world around me.\n \nI offer free consultations. Feel free to book a time with me on my calendly: https://calendly.com/benfeifke."
   mainSection = "All Posts"
   mainSectionTitle = "Writings"
   showAllPostsOnHomePage = true
