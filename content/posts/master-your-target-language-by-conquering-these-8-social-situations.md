@@ -90,3 +90,7 @@ These are my 8 steps to learn a language, and I've used it to learn Spanish, Por
 Happy learning!
 
 [^1]: This is called [connected speech](https://en.wikipedia.org/wiki/Connected_speech), also known as 'the super-fast and mushed-together' accents of the native speakers. To learn more about connected speech, you can check out this [YouTube video](https://www.youtube.com/watch?v=Nc2r_5XhkGk).
+
+---
+
+{{< contact message="Liked what you read? Feel free to reach out on " >}}

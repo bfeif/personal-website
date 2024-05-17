@@ -124,3 +124,7 @@ It can be a bit frustrating for language-learners that the most common verbs hav
 As a curious side-note on this point, everything that we know about Latin actually comes from [Classical Latin](https://en.wikipedia.org/wiki/Classical_Latin), or Literary Latin, i.e. the Latin that was written down. It's often said that Latin is the parent of all modern Romance Languages. However, that's not entirely true. All of today's modern romance languages actually descend from the Latin of the commoners, [Vulgar Latin](https://en.wikipedia.org/wiki/Vulgar_Latin); not from Classical Latin.
 [^3]: As an example, see the conjugations for [the verb "ir" (to go)](https://www.conjugacao.com.br/verbo-ir/); irregular conjugations are denoted as such with an asterisk "\*").
 [^4]: This is an abridged conjugation table. It ignores all the other verb tenses, e.g. future, past participle, subjunctive, etc. The irregularity is measured only on the abridged table, to be as clearly demonstrative as possible.
+
+---
+
+{{< contact message="Liked what you read? Feel free to reach out on " >}}

@@ -27,5 +27,4 @@ My toolstack includes, but is not limited to:
 
 When I'm not crunching data, I enjoy playing chess, guitar, studying linguistics, and learning new languages (I speak English, German, Portuguese, Spanish, and Hebrew).
 
-
 {{< contact message="Want to work together? Feel free to reach out:" >}}
