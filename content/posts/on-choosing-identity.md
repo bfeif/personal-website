@@ -25,3 +25,7 @@ But just as they’d passed the fork, the kid said to his mom, “Mom, I'm gonna
 It was cute. I feel like I witnessed in one moment, one step on his journey of identity formation. He had chosen this path and identified himself with it, and had expended extra effort to cement that identity; and, most beautifully, he had done so not in opposition to his mother, but as an extension of her.
 
 On the small chance that you, little kid on the bike, are out there reading this, I wish you the best on your journey. And also, by the way, it’s not your path -- it’s mine.
+
+---
+
+{{< contact message="Liked what you read? Feel free to reach out on " >}}
