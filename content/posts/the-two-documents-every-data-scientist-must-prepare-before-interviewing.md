@@ -104,6 +104,13 @@ As the old adage instructs, "if it's on your resume, be prepared to answer quest
 - How did you choose the model?
 - You used LightGBM for classification--how does LightGBM work? How is it different from XGBoost? Which one worked better and why do you think it was better?
 
+<figure class="image" align="center">
+    <img src="/images/xgboost_vs_lgbm.jpeg" alt="drawing" width=280/>
+    <figcaption style="font-style: italic">
+        Only the strong will survive. | Image by Author.
+    </figcaption>
+</figure>
+
 Writing this "Common Questions" section ends up doubling as a great studying and interview-preparation tool for me, as it forces me to dig into the internals of all the different tools I used, e.g. feature engineering methods, dimensionality reduction methods, cost functions, model training methods, engineering tools, and so much more.
 
 ### How to Use it
