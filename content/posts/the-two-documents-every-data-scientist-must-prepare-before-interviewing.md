@@ -1,7 +1,7 @@
 ---
 title: "The 2 Documents Every Data Scientist Must Write Before Taking Interviews"
 date: 2024-05-17T09:47:45+02:00
-draft: true
+draft: false
 tags:
     - math
     - language
