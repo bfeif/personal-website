@@ -279,3 +279,7 @@ Anytime we make a choice, whether it's what to eat for lunch or which geospatial
 <!-- - https://s2geometry.io/devguide/s2cell_hierarchy -->
 <!-- - eric@rainforesttrust.org -->
 <!-- - https://github.com/uber/h3/discussions/416#discussioncomment-1509642 -->
+
+---
+
+{{< contact message="Liked what you read? Feel free to reach out on " >}}

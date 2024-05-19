@@ -1,6 +1,6 @@
 ---
 title: "Feature Engineering With Latitude and Longitude"
-date: 2024-03-16T09:47:45+02:00
+date: 2024-03-26T09:47:45+02:00
 draft: false
 tags:
     - geospatial
@@ -18,13 +18,13 @@ keywords:
 
 ***Leveraging the power in your geospatial data -- with code!***
 
-Many of today's most competitive tech markets involve points moving around on a map: ride-hailing services (Uber, Lyft, Grab), micromobility services (Lime, Bird), food delivery services (Delivery Hero, Postsmates, Doordash), and more. Moreover, many services that don't place customers' locations at the center of their product use-cases still want to know their customers' locations so that they can better personalize their experiences based on where they are and what's going on around them.
+Many of today’s most competitive tech markets involve points moving around on a map: ride-hailing services (Uber, Lyft, Grab), micromobility services (Lime, Bird), food delivery services (Delivery Hero, Postsmates, Doordash), and more. Moreover, many services that don’t place customers’ locations at the center of their product use-cases still want to know their customers’ locations so that they can better personalize their experiences based on where they are and what’s going on around them.
 
-What this all means for data scientists is that there's a lot of latitudes and longitudes floating around our data lakes (pun intended); and buried deep inside just these two variables is a wealth of information!
+What this all means for data scientists is that there’s a lot of latitudes and longitudes floating around our data lakes (pun intended); and buried deep inside just these two variables is a wealth of information!
 
 Creatively and effectively utilizing latitude and longitude can bring immense predictive power to our machine learning applications and added dimensionality to our analytics efforts, helping us data scientists to bring more value to our companies and our customers.
 
-The goal of this article is to give a demontration of a few feature engineering techniques that use just latitude and longitude, comparing their predictive power on a Miami Home Sale Price Prediction problem. The structure is as follows:
+The goal of this article is to give a demonstration of a few feature engineering techniques that use just latitude and longitude, comparing their predictive power on a Miami Home Sale Price Prediction problem. The structure is as follows:
 
 1. Miami home sale price prediction problem setup
 2. Feature engineering experiments
@@ -35,7 +35,7 @@ The goal of this article is to give a demontration of a few feature engineering 
 3. Discussion
 4. Conclusion
 
-Since the focus of this post is on feature-engineering, the model evaluation will be quite straightforward for the sake of brevity and clarity (i.e. no cross validation and no hyperparameter optimization).
+Since the focus of this post is on feature-engineering, the model evaluation will be quite straightforward for the sake of brevity and clarity (i.e. no cross-validation and no hyperparameter optimization).
 
 Furthermore, this post will use Polars as a data manipulation library, as opposed to Pandas; if you, dear reader, are unfamiliar with Polars or otherwise find yourself still stuck in Panda-land, feel free to first check out my earlier post, ["The 3 Reasons Why I Have Permanently Switched From Pandas To Polars"](https://benfeifke.com/posts/the-3-reasons-why-i-switched-from-pandas-to-polars-20230328/).
 

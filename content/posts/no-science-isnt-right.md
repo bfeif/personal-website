@@ -31,3 +31,7 @@ This isn't to say all science is wrong. I'm simply trying to encourage a change 
 
 # Final Thoughts
 Science is expressive!
+
+---
+
+{{< contact message="Liked what you read? Feel free to reach out on " >}}

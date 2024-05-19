@@ -262,3 +262,7 @@ Getting started with a new tool is hard; especially if it's a new dataframe libr
 
 ### Acknowlegments
 A special thank you to [Liam Brannigan](https://www.linkedin.com/in/liam-brannigan-9080b214a/) for your `Polars` course, without which I'm not sure I would have made the transition from `Pandas` to `Polars`. And, of course, a huge thank you to [Ritchie Vink](https://www.linkedin.com/in/ritchievink/), the creator of `Polars`! Not only have you created an awesome library, but you promptly responded to my questions and comments about `Polars` on both LinkedIn and Github -- you've not only created an amazing tool, but also a beautiful community around it. And to you, the reader -- thank you for reading; I wish you happy data-crunching :)
+
+---
+
+{{< contact message="Liked what you read? Feel free to reach out on " >}}
