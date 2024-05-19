@@ -5,6 +5,7 @@ ipython
 jupyter
 kaleido
 matplotlib
+notebook<=6.5.7
 numpy
 pandas
 plotly
