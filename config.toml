@@ -24,7 +24,7 @@ weight = 4
 
 [params]
   colortheme = "white"
-  description = "Hi there! I'm Ben, and I'm an entrepreneur who's driven by a curiosity to understand and build the world around me.\n \n Currently, I'm Founder and Principal at [Beyond Data Consulting](https://beyonddataconsulting.io/), where our team of Data and AI experts builds custom Data and AI solutions to take your business to the next level. Book a free consultation here 👉 https://calendly.com/benfeifke. I look forward to meeting you!"
+  description = "Hi there! I'm Ben, and I'm an entrepreneur who's driven by a curiosity to understand and build the world around me.\n \n Currently, I'm Founder and Principal at [Beyond Data Consulting](https://beyonddataconsulting.io/), where our team of Data and AI experts builds custom Data and AI solutions to take your business to the next level. \n\nBook a free consultation here 👉 https://calendly.com/benfeifke. I look forward to meeting you!"
   mainSection = "All Posts"
   mainSectionTitle = "Writings"
   showAllPostsOnHomePage = true
