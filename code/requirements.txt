@@ -4,7 +4,7 @@ hilbertcurve
 ipython
 jupyter
 kaleido
-matplotlib
+matplotlib>=3.9.0
 numpy
 pandas
 plotly
@@ -14,5 +14,6 @@ s2cell
 scikit-learn==1.4.0
 scipy==1.11.1
 seaborn
+tqdm
 xgboost
 zCurve
